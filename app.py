@@ -390,8 +390,8 @@ with tab_event:
 
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
-    # LIEN CATALOGUE MIS À JOUR ICI
-    url_catalogue = "https://apprefugemedb12py-edxprzycfpyjfmezl6y2em.streamlit.app/"
+    # MISE À JOUR DE L'URL DU CATALOGUE CI-DESSOUS
+    url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
 with tab_pension:
@@ -545,7 +545,7 @@ with tab_urgence:
         """, unsafe_allow_html=True)
 
 # --- 5. PIED DE PAGE ---
-st.markdown("---") 
+st.markdown("---")
 
 col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
 
@@ -579,7 +579,6 @@ with col_f4:
     [Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
     """)
 
-# Copyright centré tout en bas
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
