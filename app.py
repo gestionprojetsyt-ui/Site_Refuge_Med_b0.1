@@ -390,7 +390,7 @@ with tab_event:
 
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
-    url_catalogue = "https://l2hgjzbqxz6bzztawcl3jz.streamlit.app/?embed=true"
+    url_catalogue = "https://apprefugemedb12py-edxprzycfpyjfmezl6y2em.streamlit.app/"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
 with tab_pension:
