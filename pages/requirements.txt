@@ -1,4 +1,0 @@
-pandas
-fpdf2
-pillow
-requests
