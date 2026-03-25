@@ -311,3 +311,6 @@ try:
             </div>
         </div>
     """, unsafe_allow_html=True)
+    
+except Exception as e:
+    st.error(f"Erreur d'affichage : {e}")
