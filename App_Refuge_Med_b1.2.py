@@ -311,6 +311,9 @@ try:
             </div>
         </div>
     """, unsafe_allow_html=True)
-    
+
+try:
+    # ... ton code existant (iframe, etc.)
+    st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 except Exception as e:
-    st.error(f"Erreur d'affichage : {e}")
+    st.error(f"Erreur de chargement du catalogue : {e}")
