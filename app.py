@@ -299,7 +299,7 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
     
     # --- BLOC DE TÉLÉCHARGEMENT ---
     try:
-        with open("integration des benevole.pdf", "rb") as f:
+        with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
         
         st.write("Pour devenir bénévole, veuillez prendre connaissance de notre dossier d'intégration ci-dessous :")
@@ -311,7 +311,7 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
             use_container_width=True
         )
     except FileNotFoundError:
-        st.warning("Le fichier 'integration des benevole.pdf' n'a pas été trouvé. Assurez-vous qu'il est bien présent à la racine de votre projet.")
+        st.warning("Le fichier 'info_benevole.pdf' n'a pas été trouvé. Assurez-vous qu'il est bien présent à la racine de votre projet.")
 
     st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer !")
 
