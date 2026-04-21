@@ -632,31 +632,11 @@ with col_f4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# --- LIGNE DE COPYRIGHT AVEC POINT INVISIBLE ---
-st.markdown("---")
-
-# On crée le texte. Note bien le id='secret-point' sur le point final.
+# --- COPYRIGHT SIMPLE ---
+st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
-    <p style='text-align: center; color: #888; font-size: 0.8em; margin-bottom: 20px;'>
-    Refuge Médéric - Association Animaux du Grand Dax © 2026 Tous droits réservés. Version Alpha_1<span style='cursor: default;'>.</span>
+    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
+        Refuge Médéric - Association Animaux du Grand Dax<br>
+        © 2026 Tous droits réservés. Version Alpha_1
     </p>
 """, unsafe_allow_html=True)
-
-# On place le déclencheur tout en bas, très petit
-col_vide, col_bouton = st.columns([20, 1])
-with col_bouton:
-    # Ce bouton est vide, sans bordure, sans texte. Il est là, mais on ne le voit pas.
-    if st.button(" ", key="portal", help=None):
-        st.session_state.admin_open = not st.session_state.get("admin_open", False)
-
-# La zone admin ne s'affiche que si tu as cliqué dans le coin vide à droite du point
-if st.session_state.get("admin_open", False):
-    with st.container():
-        st.markdown("---")
-        pwd = st.text_input("Clé d'accès", type="password", key="final_admin_pwd")
-        if "password_admin" in st.secrets and pwd == st.secrets["password_admin"]:
-            if os.path.exists("liste_newsletter.txt"):
-                with open("liste_newsletter.txt", "r") as f:
-                    data = f.read()
-                st.download_button("📥 Télécharger la liste", data, "liste.txt")
-                st.code(data)
