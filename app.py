@@ -532,7 +532,7 @@ with c_map:
         unsafe_allow_html=True)
     
     # Coordonnées réelles du 182 Chemin Lucien Viau
-    map_coords = pd.DataFrame({'lat': [43.7431], 'lon': [-1.0664]})
+    map_coords = pd.DataFrame({'lat': [43.75791549682617], 'lon': [-1.0595743656158447]})
     
     # On utilise la carte native (stable et robuste)
     st.map(map_coords, zoom=14, use_container_width=True)
