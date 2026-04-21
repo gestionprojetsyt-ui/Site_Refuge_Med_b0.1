@@ -547,13 +547,35 @@ with c_map:
         </div>
     """, unsafe_allow_html=True)
             
-# --- SECTION URGENCE (Correction de la variable manquante) ---
 with tab_urgence:
-    col_u1, col_u2 = st.columns(2)
+    st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
+                unsafe_allow_html=True)
+
+    col_btn_1, col_btn_2 = st.columns(2)
+    with col_btn_1:
+        if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"):
+            modal_perdu()
+    with col_btn_2:
+        if st.button("🐾 Que faire si vous avez trouvé un animal errant ?", use_container_width=True):
+            modal_trouve()
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    col_u1, col_u2 = st.columns([1.5, 1])
+
     with col_u1:
-        st.markdown("<h3 style='color:#FF0000;'>🚑 Service Fourrière</h3>", unsafe_allow_html=True)
-        st.write("Le refuge assure le service de fourrière pour les communes du Grand Dax.")
-        
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>🐕 Fonctionnement de la Fourrière</h4>
+            <p>La fourrière permet d’accueillir les chiens et les chats trouvés errants sur les communes du Grand Dax.</p>
+            <p style="background:#fff3f3; padding:15px; border-radius:10px; border:1px solid #ffcccc;">
+                ⚠️ <b>Avertissement :</b> Nous ne nous déplaçons pas pour venir chercher un animal. L’animal doit nous être déposé par la <b>police ou les autorités compétentes</b>.
+            </p>
+            <p>Si vous trouvez un animal : vous devez impérativement contacter la police ou la mairie avant de nous le déposer.</p>
+            <p><i>Si votre animal a disparu, il est peut-être chez nous ! N’hésitez pas à nous contacter au 05 58 73 68 82.</i></p>
+        </div>
+        """, unsafe_allow_html=True)
+
     with col_u2:
         st.markdown("""
         <div class="help-card-white">
