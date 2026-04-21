@@ -1,4 +1,5 @@
 import streamlit as st
+import pd as pd
 import pandas as pd
 import requests
 import base64
@@ -14,7 +15,7 @@ st.set_page_config(page_title="Refuge Médéric - Officiel", layout="wide", page
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">',
             unsafe_allow_html=True)
 
-# Fonction pour récupérer l'image réelle
+# Fonction pour récupérer l'image réelle (données binaires)
 @st.cache_data(ttl=600)
 def get_image_data(url):
     try:
@@ -22,14 +23,16 @@ def get_image_data(url):
             return None
         file_id = re.search(r'(?:id=|[/\b])([a-zA-Z0-9_-]{25,})', url).group(1)
         direct_url = f'https://drive.google.com/uc?export=download&id={file_id}'
-        response = requests.get(direct_url, timeout=10)
+        # Ajout d'un User-Agent pour éviter certains blocages Google
+        headers = {"User-Agent": "Mozilla/5.0"}
+        response = requests.get(direct_url, headers=headers, timeout=10)
         if response.status_code == 200:
             return BytesIO(response.content)
     except Exception:
         return None
     return None
 
-# Fonction pour charger les événements
+# Fonction pour charger les événements depuis Google Sheets
 @st.cache_data(ttl=300)
 def charger_evenements_sheet():
     URL_EV = "https://docs.google.com/spreadsheets/d/1XZXKwCfJ_922HAkAANzpXyyZL97uJzcu84viFWdtgpA/export?format=csv&gid=1825198513"
@@ -42,34 +45,49 @@ def charger_evenements_sheet():
         return pd.DataFrame()
 
 # --- FENÊTRES SURGISSANTES (DIALOGS) ---
+
 @st.dialog("🔍 Que faire si vous avez perdu votre animal ?", width="large")
 def modal_perdu():
     st.markdown("""
     *Publié par animauxdugranddax le 1 janvier 2026*
     Quand un animal disparaît, le plus efficace est d’agir vite pour éviter qu’il ne s’éloigne trop.
+
     ### 🏠 1. Si c’est un chat, fouillez CHEZ VOUS
-    Cherchez sous les lits, dans les placards... **si la tête passe, tout passe !**
+    Cherchez sous les lits, dans les placards, sous les meubles de cuisine... **si la tête passe, tout passe !** Faites le tour du jardin, vérifiez sous les haies, dans les arbres et même sous les voitures.
+
     ### 👃 2. Sortez sa litière (pour les chats)
-    Astuce étrange mais efficace : ne lavez pas la litière. Les odeurs peuvent guider votre compagnon.
+    Astuce efficace : ne lavez pas la litière. Les odeurs peuvent guider votre compagnon vers sa maison.
+
     ### 🗣️ 3. Appelez-le en début de soirée
+    Appelez surtout en fin de journée (moins de bruit). Agitez une boîte de croquettes.
+
     ### 🏘️ 4. Faites le tour du quartier
-    ### 💻 5. Contactez les sites spécialisés (I-CAD, Pet Alert 40)
-    ### 📞 6. Appelez les autorités (Fourrière, Refuge, Mairies)
-    ---
-    ### ✨ Les bons gestes à l'avenir
-    * **Identification :** Obligatoire, elle offre 75% de chances en plus.
-    * **Stérilisation :** Calme les envies d'évasion.
+    Laissez des mots dans les boîtes aux lettres avec une photo. Vérifiez les garages des voisins.
+
+    ### 💻 5. Contactez les sites spécialisés
+    * **I-CAD :** Déclarez la perte (gratuit).
+    * **Pet Alert 40 / Chat-perdu.org / Chien-perdu.org**
+
+    ### 📞 6. Appelez les autorités
+    Fourrière en priorité, puis le refuge, les mairies et les vétérinaires alentours.
     """)
 
 @st.dialog("🐾 Que faire si vous avez trouvé un animal errant ?", width="large")
 def modal_trouve():
     st.markdown("""
-    ⚠️ **Rappel important :** Nous ne sommes pas habilités à nous déplacer. L'animal doit nous être déposé par la police ou les autorités compétentes.
+    ⚠️ **Rappel important :** Nous ne sommes pas habilités à nous déplacer. L'animal doit nous être déposé par la police ou les autorités compétentes après accord de la mairie.
+
     ### 🚫 1. Ne prenez pas l'animal chez vous si vous n'en voulez pas
+    Vous pourriez vous mettre en danger. Laissez-le dehors mais nourrissez-le à heures fixes pour qu'il reste sur le secteur.
+
     ### 🏘️ 2. Faites le tour du quartier
-    ### 💻 3. Vérifiez les sites spécialisés (Pet Alert 40)
-    ### 🏥 4. Amenez-le chez un vétérinaire (Gratuit pour lecture de puce)
-    ### 🚨 5. Contactez les autorités pour la fourrière
+    Toquez aux portes. Les chiens fugueurs sont souvent connus des voisins.
+
+    ### 🏥 3. Amenez-le chez un vétérinaire (Gratuit)
+    Tout vétérinaire peut vérifier gratuitement la puce électronique.
+
+    ### 🚨 4. Contactez les autorités pour la fourrière
+    C’est le dernier recours. Vous devez impérativement passer par la **mairie ou la police** avant de nous l'amener.
     """)
 
 # --- STYLE CSS ---
@@ -82,7 +100,6 @@ st.markdown("""
     background-size: cover; background-position: center; padding: 100px 20px; text-align: center; color: white; border-radius: 0 0 50px 50px; margin-bottom: 50px;
 }
 .btn-action { background-color: #FF0000; color: white !important; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 1.2em; display: inline-block; }
-.btn-mail { background-color: #333333; color: white !important; padding: 15px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; display: inline-block; }
 .btn-don-vert { background-color: #62af05; color: white !important; padding: 15px 25px; border-radius: 15px; text-decoration: none; font-weight: bold; display: block; text-align: center; margin-bottom: 15px; }
 .help-card-white { background-color: white !important; padding: 25px; border-radius: 15px; border-left: 5px solid #FF0000; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: #1a1a1a !important; height: 100%; }
 .project-card-full { background-color: white !important; padding: 20px; border-radius: 15px; border-left: 5px solid #FF0000; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); color: #1a1a1a !important; }
@@ -100,7 +117,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# --- STATS RAPIDES ---
+# --- STATS ---
 col1, col2, col3 = st.columns(3)
 with col1: st.markdown("<div style='text-align:center;'><h3>📍 Localisation</h3><p>Saint-Paul-lès-Dax (40)</p></div>", unsafe_allow_html=True)
 with col2: st.markdown("<div style='text-align:center;'><h3>🐕 Nos Pensionnaires</h3><p>Chiens et chats de tous âges</p></div>", unsafe_allow_html=True)
@@ -119,7 +136,7 @@ with tab1:
         st.write("L'association **LES ANIMAUX DU GRAND DAX** (SIREN : 993 900 000) gère le refuge Médéric.")
         st.markdown("<br><h3 style='color:#FF0000;'>🚀 Nos Projets & Événements</h3>", unsafe_allow_html=True)
         st.markdown('<div class="project-card-full"><h4>📅 Journée Portes Ouvertes</h4><p>Venez rencontrer nos chiens et nos chats et notre équipe de passionnés !</p></div>', unsafe_allow_html=True)
-        st.markdown('<div class="project-card-full"><h4>🐈 Amélioration de la Fourrière Chats</h4><p>Des travaux sont prévus pour améliorer l\'accueil. Nous avons besoin de dons de matériaux et de bras !</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="project-card-full"><h4>🐈 Amélioration de la Fourrière Chats</h4><p>Des travaux sont prévus très prochainement. Nous avons besoin de dons de matériaux et de bras !</p></div>', unsafe_allow_html=True)
     with col_refuge_2:
         st.markdown("<div class='contact-card' style='margin-top:0;'><h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3><a href='https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2' class='btn-don-vert'><i class='fas fa-heart'></i> Faire un don (HelloAsso)</a></div>", unsafe_allow_html=True)
 
@@ -149,7 +166,7 @@ with tab_pension:
         st.write("Nos box sont spacieux et peuvent accueillir jusqu'à deux chiens d'une même famille.")
     with col_p2:
         st.image("https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1000")
-    tarifs_data = {"Prestation": ["1 chien", "2 chiens"], "Tout Public": ["15€ / jour", "23€ / jour"], "Adopté chez nous": ["13€ / jour", "20€ / jour"]}
+    tarifs_data = {"Prestation": ["1 chien", "2 chiens"], "Public": ["15€ / jour", "23€ / jour"], "Adopté chez nous": ["13€ / jour", "20€ / jour"]}
     st.table(pd.DataFrame(tarifs_data))
 
 with tab3:
@@ -179,10 +196,10 @@ with tab_urgence:
         if st.button("🐾 J'ai trouvé un animal", use_container_width=True): modal_trouve()
     st.markdown('<div class="help-card-white"><h4>💰 Tarifs Fourrière</h4><p>Identifié : 40€ | Non-identifié : 125€ | Supplément : 15€/jour</p></div>', unsafe_allow_html=True)
 
-# --- FOOTER ---
+# --- PIED DE PAGE ---
 st.markdown("---")
 col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
-with col_f1: st.markdown("<h4 style='color: #FF0000;'>🐾 REFUGE MÉDÉRIC</h4><p>Association Animaux du Grand Dax</p>", unsafe_allow_html=True)
+with col_f1: st.markdown("<h4 style='color: #FF0000;'>🐾 REFUGE MÉDÉRIC</h4><p>© 2026 Tous droits réservés.</p>", unsafe_allow_html=True)
 with col_f3:
     st.markdown("<h4 style='color: #FF0000;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_f")
@@ -196,10 +213,9 @@ st.markdown("---")
 with st.expander("🔐 Administration"):
     code_secret = st.text_input("Code secret", type="password", key="admin_pwd")
     
-    # Utilisation des secrets Streamlit pour protéger le mot de passe
+    # Sécurisation : On compare le code saisi avec celui stocké dans les Secrets de Streamlit
     try:
-        real_password = st.secrets["admin_password"]
-        if code_secret == real_password:
+        if code_secret == st.secrets["admin_password"]:
             if os.path.exists("liste_newsletter.txt"):
                 with open("liste_newsletter.txt", "r") as f: contenu = f.read()
                 st.download_button("📥 Télécharger les mails", contenu, "emails.txt")
@@ -207,4 +223,4 @@ with st.expander("🔐 Administration"):
             else:
                 st.info("Liste vide.")
     except KeyError:
-        st.error("Action requise : Définissez 'admin_password' dans les Secrets de votre Dashboard Streamlit.")
+        st.error("Configurez 'admin_password' dans les Secrets du Dashboard Streamlit.")
