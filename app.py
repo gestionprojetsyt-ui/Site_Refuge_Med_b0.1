@@ -3,9 +3,9 @@ import pandas as pd
 import requests
 import base64
 import re
+import os
 from PIL import Image
 from io import BytesIO
-import os
 
 # --- 1. CONFIGURATION & STYLE ---
 st.set_page_config(page_title="Refuge Médéric - Officiel", layout="wide", page_icon="🐾")
@@ -403,6 +403,7 @@ with tab_event:
 
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
+    # MISE À JOUR DE L'URL DU CATALOGUE CI-DESSOUS
     url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
@@ -425,6 +426,7 @@ with tab_pension:
         st.image("https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1000")
 
     st.markdown("### 💰 Tarifs de la Pension")
+    # Création du tableau des tarifs basé sur ton texte
     tarifs_data = {
         "Prestation": ["1 chien", "2 chiens"],
         "Tout Public": ["15€ / jour", "23€ / jour"],
@@ -433,7 +435,7 @@ with tab_pension:
     st.table(pd.DataFrame(tarifs_data))
     st.info("📞 Pour toute réservation ou renseignement, contactez-nous au 05 58 73 68 82.")
 
-with tab3: 
+with tab3:  # ONGLET NOUS AIDER / BÉNÉVOLAT
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
         "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
@@ -478,6 +480,7 @@ with tab3:
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
+    # --- ZONE DE TÉLÉCHARGEMENT DU PDF ---
     try:
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
@@ -529,6 +532,7 @@ with tab_urgence:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
                 unsafe_allow_html=True)
 
+    # --- DEUX GROS BOUTONS D'ACTION ---
     col_btn_1, col_btn_2 = st.columns(2)
     with col_btn_1:
         if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"):
@@ -585,13 +589,14 @@ with col_f2:
     [Nous Aider](#tab3)
     """)
 
+# Dans la section Pied de Page (col_f3)
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
     
     if st.button("S'inscrire 🐾", use_container_width=True):
         if "@" in email_user and "." in email_user:
-            # Sauvegarde persistante dans un fichier texte local
+            # Sauvegarde locale dans un fichier texte
             with open("liste_newsletter.txt", "a") as f:
                 f.write(email_user + "\n")
             st.success("Merci ! Votre e-mail a été enregistré.")
@@ -618,7 +623,14 @@ st.markdown("""
 st.markdown("---")
 with st.expander("🔐 Administration (Accès réservé)"):
     code_secret = st.text_input("Code secret", type="password", key="admin_pwd")
-    if code_secret == "mederic40":
+    
+    # On récupère le mot de passe dans les Secrets Streamlit
+    try:
+        mdp_correct = st.secrets["password_admin"]
+    except:
+        mdp_correct = "mederic40" # Fallback si le secret n'est pas encore configuré
+
+    if code_secret == mdp_correct:
         try:
             if os.path.exists("liste_newsletter.txt"):
                 with open("liste_newsletter.txt", "r") as f:
@@ -626,7 +638,7 @@ with st.expander("🔐 Administration (Accès réservé)"):
                 
                 if contenu:
                     st.write("### 📬 Liste des abonnés")
-                    # Affichage sous forme de tableau propre
+                    # Transformation en tableau propre
                     liste_mails = contenu.strip().split("\n")
                     df_mails = pd.DataFrame(liste_mails, columns=["E-mails inscrits"])
                     st.dataframe(df_mails, use_container_width=True)
@@ -640,8 +652,8 @@ with st.expander("🔐 Administration (Accès réservé)"):
                 else:
                     st.info("La liste est vide pour le moment.")
             else:
-                st.info("Aucun inscrit pour le moment (le fichier n'existe pas encore).")
+                st.info("Aucun inscrit pour le moment.")
         except Exception as e:
-            st.error(f"Erreur de lecture : {e}")
+            st.error(f"Erreur lors de la lecture : {e}")
     elif code_secret != "":
         st.error("Code incorrect.")
