@@ -336,7 +336,8 @@ with tab1:
                 Retrouvez nos informations officielles sur l'Annuaire des Entreprises de l'État.
             </p>
         </div>
-        
+        """, unsafe_allow_html=True)
+
         st.markdown("<br><h3 style='color:#FF0000;'>🚀 Nos Projets & Événements</h3>", unsafe_allow_html=True)
 
         # PROJET 1 : Portes Ouvertes
