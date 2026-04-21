@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+import pd
 import requests
 import base64
 import re
@@ -371,7 +371,7 @@ with tab1:
         """, unsafe_allow_html=True)
 
     with col_refuge_2:
-        # --- BLOC "NOUS SOUTENIR" STYLE PROJET MIS À JOUR ---
+        # --- BLOC "NOUS SOUTENIR" MIS À JOUR (Lien Ouijagi + Correction Balise) ---
         st.markdown("""
         <div style="
             background-color: #1a1a1a; 
@@ -484,7 +484,7 @@ with tab3:
             <h4>💰 Don financier</h4>
             <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
             <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• ouijagi :</b> Bientôt intégré ici.</p>
+            <p><b>• Ouijagi :</b> Plateforme de soutien solidaire en ligne.</p>
         </div>
         """, unsafe_allow_html=True)
 
