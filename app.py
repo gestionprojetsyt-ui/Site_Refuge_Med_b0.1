@@ -593,7 +593,7 @@ with col_f2:
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
-    
+
     if st.button("S'inscrire 🐾", use_container_width=True):
         if "@" in email_user and "." in email_user:
             try:
@@ -601,11 +601,11 @@ with col_f3:
                 conn = st.connection("gsheets", type=GSheetsConnection)
                 # Lecture des données actuelles
                 df_existing = conn.read()
-                
+
                 # Ajout de la nouvelle ligne
                 new_row = pd.DataFrame({"email": [email_user]})
                 df_updated = pd.concat([df_existing, new_row], ignore_index=True)
-                
+
                 # Mise à jour du document Google Sheet
                 conn.update(data=df_updated)
                 st.success("Merci ! Votre e-mail a été enregistré.")
