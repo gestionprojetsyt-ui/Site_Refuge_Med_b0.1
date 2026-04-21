@@ -378,7 +378,7 @@ with col_refuge_2:
         # --- BLOC BOUTONS AVEC LOGOS OFFICIELS ---
         st.markdown("""
             <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none; margin-bottom: 12px;">
-                <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/04/8e/64048e9d-3f04-899f-0740-424683076891/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg" width="22" style="border-radius: 4px; margin-right: 12px;">
+                <img src="https://cdn.prod.website-files.com/67164cc9484c7fb65c26915e/67867c1ba9f693d5f2d43eb5_webclip.png" width="22" style="border-radius: 4px; margin-right: 12px;">
                 Soutenir via HelloAsso
             </a>
             
