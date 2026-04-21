@@ -589,12 +589,29 @@ with col_f2:
 
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="footer_news_input")
-    if st.button("S'inscrire 🐾", use_container_width=True, key="btn_footer_final"):
-        if "@" in email_user:
+    # C'est ce champ qui servira de porte secrète
+    entree_texte = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="newsletter_secret")
+    
+    if st.button("S'inscrire 🐾", use_container_width=True, key="btn_news_final"):
+        # Si on tape le code secret "admin40" dans la newsletter au lieu d'un mail :
+        if entree_texte == "admin40": 
+            st.session_state.access_admin = True
+        elif "@" in entree_texte:
             with open("liste_newsletter.txt", "a") as f:
-                f.write(email_user + "\n")
+                f.write(entree_texte + "\n")
             st.success("Enregistré !")
+
+# --- LA ZONE ADMIN APPARAÎT SEULEMENT SI LE CODE A ÉTÉ TAPÉ ---
+if st.session_state.get("access_admin", False):
+    st.warning("🔓 Mode Administration activé")
+    if os.path.exists("liste_newsletter.txt"):
+        with open("liste_newsletter.txt", "r") as f:
+            contenu = f.read()
+        st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
+        st.code(contenu)
+    if st.button("Quitter l'admin"):
+        st.session_state.access_admin = False
+        st.rerun()
 
 with col_f4:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
