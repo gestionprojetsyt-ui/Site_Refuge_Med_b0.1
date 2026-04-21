@@ -371,7 +371,7 @@ with tab1:
         """, unsafe_allow_html=True)
 
     with col_refuge_2:
-        # --- BLOC "NOUS SOUTENIR" STYLE PROJET ---
+        # --- BLOC "NOUS SOUTENIR" STYLE PROJET MIS À JOUR ---
         st.markdown("""
         <div style="
             background-color: #1a1a1a; 
@@ -391,8 +391,8 @@ with tab1:
                     <i class="fas fa-heart"></i> Faire un don (HelloAsso)
                 </a>
                 
-                <a href="#" class="btn-don-bleu" target="_blank" style="display: block; text-decoration: none;">
-                    <i class="fas fa-hand-holding-heart"></i> Autre Soutien
+                <a href="https://www.ouijagi.com/refuge-mederic" class="btn-don-bleu" target="_blank" style="display: block; text-decoration: none;">
+                    <i class="fas fa-hand-holding-heart"></i> Soutenir via Ouijagi
                 </a>
             </div>
 
@@ -407,7 +407,6 @@ with tab1:
             </div>
         </div>
         """, unsafe_allow_html=True)
-
 
 with tab_event:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ACTUALITÉS EN IMAGES</h2>", unsafe_allow_html=True)
@@ -462,7 +461,7 @@ with tab_pension:
     st.info("📞 Pour toute réservation ou renseignement, contactez-nous au 05 58 73 68 82.")
 
 with tab3:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>COMMENT NOUS AIDER ?</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
         "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
         unsafe_allow_html=True)
@@ -521,7 +520,7 @@ with tab3:
     except FileNotFoundError:
         st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
 
-    st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer !")
+    st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !")
 
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>INFORMATIONS & ACCÈS</h2>", unsafe_allow_html=True)
@@ -541,31 +540,31 @@ with tab4:
 <h4>📞 NOUS CONTACTER</h4>
 <p>05 58 73 68 82<br>animauxdugranddax@gmail.com</p>
 <br>
-<a href="https://www.facebook.com/refuge.mederic" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook</a>
+<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook</a>
 <a href="mailto:animauxdugranddax@gmail.com" class="btn-mail" style="width:100%; text-align:center; display:block;">✉️ Nous envoyer un e-mail</a>
 </div>
 """, unsafe_allow_html=True)
                 
     with c_map:
         st.markdown('<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>', unsafe_allow_html=True)
-        map_coords = pd.DataFrame({'lat': [43.7579154], 'lon': [-1.0595743]})
+        map_coords = pd.DataFrame({'lat': [43.75791549682617], 'lon': [-1.0595743656158447]})
         st.map(map_coords, zoom=14, use_container_width=True)
         st.markdown("""
             <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
                 <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
-                    🚀 Lancer l'itinéraire
+                    🚀 Lancer l'itinéraire sur HERE WeGo
                 </div>
             </a>
             </div>
         """, unsafe_allow_html=True)
-            
+
 with tab_urgence:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>", unsafe_allow_html=True)
     col_btn_1, col_btn_2 = st.columns(2)
     with col_btn_1:
-        if st.button("🔍 J'ai perdu mon animal ?", use_container_width=True, type="primary"): modal_perdu()
+        if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"): modal_perdu()
     with col_btn_2:
-        if st.button("🐾 J'ai trouvé un animal errant ?", use_container_width=True): modal_trouve()
+        if st.button("🐾 Que faire si vous avez trouvé un animal errant ?", use_container_width=True): modal_trouve()
 
     st.markdown("<br>", unsafe_allow_html=True)
     col_u1, col_u2 = st.columns([1.5, 1])
@@ -573,19 +572,24 @@ with tab_urgence:
         st.markdown("""
         <div class="help-card-white">
             <h4>🐕 Fonctionnement de la Fourrière</h4>
-            <p>La fourrière accueille les animaux errants du Grand Dax.</p>
+            <p>La fourrière permet d’accueillir les chiens et les chats trouvés errants sur les communes du Grand Dax.</p>
             <p style="background:#fff3f3; padding:15px; border-radius:10px; border:1px solid #ffcccc;">
-                ⚠️ <b>Attention :</b> L’animal doit nous être déposé par la <b>police ou les autorités</b>.
+                ⚠️ <b>Avertissement :</b> Nous ne nous déplaçons pas pour venir chercher un animal. L’animal doit nous être déposé par la <b>police ou les autorités compétentes</b>.
             </p>
+            <p>Si vous trouvez un animal : vous devez impérativement contacter la police ou la mairie avant de nous le déposer.</p>
+            <p><i>Si votre animal a disparu, il est peut-être chez nous ! N’hésitez pas à nous contacter au 05 58 73 68 82.</i></p>
         </div>
         """, unsafe_allow_html=True)
     with col_u2:
         st.markdown("""
         <div class="help-card-white">
-            <h4>💰 Tarifs Fourrière</h4>
-            <p><b>Animal Identifié :</b> 40€</p>
-            <p><b>Non-identifié :</b> 125€</p>
-            <p><b>Garde :</b> 15€/jour</p>
+            <h4>💰 Nos Tarifs Fourrière</h4>
+            <p><b>Animal Identifié (récupéré J-0) :</b> 40€</p>
+            <p><b>Animal non-identifié (récupéré J-0) :</b> 125€<br>
+            <small>(40€ de prise en charge + 85€ d'identification)</small></p>
+            <p><b>Prix par jour supplémentaire :</b> 15€/jour</p>
+            <hr>
+            <p style="font-size:0.85em;"><i>Note : L’identification est obligatoire et sera réalisée par un vétérinaire avant que l’animal ne soit rendu.</i></p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -594,15 +598,15 @@ st.markdown("---")
 col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
 
 with col_f1:
-    st.markdown("<h4 style='color: #FF0000;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax. Un avenir pour tous.")
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
+    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
 
 with col_f2:
-    st.markdown("<h4 style='color: #FF0000;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
     st.markdown("[Accueil](#)  \n[Actualités](#)  \n[Adopter](#)  \n[Nous Aider](#)")
 
 with col_f3:
-    st.markdown("<h4 style='color: #FF0000;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     entree_texte = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="newsletter_secret")
     if st.button("S'inscrire 🐾", use_container_width=True, key="btn_news_final"):
         if "password_admin" in st.secrets and entree_texte == st.secrets["password_admin"]:
@@ -623,17 +627,27 @@ if st.session_state.get("access_admin", False):
         st.rerun()
 
 with col_f4:
-    st.markdown("<h4 style='color: #FF0000;'>CONTACT</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
     st.write("📞 05 58 73 68 82")
+    st.write("📍 Saint-Paul-lès-Dax")
     st.markdown("""
         <div style="margin-top: 10px;">
             <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:12px;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="20" style="margin-right:10px;"> Facebook
             </a>
-            <a href="mailto:animauxdugranddax@gmail.com" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="20" style="margin-right:10px;"> Email
+            <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:12px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="20" style="margin-right:10px;"> Instagram
+            </a>
+            <a href="mailto:refuge.mederic@gmail.com" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="20" style="margin-right:10px;"> Gmail
             </a>
         </div>
     """, unsafe_allow_html=True)
 
-st.markdown("<br><p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>Refuge Médéric - Association Animaux du Grand Dax © 2026</p>", unsafe_allow_html=True)
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
+        Refuge Médéric - Association Animaux du Grand Dax<br>
+        © 2026 Tous droits réservés. | Version Alpha_5
+    </p>
+""", unsafe_allow_html=True)
