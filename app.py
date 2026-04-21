@@ -370,8 +370,8 @@ with tab1:
         </div>
         """, unsafe_allow_html=True)
 
-with col_refuge_2:
-        # --- DÉBUT DE LA BOX STYLE "PROJET" ---
+            with col_refuge_2:
+        # --- BLOC "NOUS SOUTENIR" STYLE PROJET ---
         st.markdown("""
         <div style="
             background-color: #1a1a1a; 
@@ -386,28 +386,29 @@ with col_refuge_2:
                 Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.
             </p>
 
-            <div style="margin-top: 20px;">
-                <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: block; text-align: center; text-decoration: none; margin-bottom: 12px;">
+            <div style="margin-top: 20px; text-align: center;">
+                <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: block; margin-bottom: 12px; text-decoration: none;">
                     <i class="fas fa-heart"></i> Faire un don (HelloAsso)
                 </a>
                 
-                <a href="#" class="btn-don-bleu" target="_blank" style="display: block; text-align: center; text-decoration: none;">
+                <a href="#" class="btn-don-bleu" target="_blank" style="display: block; text-decoration: none;">
                     <i class="fas fa-hand-holding-heart"></i> Autre Soutien
                 </a>
             </div>
 
             <p style='text-align:center; font-size:0.85em; color:#888; margin-top:15px; font-style: italic;'>
-                Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.
+                Pour d'autres formes d'aide, consultez l'onglet <b>Nous Aider</b>.
             </p>
 
             <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
 
             <div style='background: rgba(255, 0, 0, 0.05); padding: 15px; border-radius: 10px; border: 1px dashed rgba(255, 0, 0, 0.2); font-size: 0.9em; color: #ddd;'>
-                <b style="color: #FF4444;">📢 Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
+                <b style="color: #FF4444;">📢 Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons des dons de matériaux !
             </div>
         </div>
         """, unsafe_allow_html=True)
-        # --- FIN DE LA BOX ---
+
+
         st.markdown("</div>", unsafe_allow_html=True)
 
 with tab_event:
