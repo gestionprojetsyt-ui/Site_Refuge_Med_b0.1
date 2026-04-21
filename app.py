@@ -610,7 +610,7 @@ with col_f3:
                 conn.update(data=df_updated)
                 st.success("Merci ! Votre e-mail a été enregistré.")
             except Exception as e:
-                st.error("Erreur de connexion au Google Sheet.")
+            st.error(f"Détail technique : {e}")
         else:
             st.error("Veuillez entrer un e-mail valide.")
 
