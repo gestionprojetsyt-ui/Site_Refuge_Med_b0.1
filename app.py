@@ -589,13 +589,14 @@ with col_f2:
 
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    # C'est ce champ qui servira de porte secrète
     entree_texte = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="newsletter_secret")
     
     if st.button("S'inscrire 🐾", use_container_width=True, key="btn_news_final"):
-        # Si on tape le code secret "admin40" dans la newsletter au lieu d'un mail :
-        if entree_texte == "admin40": 
+        # --- VÉRIFICATION VIA LES SECRETS ---
+        # On vérifie si ce qui est tapé correspond au secret "password_admin"
+        if "password_admin" in st.secrets and entree_texte == st.secrets["password_admin"]:
             st.session_state.access_admin = True
+            st.success("Accès Admin déverrouillé !")
         elif "@" in entree_texte:
             with open("liste_newsletter.txt", "a") as f:
                 f.write(entree_texte + "\n")
