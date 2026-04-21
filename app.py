@@ -617,3 +617,23 @@ st.markdown("""
         © 2026 Tous droits réservés. Version Alpha_1
     </p>
 """, unsafe_allow_html=True)
+
+# --- ESPACE RÉCUPÉRATION DES MAILS (ADMIN) ---
+st.markdown("---")
+with st.expander("🔐 Administration (Accès réservé)"):
+    code_secret = st.text_input("Code secret", type="password", key="admin_pwd")
+    if code_secret == "mederic40":  # Tu pourras changer ce code plus tard
+        try:
+            with open("liste_newsletter.txt", "r") as f:
+                contenu = f.read()
+            
+            st.download_button(
+                label="📥 Télécharger la liste des mails",
+                data=contenu,
+                file_name="liste_newsletter.txt",
+                mime="text/plain"
+            )
+            st.text("Aperçu des inscrits :")
+            st.code(contenu)
+        except FileNotFoundError:
+            st.info("Le fichier est vide. Aucune inscription pour le moment.")
