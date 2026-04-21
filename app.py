@@ -301,7 +301,7 @@ st.markdown("""
 <div class="hero">
 <h1 style="font-size: 4em; margin-bottom: 10px; color: white;">REFUGE MÉDÉRIC</h1>
 <p style="font-size: 1.5em; margin-bottom: 30px; color: white;">Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir.</p>
-<a href="#catalogue" class="btn-action">🐾 Voir nos animaux à l'adoption</a>
+<a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">🐾 Voir nos animaux à l'adoption</a>
 </div>
 """, unsafe_allow_html=True)
 
