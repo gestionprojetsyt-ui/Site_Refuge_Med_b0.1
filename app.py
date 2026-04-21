@@ -608,15 +608,19 @@ with col_f4:
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>Refuge Médéric - Association Animaux du Grand Dax<br>© 2026 Tous droits réservés. Version Alpha_1</p>", unsafe_allow_html=True)
 
-# --- ADMIN ---
-st.markdown("---")
-with st.expander("🔐 Administration (Accès réservé)"):
-    code_secret = st.text_input("Code secret", type="password", key="admin_pwd")
-    if code_secret == st.secrets["password_admin"]:
-        try:
-            with open("liste_newsletter.txt", "r") as f:
-                contenu = f.read()
-            st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
-            st.code(contenu)
-        except FileNotFoundError:
-            st.info("Le fichier est vide.")
+# --- ADMIN DISCRET DANS LE PIED DE PAGE ---
+with st.expander("© 2026", expanded=False):
+    code_secret = st.text_input("Accès", type="password", key="admin_pwd", label_visibility="collapsed")
+    
+    # On vérifie d'abord si "password_admin" est bien configuré dans Streamlit
+    if "password_admin" in st.secrets:
+        if code_secret == st.secrets["password_admin"]:
+            st.success("Accès autorisé")
+            if os.path.exists("liste_newsletter.txt"):
+                with open("liste_newsletter.txt", "r") as f:
+                    contenu = f.read()
+                st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
+                st.code(contenu)
+    else:
+        # Message pour toi si tu as oublié de le configurer sur le web
+        st.warning("Le mot de passe n'est pas configuré dans les Secrets Streamlit.")
