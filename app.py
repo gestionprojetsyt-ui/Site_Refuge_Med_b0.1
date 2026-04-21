@@ -597,22 +597,26 @@ with col_f3:
             st.success("Enregistré !")
 
 with col_f4:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
+    st.write("**CONTACT**")
+    st.write("Saint-Paul-lès-Dax")
     st.write("📞 05 58 73 68 82")
-    st.write("📍 Saint-Paul-lès-Dax")
-    
-    # --- TON ACCÈS SECRET DISCRET ---
-    with st.expander("© 2026", expanded=False):
-        pwd = st.text_input("Accès", type="password", label_visibility="collapsed", placeholder="Code...", key="admin_key_footer")
-        
-        # Vérification avec le secret configuré sur Streamlit Cloud
-        if "password_admin" in st.secrets:
-            if pwd == st.secrets["password_admin"]:
-                if os.path.exists("liste_newsletter.txt"):
-                    with open("liste_newsletter.txt", "r") as f:
-                        contenu = f.read()
-                    st.download_button("📥 Télécharger", data=contenu, file_name="liste_newsletter.txt")
-                    st.code(contenu)
 
 st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #888; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 20px;'>Refuge Médéric - Association Animaux du Grand Dax</p>", unsafe_allow_html=True)
+
+# --- LA ZONE DE COPYRIGHT AVEC L'ACCÈS ULTRA-CACHÉ ---
+col_copy, col_secret = st.columns([10, 1]) # On crée une mini colonne à la fin
+
+with col_copy:
+    st.markdown("<p style='text-align: center; color: #888; font-size: 0.8em; margin-bottom:0;'>Refuge Médéric - Association Animaux du Grand Dax</p>", unsafe_allow_html=True)
+
+with col_secret:
+    # On crée une case à cocher presque invisible (juste un point ou rien du tout)
+    if st.checkbox(".", key="hidden_portal", help=None):
+        # Cette zone n'apparaît QUE si tu coches le petit point à droite du copyright
+        pwd = st.text_input("Code", type="password", key="final_admin_key")
+        if pwd == st.secrets.get("password_admin", "mederic40"):
+            if os.path.exists("liste_newsletter.txt"):
+                with open("liste_newsletter.txt", "r") as f:
+                    contenu = f.read()
+                st.download_button("📥 Liste", data=contenu, file_name="liste_newsletter.txt")
+                st.code(contenu)
