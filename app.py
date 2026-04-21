@@ -376,6 +376,13 @@ with tab1:
             <p style='text-align:center; font-size:0.9em; color:#666;'>Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.</p>
         """, unsafe_allow_html=True)
 
+         st.markdown("""
+            <a href="https://ca-ouijagi.fr/" class="btn-don-vert">
+                <i class="fas fa-heart"></i> Faire un don (OuiJagi)
+            </a>
+            <p style='text-align:center; font-size:0.9em; color:#666;'>Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.</p>
+        """, unsafe_allow_html=True)
+
         st.markdown("""
         <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
             <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
