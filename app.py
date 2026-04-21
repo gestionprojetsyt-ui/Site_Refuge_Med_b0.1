@@ -612,7 +612,7 @@ col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
 
 with col_f1:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
+    st.write("L’association Animaux du Grand Dax s’occupe de la gestion du Refuge Médéric, de sa fourrière et de sa pension avec l’aide de salariés dévoués et de bénévoles déterminés !")
 
 with col_f2:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
