@@ -574,39 +574,6 @@ with tab_urgence:
         </div>
         """, unsafe_allow_html=True)
 
-# --- 5. PIED DE PAGE ---
-st.markdown("---")
-col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
-
-with col_f1:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
-
-with col_f2:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
-    st.markdown("[Accueil](#)  \n[Actualités](#)  \n[Adopter](#)  \n[Nous Aider](#)")
-
-with col_f3:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
-    if st.button("S'inscrire 🐾", use_container_width=True):
-        if "@" in email_user and "." in email_user:
-            with open("liste_newsletter.txt", "a") as f:
-                f.write(email_user + "\n")
-            st.success("Merci ! Votre e-mail a été enregistré.")
-        else:
-            st.error("Veuillez entrer un e-mail valide.")
-
-with col_f4:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
-    st.markdown("""
-    📞 05 58 73 68 82  
-    📍 Saint-Paul-lès-Dax  
-    [Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
-    """)
-
-st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>Refuge Médéric - Association Animaux du Grand Dax<br>© 2026 Tous droits réservés. Version Alpha_1</p>", unsafe_allow_html=True)
 
 # --- 5. PIED DE PAGE ---
 st.markdown("---")
@@ -641,14 +608,6 @@ with col_f4:
         # Vérification avec le secret configuré sur Streamlit Cloud
         if "password_admin" in st.secrets:
             if pwd == st.secrets["password_admin"]:
-                if os.path.exists("liste_newsletter.txt"):
-                    with open("liste_newsletter.txt", "r") as f:
-                        contenu = f.read()
-                    st.download_button("📥 Télécharger", data=contenu, file_name="liste_newsletter.txt")
-                    st.code(contenu)
-        else:
-            # Fallback si tu n'as pas encore mis le secret sur le web
-            if pwd == "mederic40":
                 if os.path.exists("liste_newsletter.txt"):
                     with open("liste_newsletter.txt", "r") as f:
                         contenu = f.read()
