@@ -599,6 +599,7 @@ with col_f3:
 with col_f4:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
     st.write("📞 05 58 73 68 82")
+    st.write("📍 Saint-Paul-lès-Dax")
     
     # --- RÉSEAUX SOCIAUX AVEC TEXTE À CÔTÉ ---
     st.markdown("""
