@@ -23,7 +23,8 @@ def get_image_data(url):
             return None
         file_id = re.search(r'(?:id=|[/\b])([a-zA-Z0-9_-]{25,})', url).group(1)
         direct_url = f'https://drive.google.com/uc?export=download&id={file_id}'
-        response = requests.get(direct_url, timeout=10)
+        headers = {"User-Agent": "Mozilla/5.0"}
+        response = requests.get(direct_url, headers=headers, timeout=10)
         if response.status_code == 200:
             return BytesIO(response.content)
     except Exception:
@@ -403,7 +404,6 @@ with tab_event:
 
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
-    # MISE À JOUR DE L'URL DU CATALOGUE CI-DESSOUS
     url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
@@ -426,7 +426,6 @@ with tab_pension:
         st.image("https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1000")
 
     st.markdown("### 💰 Tarifs de la Pension")
-    # Création du tableau des tarifs basé sur ton texte
     tarifs_data = {
         "Prestation": ["1 chien", "2 chiens"],
         "Tout Public": ["15€ / jour", "23€ / jour"],
@@ -435,7 +434,7 @@ with tab_pension:
     st.table(pd.DataFrame(tarifs_data))
     st.info("📞 Pour toute réservation ou renseignement, contactez-nous au 05 58 73 68 82.")
 
-with tab3:  # ONGLET NOUS AIDER / BÉNÉVOLAT
+with tab3:  
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
         "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
@@ -459,7 +458,7 @@ with tab3:  # ONGLET NOUS AIDER / BÉNÉVOLAT
             <h4>💰 Don financier</h4>
             <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
             <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• Ouijagi :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
+            <p><b>• Tookets :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -480,21 +479,22 @@ with tab3:  # ONGLET NOUS AIDER / BÉNÉVOLAT
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
-    # --- ZONE DE TÉLÉCHARGEMENT DU PDF ---
     try:
-        with open("info_benevole.pdf", "rb") as f:
-            pdf_bytes = f.read()
-        
-        st.write("Pour nous rejoindre, veuillez télécharger et lire attentivement notre dossier d'intégration :")
-        st.download_button(
-            label="📄 Télécharger le dossier d'intégration (PDF)",
-            data=pdf_bytes,
-            file_name="info_benevole.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
-    except FileNotFoundError:
-        st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
+        if os.path.exists("info_benevole.pdf"):
+            with open("info_benevole.pdf", "rb") as f:
+                pdf_bytes = f.read()
+            st.write("Pour nous rejoindre, veuillez télécharger et lire attentivement notre dossier d'intégration :")
+            st.download_button(
+                label="📄 Télécharger le dossier d'intégration (PDF)",
+                data=pdf_bytes,
+                file_name="info_benevole.pdf",
+                mime="application/pdf",
+                use_container_width=True
+            )
+        else:
+            st.warning("Le dossier d'intégration n'est pas encore disponible.")
+    except Exception:
+        pass
 
     st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !")
 
@@ -532,7 +532,6 @@ with tab_urgence:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
                 unsafe_allow_html=True)
 
-    # --- DEUX GROS BOUTONS D'ACTION ---
     col_btn_1, col_btn_2 = st.columns(2)
     with col_btn_1:
         if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"):
@@ -542,7 +541,6 @@ with tab_urgence:
             modal_trouve()
 
     st.markdown("<br>", unsafe_allow_html=True)
-
     col_u1, col_u2 = st.columns([1.5, 1])
 
     with col_u1:
@@ -573,7 +571,6 @@ with tab_urgence:
 
 # --- 5. PIED DE PAGE ---
 st.markdown("---")
-
 col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
 
 with col_f1:
@@ -582,21 +579,14 @@ with col_f1:
 
 with col_f2:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
-    st.markdown("""
-    [Accueil](#)  
-    [Actualités](#tab_event)  
-    [Adopter](#tab2)  
-    [Nous Aider](#tab3)
-    """)
+    st.markdown("[Accueil](#) | [Actualités](#tab_event) | [Adopter](#tab2) | [Nous Aider](#tab3)")
 
-# Dans la section Pied de Page (col_f3)
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
     
     if st.button("S'inscrire 🐾", use_container_width=True):
         if "@" in email_user and "." in email_user:
-            # Sauvegarde locale dans un fichier texte
             with open("liste_newsletter.txt", "a") as f:
                 f.write(email_user + "\n")
             st.success("Merci ! Votre e-mail a été enregistré.")
@@ -608,27 +598,22 @@ with col_f4:
     st.markdown("""
     📞 05 58 73 68 82  
     📍 Saint-Paul-lès-Dax  
-    [Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
+    [Facebook](https://www.facebook.com/refuge.mederic)
     """)
 
 st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown("""
-    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
-        Refuge Médéric - Association Animaux du Grand Dax<br>
-        © 2026 Tous droits réservés. Version Alpha_1
-    </p>
-""", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>Refuge Médéric - Association Animaux du Grand Dax<br>© 2026 Tous droits réservés. Version Alpha_1</p>", unsafe_allow_html=True)
 
-# --- ESPACE RÉCUPÉRATION DES MAILS (ADMIN SECURISE) ---
+# --- ESPACE RÉCUPÉRATION DES MAILS (ADMIN SÉCURISÉ) ---
 st.markdown("---")
 with st.expander("🔐 Administration (Accès réservé)"):
     code_secret = st.text_input("Code secret", type="password", key="admin_pwd")
     
-    # On récupère le mot de passe dans les Secrets Streamlit
+    # Vérification sécurisée
     try:
         mdp_correct = st.secrets["password_admin"]
     except:
-        mdp_correct = "mederic40" # Fallback si le secret n'est pas encore configuré
+        mdp_correct = "mederic40" # Secours si secret non trouvé
 
     if code_secret == mdp_correct:
         try:
@@ -636,10 +621,9 @@ with st.expander("🔐 Administration (Accès réservé)"):
                 with open("liste_newsletter.txt", "r") as f:
                     contenu = f.read()
                 
-                if contenu:
+                if contenu.strip():
                     st.write("### 📬 Liste des abonnés")
-                    # Transformation en tableau propre
-                    liste_mails = contenu.strip().split("\n")
+                    liste_mails = [m.strip() for m in contenu.strip().split("\n") if m.strip()]
                     df_mails = pd.DataFrame(liste_mails, columns=["E-mails inscrits"])
                     st.dataframe(df_mails, use_container_width=True)
                     
@@ -654,6 +638,6 @@ with st.expander("🔐 Administration (Accès réservé)"):
             else:
                 st.info("Aucun inscrit pour le moment.")
         except Exception as e:
-            st.error(f"Erreur lors de la lecture : {e}")
+            st.error(f"Erreur : {e}")
     elif code_secret != "":
         st.error("Code incorrect.")
