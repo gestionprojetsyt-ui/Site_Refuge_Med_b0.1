@@ -525,38 +525,26 @@ with tab4:
 </div>
 """, unsafe_allow_html=True)
 with c_map:
-    # Le titre dans sa boîte blanche
     st.markdown(
-        '<div style="background-color: white; padding: 15px; border-radius: 20px 20px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4></div>',
+        '<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>',
         unsafe_allow_html=True)
     
-    # Coordonnées exactes du Refuge Médéric
-    lat, lon = 43.7431, -1.0664
+    # --- LES COORDONNÉES EXACTES DU REFUGE ---
+    # Ici, on met les vraies coordonnées du 182 Chemin Lucien Viau
+    map_coords = pd.DataFrame({'lat': [43.7431], 'lon': [-1.0664]})
     
-    # Intégration de la carte HERE WeGo (interactive et précise)
-    # On utilise l'URL de partage HERE pour l'adresse exacte
-    here_map_url = f"https://widgets.here.com/map/checkout.html?mclp=43.7431%2C-1.0664&z=15&tn=normal&n=Refuge%20Mederic"
+    # On utilise la carte native (elle est incassable)
+    st.map(map_coords, zoom=14, use_container_width=True)
     
-    map_html = f"""
-        <iframe src="{here_map_url}" 
-        width="100%" height="400" style="border:0; border-radius: 0 0 20px 20px;" allowfullscreen="" loading="lazy"></iframe>
-    """
-    
-    st.markdown(map_html, unsafe_allow_html=True)
-
-with tab_urgence:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
-                unsafe_allow_html=True)
-
-    col_btn_1, col_btn_2 = st.columns(2)
-    with col_btn_1:
-        if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"):
-            modal_perdu()
-    with col_btn_2:
-        if st.button("🐾 Que faire si vous avez trouvé un animal errant ?", use_container_width=True):
-            modal_trouve()
-
-    st.markdown("<br>", unsafe_allow_html=True)
+    # --- LE PETIT BOUTON "GPS" POUR ÊTRE SÛR ---
+    st.markdown("""
+        <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
+            <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
+                🚀 Lancer l'itinéraire sur HERE WeGo
+            </div>
+        </a>
+        </div>
+    """, unsafe_allow_html=True)
 
     col_u1, col_u2 = st.columns([1.5, 1])
 
