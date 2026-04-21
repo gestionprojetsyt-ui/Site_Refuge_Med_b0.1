@@ -596,29 +596,6 @@ with col_f3:
                 f.write(email_user + "\n")
             st.success("Enregistré !")
 
-# --- 5. PIED DE PAGE ---
-st.markdown("---")
-col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
-
-with col_f1:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
-
-with col_f2:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
-    st.markdown("[Accueil](#)  \n[Actualités](#)  \n[Adopter](#)  \n[Nous Aider](#)")
-
-with col_f3:
-    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
-    if st.button("S'inscrire 🐾", use_container_width=True):
-        if "@" in email_user and "." in email_user:
-            with open("liste_newsletter.txt", "a") as f:
-                f.write(email_user + "\n")
-            st.success("Merci ! Votre e-mail a été enregistré.")
-        else:
-            st.error("Veuillez entrer un e-mail valide.")
-
 with col_f4:
     st.write("**CONTACT**")
     st.write("Saint-Paul-lès-Dax")
@@ -643,3 +620,11 @@ with col_secret:
                     contenu = f.read()
                 st.download_button("📥 Liste", data=contenu, file_name="liste_newsletter.txt")
                 st.code(contenu)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
+        Refuge Médéric - Association Animaux du Grand Dax<br>
+        © 2026 Tous droits réservés. Version Alpha_1
+    </p>
+""", unsafe_allow_html=True)
