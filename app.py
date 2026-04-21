@@ -527,22 +527,26 @@ with tab4:
                 
 with c_map:
     st.markdown(
-        '<div style="background-color: white; padding: 15px; border-radius: 20px 20px 0 0; color: black; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"><h4>🗺️ Plan d\'accès</h4></div>',
+        '<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>',
         unsafe_allow_html=True)
     
-    # On force l'affichage d'une carte via Google Static Maps ou HERE 
-    # C'est visuel et ça pointe pile sur le 182 Chemin Lucien Viau
-    adresse_web = "https://www.google.com/maps/embed/v1/place?key=TON_ID_OU_LIEN_DIRECT&q=Refuge+Mederic,Saint-Paul-les-Dax"
+    # --- LES COORDONNÉES EXACTES DU REFUGE ---
+    # Ici, on met les vraies coordonnées du 182 Chemin Lucien Viau
+    map_coords = pd.DataFrame({'lat': [43.7431], 'lon': [-1.0664]})
     
-    # On utilise un conteneur simple
-    st.markdown(f"""
-        <iframe width="100%" height="400" frameborder="0" style="border:0; border-radius: 0 0 20px 20px;" 
-        src="https://www.google.com/maps/embed/v2/place?q=43.7431,-1.0664&zoom=16" allowfullscreen>
-        </iframe>
+    # On utilise la carte native (elle est incassable)
+    st.map(map_coords, zoom=14, use_container_width=True)
+    
+    # --- LE PETIT BOUTON "GPS" POUR ÊTRE SÛR ---
+    st.markdown("""
+        <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
+            <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
+                🚀 Lancer l'itinéraire sur HERE WeGo
+            </div>
+        </a>
+        </div>
     """, unsafe_allow_html=True)
-    
-    st.info("📍 182 Chemin Lucien Viau, 40990 Saint-Paul-lès-Dax")
-
+            
     with col_u2:
         st.markdown("""
         <div class="help-card-white">
