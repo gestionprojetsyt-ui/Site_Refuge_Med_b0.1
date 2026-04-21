@@ -526,7 +526,7 @@ with tab4:
 <h4>📞 NOUS CONTACTER</h4>
 <p>05 58 73 68 82<br>animauxdugranddax@gmail.com</p>
 <br>
-<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook 🔵</a>
+<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook</a>
 <a href="mailto:animauxdugranddax@gmail.com" class="btn-mail" style="width:100%; text-align:center; display:block;">✉️ Nous envoyer un e-mail</a>
 </div>
 """, unsafe_allow_html=True)
