@@ -597,23 +597,34 @@ with col_f3:
             st.success("Enregistré !")
 
 with col_f4:
-    st.write("**CONTACT**")
-    st.write("📍Saint-Paul-lès-Dax")
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
     st.write("📞 05 58 73 68 82")
-
-# --- RÉSEAUX SOCIAUX AVEC ICÔNES ---
+    st.write("📍 Saint-Paul-lès-Dax")
+    
+    # --- RÉSEAUX SOCIAUX CÔTE À CÔTE ---
     st.markdown("""
-        <div style="margin-top: 15px;">
-            <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; margin-right:20px;">
+        <div style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
+            <a href="https://www.facebook.com/refuge.mederic" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="30">
             </a>
-            <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none;">
+            <a href="https://www.instagram.com/refuge_mederic/" target="_blank">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="30">
             </a>
         </div>
     """, unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)
+    # --- L'ACCÈS SECRET (Caché derrière un simple point) ---
+    with st.expander(".", expanded=False):
+        pwd = st.text_input("Accès", type="password", label_visibility="collapsed", placeholder="Code...", key="admin_key_final")
+        
+        # Vérification avec le secret configuré ou le mot de passe par défaut
+        secret_stored = st.secrets.get("password_admin", "mederic40")
+        if pwd == secret_stored:
+            if os.path.exists("liste_newsletter.txt"):
+                with open("liste_newsletter.txt", "r") as f:
+                    contenu = f.read()
+                st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
+                st.code(contenu)
 
 # --- LA ZONE DE COPYRIGHT AVEC L'ACCÈS ULTRA-CACHÉ ---
 col_copy, col_secret = st.columns([10, 1]) # On crée une mini colonne à la fin
