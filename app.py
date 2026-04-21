@@ -614,27 +614,33 @@ with col_f4:
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# --- LIGNE DE COPYRIGHT AVEC POINT SECRET ---
-col_copy_text, col_point_secret = st.columns([15, 1])
+# --- LIGNE DE COPYRIGHT ---
+st.markdown("---")
+# On crée une ligne de texte centrée
+st.markdown(f"""
+    <p style='text-align: center; color: #888; font-size: 0.8em; margin-bottom: 0;'>
+    Refuge Médéric - Association Animaux du Grand Dax © 2026 Tous droits réservés. Version Alpha_1
+    </p>
+""", unsafe_allow_html=True)
 
-with col_copy_text:
-    st.markdown("""
-        <p style='text-align: center; color: #888; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 20px; margin-right: -50px;'>
-        Refuge Médéric - Association Animaux du Grand Dax © 2026 Tous droits réservés. Version Alpha_1
-        </p>
-    """, unsafe_allow_html=True)
+# --- LE BOUTON "POINT" TOTALEMENT INVISIBLE ---
+# On le place dans une petite colonne centrée juste en dessous
+_, col_secret, _ = st.columns([10, 1, 10])
 
-with col_point_secret:
-    # Le point est ici, juste après "Version Alpha_1"
-    st.markdown("<div style='padding-top: 20px;'></div>", unsafe_allow_html=True) # Pour l'aligner
-    with st.expander(".", expanded=False):
-        pwd = st.text_input("Code", type="password", label_visibility="collapsed", key="super_secret_key")
-        
-        # Vérification avec ton secret "password_admin"
-        if "password_admin" in st.secrets:
-            if pwd == st.secrets["password_admin"]:
-                if os.path.exists("liste_newsletter.txt"):
-                    with open("liste_newsletter.txt", "r") as f:
-                        contenu = f.read()
-                    st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
-                    st.code(contenu)
+with col_secret:
+    # On utilise un bouton qui ressemble à un simple point gris
+    if st.button(".", key="point_fantome", help=None):
+        st.session_state.admin_mode = True
+
+# Si tu as cliqué sur le point, le champ de code apparaît
+if st.session_state.get("admin_mode", False):
+    pwd = st.text_input("Code de sécurité", type="password", key="final_admin_pwd")
+    if pwd == st.secrets.get("password_admin", "mederic40"):
+        if os.path.exists("liste_newsletter.txt"):
+            with open("liste_newsletter.txt", "r") as f:
+                contenu = f.read()
+            st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
+            st.code(contenu)
+            if st.button("Fermer l'accès"):
+                st.session_state.admin_mode = False
+                st.rerun()
