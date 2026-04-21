@@ -149,7 +149,7 @@ transition: 0.3s;
 display: inline-block;
 }
 
-/* Boutons de don */
+/* Boutons de don spécifiques type Facebook */
 .btn-don-vert {
     background-color: #62af05; color: white !important;
     padding: 15px 25px; border-radius: 15px;
@@ -157,9 +157,16 @@ display: inline-block;
     display: block; text-align: center; margin-bottom: 15px;
     transition: 0.3s; border: none;
 }
-.btn-don-vert:hover { opacity: 0.9; transform: scale(1.02); }
+.btn-don-bleu {
+    background-color: #000091; color: white !important;
+    padding: 15px 25px; border-radius: 15px;
+    text-decoration: none; font-weight: bold; font-size: 1.1em;
+    display: block; text-align: center; margin-bottom: 15px;
+    transition: 0.3s; border: none;
+}
+.btn-don-vert:hover, .btn-don-bleu:hover { opacity: 0.9; transform: scale(1.02); }
 
-/* --- Style des cartes Aide --- */
+/* --- Style des cartes Aide (Fond Blanc / Texte Noir) --- */
 .help-card-white {
     background-color: white !important; 
     padding: 25px; 
@@ -170,9 +177,10 @@ display: inline-block;
     color: #1a1a1a !important;
     height: 100%;
 }
-.help-card-white h4 { color: #FF0000 !important; margin-top:0; font-weight: bold; }
+.help-card-white h3, .help-card-white h4 { color: #FF0000 !important; margin-top:0; font-weight: bold; }
 .help-card-white p, .help-card-white li { color: #1a1a1a !important; font-size: 1em; line-height: 1.5; }
 
+/* --- Style des cartes Projets --- */
 .project-card-full {
     background-color: white !important; 
     padding: 20px; 
@@ -182,7 +190,11 @@ display: inline-block;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     color: #1a1a1a !important;
 }
+.project-card-full h4, .project-card-full p {
+    color: #1a1a1a !important;
+}
 
+/* --- Style des cartes Événements --- */
 .event-card {
 background-color: white !important;
 padding: 20px;
@@ -193,7 +205,12 @@ margin-bottom: 20px;
 text-align: center;
 color: #1a1a1a !important;
 }
+.event-card h3, .event-card p {
+color: #1a1a1a !important;
+margin-top: 15px;
+}
 
+/* SECTION CONTACT NOIR SUR BLANC */
 .contact-card {
 background-color: white !important;
 padding: 35px;
@@ -203,7 +220,65 @@ border-left: 6px solid #FF0000;
 color: #1a1a1a !important;
 margin-bottom: 25px;
 }
+.contact-card h4, .contact-card h3 {
+color: #1a1a1a !important;
+margin-top: 25px;
+margin-bottom: 10px;
+font-weight: 800;
+text-transform: uppercase;
+}
+.contact-card p {
+color: #1a1a1a !important;
+font-size: 1.15em;
+line-height: 1.6;
+}
+.contact-sep {
+border: 0;
+border-top: 2px solid #eee;
+margin: 20px 0;
+}
 
+/* --- NOUVEAU PIED DE PAGE --- */
+.footer-container {
+background-color: #1a1a1a;
+color: white;
+padding: 60px 20px 20px 20px;
+margin-top: 80px;
+font-family: 'sans-serif';
+}
+.footer-column h4 {
+color: #FF0000;
+margin-bottom: 20px;
+text-transform: uppercase;
+font-size: 1.1em;
+letter-spacing: 1px;
+}
+.footer-column p, .footer-column a {
+color: #bbb;
+text-decoration: none;
+font-size: 0.95em;
+line-height: 2;
+}
+.footer-column a:hover { color: white; }
+
+.social-icons a {
+font-size: 24px;
+margin-right: 20px;
+color: white;
+transition: 0.3s;
+}
+.social-icons a:hover { color: #FF0000; transform: scale(1.2); display: inline-block; }
+
+.bottom-bar {
+text-align: center;
+border-top: 1px solid #333;
+margin-top: 40px;
+padding-top: 20px;
+color: #666;
+font-size: 0.85em;
+}
+
+/* Style spécifique pour le champ newsletter dans le footer */
 div[data-testid="stTextInput"] input {
     background-color: #262626 !important;
     color: white !important;
@@ -224,35 +299,85 @@ st.markdown("""
 # --- 3. PRÉSENTATION RAPIDE ---
 col1, col2, col3 = st.columns(3)
 with col1:
-    st.markdown("<div style='text-align:center;'><h3>📍 Localisation</h3><p>Saint-Paul-lès-Dax (40)</p></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;'><h3>📍 Localisation</h3><p>Saint-Paul-lès-Dax (40)</p></div>",
+                unsafe_allow_html=True)
 with col2:
-    st.markdown("<div style='text-align:center;'><h3>🐕 Nos Pensionnaires</h3><p>Chiens et chats de tous ages</p></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;'><h3>🐕 Nos Pensionnaires</h3><p>Chiens et chats de tous ages</p></div>",
+                unsafe_allow_html=True)
 with col3:
-    st.markdown("<div style='text-align:center;'><h3>❤️ Notre Engagement</h3><p>Soins, protection et amour</p></div>", unsafe_allow_html=True)
+    st.markdown("<div style='text-align:center;'><h3>❤️ Notre Engagement</h3><p>Soins, protection et amour</p></div>",
+                unsafe_allow_html=True)
 
 st.markdown("---")
 
 # --- 4. SECTIONS D'INFORMATION (ONGLETS) ---
 tab1, tab_event, tab2, tab_pension, tab3, tab4, tab_urgence = st.tabs(
-    ["Le Refuge", "Nos Actualités", "Nos Animaux", "Pension", "Nous Aider ❤️", "Contact & Accès", "🚨 Urgence/Fourrière"])
+    ["Le Refuge", "Nos Actualités", "Nos Animaux", "Pension", "Nous Aider ❤️", "Contact & Accès",
+     "🚨 Urgence/Fourrière"])
 
 with tab1:
     col_refuge_1, col_refuge_2 = st.columns([1.2, 1])
+
     with col_refuge_1:
         st.markdown("<h3 style='color:#FF0000;'>📍 Notre Mission & Identité</h3>", unsafe_allow_html=True)
         st.write("""
         L'association **LES ANIMAUX DU GRAND DAX** (SIREN : 993 900 000) est une structure 
-        reconnue qui gère le refuge Médéric. Notre mission principale est la protection, 
-        les soins et le placement des animaux en détresse.
+        reconnue qui gère le refuge Médéric. 
+        
+        Notre mission principale est la protection, les soins et le placement des animaux 
+        en détresse. En tant qu'acteur central de la protection animale dans le Grand Dax, 
+        nous assurons la transition entre l'abandon et une nouvelle vie dans une famille aimante.
         """)
         
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d;">
+            <p style="margin:0; font-size: 0.9em; color: #555;">
+                ℹ️ <b>Informations Légales :</b> Association déclarée sous le numéro SIREN 993900000. 
+                Retrouvez nos informations officielles sur l'Annuaire des Entreprises de l'État.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
         st.markdown("<br><h3 style='color:#FF0000;'>🚀 Nos Projets & Événements</h3>", unsafe_allow_html=True)
-        st.markdown("""<div class="project-card-full"><h4>📅 Journée Portes Ouvertes</h4><p>Venez rencontrer nos chiens et nos chats à l’adoption !</p></div>""", unsafe_allow_html=True)
+
+        # PROJET 1 : Portes Ouvertes
+        st.markdown("""
+        <div class="project-card-full">
+            <h4 style="margin-top:0;">📅 Journée Portes Ouvertes</h4>
+            <p>Venez rencontrer nos chiens et nos chats à l’adoption, voir nos installations et découvrir nos projets pour améliorer la vie de nos compagnons à quatre pattes.<br>
+            Vous rencontrerez nos salariés et nos bénévoles et, qui sait, peut-être que vous rejoindrez notre formidable équipe de passionnés !<br>
+            <small><i>Petit goûter offert pour les participants.</i></small></p>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # PROJET 2 : Fourrière Chats
+        st.markdown("""
+        <div class="project-card-full">
+            <h4 style="margin-top:0;">🐈 Amélioration de la Fourrière Chats</h4>
+            <p>Notre fourrière réservée aux chats est dans un très mauvais état. Les animaux ne peuvent plus y être accueillis dans de bonnes conditions.<br>
+            Des travaux sont prévus très prochainement pour améliorer la situation de nos amis félins. 
+            <b>Mais pour cela, nous allons avoir besoin de votre aide !</b><br>
+            Dons de matériaux, de temps ou d’argent, tout nous sera utile pour atteindre notre objectif.</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     with col_refuge_2:
         st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
-        st.markdown('<a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert">Faire un don (HelloAsso)</a>', unsafe_allow_html=True)
+        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
+
+        st.markdown("""
+            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert">
+                <i class="fas fa-heart"></i> Faire un don (HelloAsso)
+            </a>
+            <p style='text-align:center; font-size:0.9em; color:#666;'>Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.</p>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
+            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
+        </div>
+        """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
 with tab_event:
@@ -265,13 +390,19 @@ with tab_event:
                 if i + j < len(df_ev):
                     row = df_ev.iloc[i + j]
                     with cols_ev[j]:
-                        st.markdown('<div class="event-card">', unsafe_allow_html=True)
+                        st.markdown(f'<div class="event-card">', unsafe_allow_html=True)
                         img_data = get_image_data(str(row['Valeur']))
-                        if img_data: st.image(img_data, use_container_width=True)
+                        if img_data:
+                            st.image(img_data, use_container_width=True)
+                        else:
+                            st.warning("Chargement de l'image...")
                         st.markdown(f"<h3>{row['Cle']}</h3></div>", unsafe_allow_html=True)
+    else:
+        st.info("Aucun événement n'est programmé pour le moment.")
 
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
+    # MISE À JOUR DE L'URL DU CATALOGUE CI-DESSOUS
     url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
@@ -279,17 +410,38 @@ with tab_pension:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>SERVICE DE PENSION</h2>", unsafe_allow_html=True)
     col_p1, col_p2 = st.columns([1.5, 1])
     with col_p1:
-        st.write("Notre pension accueille vos chiens toute l’année dans des box spacieux.")
+        st.markdown("### 🏠 Un accueil toute l'année")
+        st.write("""
+        Notre pension accueille vos chiens toute l’année ! 
+        Nos box sont spacieux et peuvent accueillir jusqu’à **deux gros chiens d’une même famille**.
+
+        Ils proposent à leurs pensionnaires :
+        * **Un espace détente** à l’abri des intempéries.
+        * **Un dodo confortable** nettoyé tous les jours et ses gamelles.
+        * **Un espace extérieur attenant** pour se dégourdir les pattes après la sieste.
+        * **Une sortie quotidienne** dans un parc de détente réservé à leur attention.
+        """)
     with col_p2:
         st.image("https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=1000")
-    tarifs_data = {"Prestation": ["1 chien", "2 chiens"], "Tout Public": ["15€ / jour", "23€ / jour"], "Chien adopté chez nous": ["13€ / jour", "20€ / jour"]}
-    st.table(pd.DataFrame(tarifs_data))
 
-with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT (VERSION DÉTAILLÉE) ---
+    st.markdown("### 💰 Tarifs de la Pension")
+    # Création du tableau des tarifs basé sur ton texte
+    tarifs_data = {
+        "Prestation": ["1 chien", "2 chiens"],
+        "Tout Public": ["15€ / jour", "23€ / jour"],
+        "Chien adopté chez nous": ["13€ / jour", "20€ / jour"]
+    }
+    st.table(pd.DataFrame(tarifs_data))
+    st.info("📞 Pour toute réservation ou renseignement, contactez-nous au 05 58 73 68 82.")
+
+with tab3:  # ONGLET NOUS AIDER / BÉNÉVOLAT
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align:center;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
+        unsafe_allow_html=True)
 
     col_a, col_b, col_c = st.columns(3)
+
     with col_a:
         st.markdown("""
         <div class="help-card-white">
@@ -327,12 +479,12 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT (VERSION DÉTAILLÉE) ---
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
-    # --- BLOC DE TÉLÉCHARGEMENT ---
+    # --- ZONE DE TÉLÉCHARGEMENT DU PDF ---
     try:
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
         
-        st.write("Pour rejoindre notre équipe, téléchargez et lisez attentivement notre dossier d'intégration :")
+        st.write("Pour nous rejoindre, veuillez télécharger et lire attentivement notre dossier d'intégration :")
         st.download_button(
             label="📄 Télécharger le dossier d'intégration (PDF)",
             data=pdf_bytes,
@@ -341,34 +493,122 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT (VERSION DÉTAILLÉE) ---
             use_container_width=True
         )
     except FileNotFoundError:
-        st.warning("Le fichier 'info_benevole.pdf' n'a pas été trouvé. Assurez-vous qu'il est bien présent à la racine de votre projet.")
+        st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
 
-    st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer !")
+    st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !")
 
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>INFORMATIONS & ACCÈS</h2>", unsafe_allow_html=True)
     c_info, c_map = st.columns([1, 1.2])
     with c_info:
-        st.markdown('<div class="contact-card"><h4>📍 ADRESSE</h4><p>182 chemin Lucien Viau, 40990 Saint-Paul-lès-Dax</p><h4>⏰ HORAIRES</h4><p>Mer. au Dim. : 14h - 18h</p><h4>📞 CONTACT</h4><p>05 58 73 68 82</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+<div class="contact-card">
+<h4>📍 ADRESSE DU REFUGE</h4>
+<p>Refuge Médéric - Association Les Animaux du Grand Dax<br>
+182 chemin Lucien Viau<br>
+40990 Saint-Paul-lès-Dax</p>
+<div class="contact-sep"></div>
+<h4>⏰ HORAIRES D'OUVERTURE</h4>
+<p><b>Mercredi au Dimanche : 14h00 - 18h00</b><br>
+<i>(Fermé le Lundi et le Mardi)</i></p>
+<div class="contact-sep"></div>
+<h4>📞 NOUS CONTACTER</h4>
+<p>05 58 73 68 82<br>animauxdugranddax@gmail.com</p>
+<br>
+<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook 🔵</a>
+<a href="mailto:animauxdugranddax@gmail.com" class="btn-mail" style="width:100%; text-align:center; display:block;">✉️ Nous envoyer un e-mail</a>
+</div>
+""", unsafe_allow_html=True)
     with c_map:
+        st.markdown(
+            '<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>',
+            unsafe_allow_html=True)
         map_coords = pd.DataFrame({'lat': [43.72594], 'lon': [-1.05030]})
-        st.map(map_coords, zoom=14)
+        st.map(map_coords, zoom=14, use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with tab_urgence:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE</h2>", unsafe_allow_html=True)
-    if st.button("🔍 J'ai perdu mon animal", use_container_width=True, type="primary"): modal_perdu()
-    if st.button("🐾 J'ai trouvé un animal errant", use_container_width=True): modal_trouve()
+    st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
+                unsafe_allow_html=True)
+
+    # --- DEUX GROS BOUTONS D'ACTION ---
+    col_btn_1, col_btn_2 = st.columns(2)
+    with col_btn_1:
+        if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"):
+            modal_perdu()
+    with col_btn_2:
+        if st.button("🐾 Que faire si vous avez trouvé un animal errant ?", use_container_width=True):
+            modal_trouve()
+
+    st.markdown("<br>", unsafe_allow_html=True)
+
+    col_u1, col_u2 = st.columns([1.5, 1])
+
+    with col_u1:
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>🐕 Fonctionnement de la Fourrière</h4>
+            <p>La fourrière permet d’accueillir les chiens et les chats trouvés errants sur les communes du Grand Dax.</p>
+            <p style="background:#fff3f3; padding:15px; border-radius:10px; border:1px solid #ffcccc;">
+                ⚠️ <b>Avertissement :</b> Nous ne nous déplaçons pas pour venir chercher un animal. L’animal doit nous être déposé par la <b>police ou les autorités compétentes</b>.
+            </p>
+            <p>Si vous trouvez un animal : vous devez impérativement contacter la police ou la mairie avant de nous le déposer.</p>
+            <p><i>Si votre animal a disparu, il est peut-être chez nous ! N’hésitez pas à nous contacter au 05 58 73 68 82.</i></p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_u2:
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>💰 Nos Tarifs Fourrière</h4>
+            <p><b>Animal Identifié (récupéré J-0) :</b> 40€</p>
+            <p><b>Animal non-identifié (récupéré J-0) :</b> 125€<br>
+            <small>(40€ de prise en charge + 85€ d'identification)</small></p>
+            <p><b>Prix par jour supplémentaire :</b> 15€/jour</p>
+            <hr>
+            <p style="font-size:0.85em;"><i>Note : L’identification est obligatoire et sera réalisée par un vétérinaire avant que l’animal ne soit rendu.</i></p>
+        </div>
+        """, unsafe_allow_html=True)
 
 # --- 5. PIED DE PAGE ---
 st.markdown("---")
-col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
-with col_f1:
-    st.markdown("<h4 style='color: #FF0000;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax.")
-with col_f3:
-    st.text_input("Newsletter", placeholder="votre@email.com", key="mail_footer")
-    if st.button("S'inscrire"): st.success("Merci !")
-with col_f4:
-    st.markdown("📞 05 58 73 68 82")
 
-st.markdown("<p style='text-align: center; color: #888; font-size: 0.85em;'>© 2026 Tous droits réservés.</p>", unsafe_allow_html=True)
+col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
+
+with col_f1:
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
+    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
+
+with col_f2:
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
+    st.markdown("""
+    [Accueil](#)  
+    [Actualités](#tab_event)  
+    [Adopter](#tab2)  
+    [Nous Aider](#tab3)
+    """)
+
+with col_f3:
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
+    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
+    if st.button("S'inscrire 🐾", use_container_width=True):
+        if "@" in email_user:
+            st.success("Merci pour votre inscription !")
+        else:
+            st.error("Email invalide")
+
+with col_f4:
+    st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
+    st.markdown("""
+    📞 05 58 73 68 82  
+    📍 Saint-Paul-lès-Dax  
+    [Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
+    """)
+
+st.markdown("<br><br>", unsafe_allow_html=True)
+st.markdown("""
+    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
+        Refuge Médéric - Association Animaux du Grand Dax<br>
+        © 2026 Tous droits réservés. Version Alpha_1
+    </p>
+""", unsafe_allow_html=True)
