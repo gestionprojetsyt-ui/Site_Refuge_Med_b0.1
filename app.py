@@ -159,7 +159,7 @@ display: inline-block;
 }
 .btn-don-vert:hover { opacity: 0.9; transform: scale(1.02); }
 
-/* --- Style des cartes Aide (Version Restaurée) --- */
+/* --- Style des cartes Aide --- */
 .help-card-white {
     background-color: white !important; 
     padding: 25px; 
@@ -171,7 +171,7 @@ display: inline-block;
     height: 100%;
 }
 .help-card-white h4 { color: #FF0000 !important; margin-top:0; font-weight: bold; }
-.help-card-white p, .help-card-white li { color: #1a1a1a !important; font-size: 0.95em; line-height: 1.4; }
+.help-card-white p, .help-card-white li { color: #1a1a1a !important; font-size: 1em; line-height: 1.5; }
 
 .project-card-full {
     background-color: white !important; 
@@ -285,7 +285,7 @@ with tab_pension:
     tarifs_data = {"Prestation": ["1 chien", "2 chiens"], "Tout Public": ["15€ / jour", "23€ / jour"], "Chien adopté chez nous": ["13€ / jour", "20€ / jour"]}
     st.table(pd.DataFrame(tarifs_data))
 
-with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
+with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT (VERSION DÉTAILLÉE) ---
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown("<p style='text-align:center;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>", unsafe_allow_html=True)
 
@@ -293,25 +293,34 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
     with col_a:
         st.markdown("""
         <div class="help-card-white">
-            <h4>🕒 Donner du temps</h4>
-            <p>Ce dont nos pensionnaires ont le plus besoin, c'est de présence humaine.</p>
-            <p>En devenant bénévole, vous aidez au nourrissage, au nettoyage, mais aussi aux promenades et aux câlins.</p>
+            <h4>🕒 Donner de son temps</h4>
+            <p>Ce dont nos pensionnaires ont le plus besoin, c’est de présence humaine.</p>
+            <p>En devenant bénévole, vous aidez au nourrissage, au nettoyage, mais aussi aux promenades et aux câlins pour préparer nos protégés à leur adoption.</p>
+            <p><b>Participez aussi à nos collectes</b> pour faire connaître le refuge !</p>
         </div>
         """, unsafe_allow_html=True)
+
     with col_b:
         st.markdown("""
         <div class="help-card-white">
             <h4>💰 Don financier</h4>
-            <p>Soutenez-nous via HelloAsso, par chèque ou via Tookets (Crédit Agricole).</p>
-            <p>Vos dons servent à financer les soins vétérinaires et l'entretien des locaux.</p>
+            <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
+            <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
+            <p><b>• Tookets :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
         </div>
         """, unsafe_allow_html=True)
+
     with col_c:
         st.markdown("""
         <div class="help-card-white">
             <h4>📦 Don en nature</h4>
-            <p>Croquettes, litières, paniers et couvertures sont toujours bienvenus.</p>
-            <p>Si cela prend de la place chez vous, nos pensionnaires en seront ravis !</p>
+            <p>Dans un refuge, on a toujours besoin de tout !</p>
+            <ul>
+                <li>Croquettes & Pâtées</li>
+                <li>Couvertures & Paniers</li>
+                <li>Litières & Jouets</li>
+            </ul>
+            <p>Si cela prend de la place chez vous, nos pensionnaires seront heureux de vous en débarrasser ! ;)</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -323,7 +332,7 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
         
-        st.write("Pour devenir bénévole, veuillez prendre connaissance de notre dossier d'intégration ci-dessous :")
+        st.write("Pour rejoindre notre équipe, téléchargez et lisez attentivement notre dossier d'intégration :")
         st.download_button(
             label="📄 Télécharger le dossier d'intégration (PDF)",
             data=pdf_bytes,
