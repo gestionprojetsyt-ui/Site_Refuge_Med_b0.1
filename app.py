@@ -23,7 +23,6 @@ def get_image_data(url):
             return None
         file_id = re.search(r'(?:id=|[/\b])([a-zA-Z0-9_-]{25,})', url).group(1)
         direct_url = f'https://drive.google.com/uc?export=download&id={file_id}'
-        # Ajout du User-Agent pour éviter les blocages Google Drive
         headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
         response = requests.get(direct_url, headers=headers, timeout=10)
         if response.status_code == 200:
@@ -33,14 +32,13 @@ def get_image_data(url):
     return None
 
 
-# Fonction pour charger les événements depuis ton lien spécifique
+# Fonction pour charger les événements
 @st.cache_data(ttl=300)
 def charger_evenements_sheet():
     URL_EV = "https://docs.google.com/spreadsheets/d/1XZXKwCfJ_922HAkAANzpXyyZL97uJzcu84viFWdtgpA/export?format=csv&gid=1825198513"
     try:
         df = pd.read_csv(URL_EV)
         df.columns = df.columns.str.strip()
-        # Inversion pour avoir les plus récents en premier
         df = df.iloc[::-1].reset_index(drop=True)
         return df
     except:
@@ -53,60 +51,42 @@ def charger_evenements_sheet():
 def modal_perdu():
     st.markdown("""
     *Publié par animauxdugranddax le 1 janvier 2026*
-
     Quand un animal disparaît, le plus efficace est d’agir vite pour éviter qu’il ne s’éloigne trop.
-
     ### 🏠 1. Si c’est un chat, fouillez CHEZ VOUS
-    Cherchez sous les lits, dans les placards, sous les meubles de cuisine... **si la tête passe, tout passe !** Une fois l’intérieur retourné, faites le tour du jardin, vérifiez sous les haies, dans les arbres et même sous les voitures ou dans le moteur.
-
-    ### 👃 2. Sortez sa litière (pour les chats)
-    Astuce étrange mais efficace : ne lavez pas la litière. Les odeurs peuvent voyager suffisamment loin pour guider votre compagnon vers sa maison.
-
+    Cherchez sous les lits, dans les placards... **si la tête passe, tout passe !**
+    ### 👃 2. Sortez sa litière
+    Les odeurs guident l'animal vers sa maison.
     ### 🗣️ 3. Appelez-le en début de soirée
-    Appelez surtout en fin de journée (moins de bruit). N’hésitez pas à crier fort et à agiter une boîte de croquettes.
-
+    Moins de bruit, plus de chances qu'il vous entende.
     ### 🏘️ 4. Faites le tour du quartier
-    Tapez aux portes, laissez des mots dans les boîtes aux lettres avec une photo. Pensez à vérifier les garages des voisins où un animal curieux a pu se faire enfermer.
-
+    Toquez aux portes, vérifiez les garages des voisins.
     ### 💻 5. Contactez les sites spécialisés
-    * **I-CAD :** Déclarez la perte (gratuit).
-    * **Pet Alert 40 / Chat-perdu.org / Chien-perdu.org**
-
+    I-CAD (déclaration de perte), Pet Alert 40, Chat-perdu.org.
     ### 📞 6. Appelez les autorités
-    Fourrière en priorité, puis le refuge, les mairies et les vétérinaires alentours.
-
+    Fourrière en priorité, puis le refuge, les mairies et les vétérinaires.
     ---
     ### ✨ Les bons gestes à l'avenir
-    * **Identification :** Obligatoire, elle offre 75% de chances en plus de retrouver votre animal.
-    * **Stérilisation :** Calme les envies d'évasion et de fugues.
-    * **Sécurité :** Gardez votre chat à l'intérieur la nuit et ne sortez pas les nouveaux arrivants trop tôt.
+    * **Identification :** Obligatoire (75% de chances en plus de le retrouver).
+    * **Stérilisation :** Calme les envies d'évasion.
     """)
 
 
 @st.dialog("🐾 Que faire si vous avez trouvé un animal errant ?", width="large")
 def modal_trouve():
     st.markdown("""
-    *Publié par animauxdugranddax le 1 janvier 2026*
-
-    ⚠️ **Rappel important :** Nous ne sommes pas habilités à nous déplacer. L'animal doit nous être déposé par la police ou les autorités compétentes après accord de la mairie.
-
-    ### 🚫 1. Ne prenez pas l'animal chez vous si vous n'en voulez pas
-    Vous pourriez vous mettre en danger ou vous retrouver coincé si la fourrière est pleine. Laissez-le dehors mais nourrissez-le à heures fixes pour qu'il reste sur le secteur.
-
+    ⚠️ **Rappel important :** Nous ne sommes pas habilités à nous déplacer.
+    ### 🚫 1. Ne prenez pas l'animal chez vous
+    Risque pour vos propres animaux ou mise en danger.
     ### 🏘️ 2. Faites le tour du quartier
-    Toquez aux portes ou laissez un mot. Les chiens fugueurs sont souvent connus des voisins immédiats.
-
-    ### 💻 3. Vérifiez les sites spécialisés
-    Cherchez s'il est déclaré perdu sur **Pet Alert 40**, **Chat-perdu.org** ou **Chien-perdu.org**.
-
-    ### 🏥 4. Amenez-le chez un vétérinaire (Gratuit)
-    Si l'animal est docile, tout vétérinaire peut vérifier gratuitement et sans rendez-vous si l'animal possède une puce électronique.
-
-    ### 🚨 5. Contactez les autorités pour la fourrière
-    C’est le dernier recours. Vous devez impérativement passer par la **mairie ou la police** pour obtenir l'autorisation de nous amener l'animal.
+    Les chiens fugueurs sont souvent très proches de chez eux.
+    ### 🏥 3. Amenez-le chez un vétérinaire (Gratuit)
+    Vérification de la puce électronique sans rendez-vous.
+    ### 🚨 4. Contactez la mairie ou la police
+    C’est obligatoire pour déclencher l'entrée légale en fourrière.
     """)
 
 
+# --- STYLE CSS ---
 st.markdown("""
 <style>
 #MainMenu {visibility: hidden;}
@@ -117,23 +97,15 @@ header {visibility: hidden;}
 .hero {
 background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
 url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=2000');
-background-size: cover;
-background-position: center;
-padding: 100px 20px;
-text-align: center;
-color: white;
-border-radius: 0 0 50px 50px;
-margin-bottom: 50px;
+background-size: cover; background-position: center;
+padding: 100px 20px; text-align: center; color: white;
+border-radius: 0 0 50px 50px; margin-bottom: 50px;
 }
 
 .btn-action {
-background-color: #FF0000;
-color: white !important;
-padding: 15px 30px;
-border-radius: 30px;
-text-decoration: none;
-font-weight: bold;
-font-size: 1.2em;
+background-color: #FF0000; color: white !important;
+padding: 15px 30px; border-radius: 30px;
+text-decoration: none; font-weight: bold; font-size: 1.2em;
 display: inline-block;
 }
 
@@ -142,30 +114,26 @@ display: inline-block;
     padding: 15px 25px; border-radius: 15px;
     text-decoration: none; font-weight: bold; font-size: 1.1em;
     display: block; text-align: center; margin-bottom: 15px;
-    transition: 0.3s;
-}
-.btn-don-bleu {
-    background-color: #000091; color: white !important;
-    padding: 15px 25px; border-radius: 15px;
-    text-decoration: none; font-weight: bold; font-size: 1.1em;
-    display: block; text-align: center; margin-bottom: 15px;
-    transition: 0.3s;
 }
 
 .help-card-white {
     background-color: white !important; 
-    padding: 25px; 
-    border-radius: 15px;
-    border-left: 5px solid #FF0000; 
-    margin-bottom: 20px;
+    padding: 25px; border-radius: 15px;
+    border-left: 5px solid #FF0000; margin-bottom: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     color: #1a1a1a !important;
 }
 
+.project-card-full {
+    background-color: white !important; 
+    padding: 20px; border-radius: 15px;
+    border-left: 5px solid #FF0000; margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
 .contact-card {
 background-color: white !important;
-padding: 35px;
-border-radius: 20px;
+padding: 35px; border-radius: 20px;
 box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 border-left: 6px solid #FF0000;
 color: #1a1a1a !important;
@@ -174,16 +142,13 @@ margin-bottom: 25px;
 
 .event-card {
 background-color: white !important;
-padding: 20px;
-border-radius: 15px;
+padding: 20px; border-radius: 15px;
 border-bottom: 5px solid #FF0000;
 box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-margin-bottom: 20px;
-text-align: center;
+margin-bottom: 20px; text-align: center;
 color: #1a1a1a !important;
 }
 
-/* STYLE ADAPTATIF NEWSLETTER */
 div[data-testid="stTextInput"] input {
     background-color: #262626 !important;
     color: white !important;
@@ -202,10 +167,10 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- 3. PRÉSENTATION ---
-col1, col2, col3 = st.columns(3)
-with col1: st.markdown("<div style='text-align:center;'><h3>📍 Localisation</h3><p>Saint-Paul-lès-Dax (40)</p></div>", unsafe_allow_html=True)
-with col2: st.markdown("<div style='text-align:center;'><h3>🐕 Nos Pensionnaires</h3><p>Chiens et chats de tous âges</p></div>", unsafe_allow_html=True)
-with col3: st.markdown("<div style='text-align:center;'><h3>❤️ Notre Engagement</h3><p>Soins, protection et amour</p></div>", unsafe_allow_html=True)
+colp1, colp2, colp3 = st.columns(3)
+with colp1: st.markdown("<div style='text-align:center;'><h3>📍 Localisation</h3><p>Saint-Paul-lès-Dax (40)</p></div>", unsafe_allow_html=True)
+with colp2: st.markdown("<div style='text-align:center;'><h3>🐕 Nos Pensionnaires</h3><p>Chiens et chats de tous âges</p></div>", unsafe_allow_html=True)
+with colp3: st.markdown("<div style='text-align:center;'><h3>❤️ Engagement</h3><p>Soins et protection animale</p></div>", unsafe_allow_html=True)
 
 st.markdown("---")
 
@@ -218,18 +183,18 @@ with tab1:
     with col_refuge_1:
         st.markdown("<h3 style='color:#FF0000;'>📍 Notre Mission</h3>", unsafe_allow_html=True)
         st.write("L'association LES ANIMAUX DU GRAND DAX gère le refuge Médéric. Nous assurons la protection, les soins et le placement des animaux en détresse.")
+        
         st.markdown("<br><h3 style='color:#FF0000;'>🚀 Nos Projets</h3>", unsafe_allow_html=True)
-        st.markdown('<div class="help-card-white"><h4>📅 Portes Ouvertes</h4><p>Venez rencontrer nos équipes et nos protégés lors de nos événements annuels.</p></div>', unsafe_allow_html=True)
-        st.markdown('<div class="help-card-white"><h4>🐈 Fourrière Chats</h4><p>Travaux de rénovation prévus pour améliorer l\'accueil des félins.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="project-card-full"><h4>📅 Portes Ouvertes</h4><p>Venez rencontrer nos équipes et nos protégés lors de nos événements annuels.</p></div>', unsafe_allow_html=True)
+        st.markdown('<div class="project-card-full"><h4>🐈 Fourrière Chats</h4><p>Travaux de rénovation prévus. Nous avons besoin de votre aide (matériaux/dons) !</p></div>', unsafe_allow_html=True)
     
     with col_refuge_2:
         st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
         st.markdown("""
             <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" target="_blank" class="btn-don-vert">❤️ Faire un don (HelloAsso)</a>
-            <a href="https://www.tookets.com/associations/association-les-animaux-du-grand-dax" target="_blank" class="btn-don-bleu">💰 Nous offrir vos Tookets</a>
-            <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333; border-left: 4px solid #000091;'>
-            <b>Appel :</b> Nous recherchons des dons de matériaux pour la fourrière chats !
+            <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333; margin-top:10px;'>
+            <b>Note :</b> Vos dons sont déductibles des impôts à hauteur de 66%.
             </div>
         """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -254,29 +219,26 @@ with tab2:
 
 with tab_pension:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>SERVICE DE PENSION</h2>", unsafe_allow_html=True)
-    col_p1, col_p2 = st.columns([1.5, 1])
-    with col_p1:
-        st.write("Box spacieux avec espace extérieur. Accueil toute l'année.")
-        tarifs_p = {"Prestation": ["1 chien", "2 chiens"], "Tarif": ["15€ / jour", "23€ / jour"]}
-        st.table(pd.DataFrame(tarifs_p))
-    with col_p2:
-        st.info("📞 Réservation : 05 58 73 68 82")
+    st.write("Nous accueillons vos chiens toute l'année dans des box spacieux avec parc de détente.")
+    tarifs_p = {"Prestation": ["1 chien", "2 chiens"], "Tarif Standard": ["15€ / jour", "23€ / jour"], "Chien du refuge": ["13€ / jour", "20€ / jour"]}
+    st.table(pd.DataFrame(tarifs_p))
+    st.info("📞 Réservations au 05 58 73 68 82")
 
 with tab3:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
-    c1, c2, c3 = st.columns(3)
-    with c1: st.markdown('<div class="help-card-white"><h4>🕒 Temps</h4><p>Bénévolat pour les promenades et les soins.</p></div>', unsafe_allow_html=True)
-    with c2: st.markdown('<div class="help-card-white"><h4>💰 Argent</h4><p>Dons financiers (HelloAsso, Tookets).</p></div>', unsafe_allow_html=True)
-    with c3: st.markdown('<div class="help-card-white"><h4>📦 Nature</h4><p>Croquettes, litière, couvertures.</p></div>', unsafe_allow_html=True)
+    col_a, col_b, col_c = st.columns(3)
+    with col_a: st.markdown('<div class="help-card-white"><h4>🕒 Temps</h4><p>Devenez bénévole pour les promenades.</p></div>', unsafe_allow_html=True)
+    with col_b: st.markdown('<div class="help-card-white"><h4>💰 Argent</h4><p>Dons HelloAsso ou par chèque.</p></div>', unsafe_allow_html=True)
+    with col_c: st.markdown('<div class="help-card-white"><h4>📦 Nature</h4><p>Croquettes, litières, couvertures.</p></div>', unsafe_allow_html=True)
     
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     try:
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
-        st.download_button("📄 Télécharger le dossier d'intégration (PDF)", pdf_bytes, "info_benevole.pdf", "application/pdf", use_container_width=True)
+        st.download_button(label="📄 Télécharger le dossier d'intégration (PDF)", data=pdf_bytes, file_name="info_benevole.pdf", mime="application/pdf", use_container_width=True)
     except:
-        st.warning("Dossier PDF non disponible sur le serveur.")
+        st.warning("Fichier PDF indisponible.")
 
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>CONTACT & ACCÈS</h2>", unsafe_allow_html=True)
@@ -293,15 +255,16 @@ with tab_urgence:
         if st.button("🔍 J'AI PERDU MON ANIMAL", use_container_width=True): modal_perdu()
         if st.button("🐾 J'AI TROUVÉ UN ANIMAL", use_container_width=True): modal_trouve()
     with col_u2:
+        # RETOUR À L'ANCIENNE VERSION DES BOXS FOURRIÈRE (SIMPLE ET CLAIR)
         st.markdown("""
-        <div class="help-card-white">
-            <h4>💰 Nos Tarifs Fourrière</h4>
-            <p><b>Animal Identifié (récupéré J-0) :</b> 40€</p>
-            <p><b>Animal non-identifié (récupéré J-0) :</b> 125€<br>
-            <small>(40€ de prise en charge + 85€ d'identification)</small></p>
-            <p><b>Prix par jour supplémentaire :</b> 15€/jour</p>
+        <div style="background-color: #f8f9fa; padding: 20px; border-radius: 15px; border: 1px solid #ddd; color: #333;">
+            <h4 style="color: #FF0000; margin-top:0;">💰 Tarifs Fourrière</h4>
+            <p><b>Prise en charge animal identifié :</b> 40€</p>
+            <p><b>Prise en charge animal NON-identifié :</b> 125€<br>
+            <small>(Inclus 85€ de forfait identification vétérinaire obligatoire)</small></p>
+            <p><b>Frais de garde :</b> 15€ / jour supplémentaire</p>
             <hr>
-            <p style="font-size:0.85em;"><i>Note : L’identification est obligatoire avant toute restitution.</i></p>
+            <p style="font-size: 0.8em; font-style: italic;">Note : L'animal ne pourra être rendu qu'après règlement des frais et vérification de l'identité du propriétaire.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -314,12 +277,12 @@ with col_f1:
     st.write("Association Les Animaux du Grand Dax.")
 
 with col_f2:
-    st.markdown("<h4 style='color: #FF0000;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #FF0000;'>PLAN</h4>", unsafe_allow_html=True)
     st.markdown("[Accueil](#)  \n[Actualités](#)  \n[Adopter](#)  \n[Nous Aider](#)")
 
 with col_f3:
     st.markdown("<h4 style='color: #FF0000;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    email = st.text_input("Email", placeholder="votre@email.com", label_visibility="collapsed", key="news_in")
+    email = st.text_input("Email", placeholder="votre@email.com", label_visibility="collapsed", key="news_foot")
     if st.button("S'inscrire 🐾", use_container_width=True):
         if "password_admin" in st.secrets and email == st.secrets["password_admin"]:
             st.session_state.access_admin = True
@@ -331,19 +294,16 @@ if st.session_state.get("access_admin", False):
     if st.button("Quitter"): st.session_state.access_admin = False; st.rerun()
 
 with col_f4:
-    st.markdown("<h4 style='color: #FF0000;'>CONTACT</h4>", unsafe_allow_html=True)
+    st.markdown("<h4 style='color: #FF0000;'>SUIVEZ-NOUS</h4>", unsafe_allow_html=True)
     st.markdown("""
         <div style="margin-top: 10px;">
-            <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:12px;">
+            <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:10px;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="20" style="margin-right:10px;"> Facebook
             </a>
-            <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:12px;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="20" style="margin-right:10px;"> Instagram
-            </a>
             <a href="mailto:refuge.mederic@gmail.com" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="20" style="margin-right:10px;"> Gmail
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="20" style="margin-right:10px;"> Contact Mail
             </a>
         </div>
     """, unsafe_allow_html=True)
 
-st.markdown("<p style='text-align:center; color:#888; font-size:0.8em; margin-top:50px;'>© 2026 Refuge Médéric | Saint-Paul-lès-Dax | Alpha_5</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align:center; color:#888; font-size:0.8em; margin-top:40px;'>© 2026 Refuge Médéric | Alpha_5</p>", unsafe_allow_html=True)
