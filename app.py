@@ -641,6 +641,6 @@ st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
         Refuge Médéric - Association Animaux du Grand Dax<br>
-        © 2026 Tous droits réservés. | 🟢Version Alpha_5
+        © 2026 Tous droits réservés. | 🟢 Version Alpha_5
     </p>
 """, unsafe_allow_html=True)
