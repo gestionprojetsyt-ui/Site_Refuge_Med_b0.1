@@ -371,28 +371,43 @@ with tab1:
         """, unsafe_allow_html=True)
 
 with col_refuge_2:
-        st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
-        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
-
-        # --- LES BOUTONS (Vérifie bien qu'ils sont alignés ici) ---
+        # --- DÉBUT DE LA BOX STYLE "PROJET" ---
         st.markdown("""
-            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank">
-                <i class="fas fa-heart"></i> Faire un don (HelloAsso)
-            </a>
-            <a href="Lien_Vers_Ton_Autre_Bouton" class="btn-don-bleu" target="_blank">
-                <i class="fas fa-hand-holding-heart"></i> Autre Soutien
-            </a>
-            <p style='text-align:center; font-size:0.9em; color:#666; margin-top:10px;'>
+        <div style="
+            background-color: #1a1a1a; 
+            padding: 25px; 
+            border-radius: 15px; 
+            border-left: 5px solid #FF0000; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            color: white;
+        ">
+            <h3 style="text-align:center; margin-top:0; color: white;">🙏 NOUS SOUTENIR</h3>
+            <p style="text-align:center; color: #bbb; font-size: 1.05em;">
+                Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.
+            </p>
+
+            <div style="margin-top: 20px;">
+                <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: block; text-align: center; text-decoration: none; margin-bottom: 12px;">
+                    <i class="fas fa-heart"></i> Faire un don (HelloAsso)
+                </a>
+                
+                <a href="#" class="btn-don-bleu" target="_blank" style="display: block; text-align: center; text-decoration: none;">
+                    <i class="fas fa-hand-holding-heart"></i> Autre Soutien
+                </a>
+            </div>
+
+            <p style='text-align:center; font-size:0.85em; color:#888; margin-top:15px; font-style: italic;'>
                 Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.
             </p>
-        """, unsafe_allow_html=True)
 
-        st.markdown("""
-        <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
-            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
+            <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
+
+            <div style='background: rgba(255, 0, 0, 0.05); padding: 15px; border-radius: 10px; border: 1px dashed rgba(255, 0, 0, 0.2); font-size: 0.9em; color: #ddd;'>
+                <b style="color: #FF4444;">📢 Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
+            </div>
         </div>
         """, unsafe_allow_html=True)
+        # --- FIN DE LA BOX ---
         st.markdown("</div>", unsafe_allow_html=True)
 
 with tab_event:
