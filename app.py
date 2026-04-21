@@ -381,8 +381,8 @@ with col_refuge_2:
                 <i class="fas fa-heart"></i> Faire un don (HelloAsso)
             </a>
             
-            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/adhesions/adhesion-2026" class="btn-don-bleu" target="_blank">
-                <i class="fas fa-users"></i> Devenir Adhérent / Mécène
+            <a href="A venir" class="btn-don-bleu" target="_blank">
+                <i class="fas fa-users"></i> Faire un don
             </a>
             
             <p style='text-align:center; font-size:0.9em; color:#666; margin-top:10px;'>
