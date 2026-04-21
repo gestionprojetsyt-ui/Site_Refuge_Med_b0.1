@@ -281,17 +281,11 @@ color: #666;
 font-size: 0.85em;
 }
 
-/* Style adaptatif pour le champ newsletter */
+/* Style spécifique pour le champ newsletter dans le footer */
 div[data-testid="stTextInput"] input {
-    background-color: rgba(128, 128, 128, 0.1) !important; 
-    color: inherit !important; 
-    border: 1px solid rgba(128, 128, 128, 0.2) !important;
-    border-radius: 8px !important;
-}
-
-/* Force la lisibilité du texte saisi */
-div[data-testid="stTextInput"] input:focus {
-    border-color: #FF0000 !important; 
+    background-color: #262626 !important;
+    color: white !important;
+    border: 1px solid #444 !important;
 }
 </style>
 """, unsafe_allow_html=True)
@@ -371,42 +365,23 @@ with tab1:
         """, unsafe_allow_html=True)
 
     with col_refuge_2:
-        # --- BLOC "NOUS SOUTENIR" MIS À JOUR (Lien Ouijagi + Correction Balise) ---
+        st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
+        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
+
         st.markdown("""
-        <div style="
-            background-color: #1a1a1a; 
-            padding: 25px; 
-            border-radius: 15px; 
-            border-left: 5px solid #FF0000; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            color: white;
-        ">
-            <h3 style="text-align:center; margin-top:0; color: white;">🙏 NOUS SOUTENIR</h3>
-            <p style="text-align:center; color: #bbb; font-size: 1.05em;">
-                Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.
-            </p>
+            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert">
+                <i class="fas fa-heart"></i> Faire un don (HelloAsso)
+            </a>
+            <p style='text-align:center; font-size:0.9em; color:#666;'>Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.</p>
+        """, unsafe_allow_html=True)
 
-            <div style="margin-top: 20px; text-align: center;">
-                <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: block; margin-bottom: 12px; text-decoration: none;">
-                    <i class="fas fa-heart"></i> Faire un don (HelloAsso)
-                </a>
-                
-                <a href="https://www.ouijagi.com/refuge-mederic" class="btn-don-bleu" target="_blank" style="display: block; text-decoration: none;">
-                    <i class="fas fa-hand-holding-heart"></i> Soutenir via Ouijagi
-                </a>
-            </div>
-
-            <p style='text-align:center; font-size:0.85em; color:#888; margin-top:15px; font-style: italic;'>
-                Pour d'autres formes d'aide, consultez l'onglet <b>Nous Aider</b>.
-            </p>
-
-            <hr style="border: 0; border-top: 1px solid #333; margin: 20px 0;">
-
-            <div style='background: rgba(255, 0, 0, 0.05); padding: 15px; border-radius: 10px; border: 1px dashed rgba(255, 0, 0, 0.2); font-size: 0.9em; color: #ddd;'>
-                <b style="color: #FF4444;">📢 Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons des dons de matériaux !
-            </div>
+        st.markdown("""
+        <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
+            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
         </div>
         """, unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 with tab_event:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ACTUALITÉS EN IMAGES</h2>", unsafe_allow_html=True)
@@ -484,7 +459,7 @@ with tab3:
             <h4>💰 Don financier</h4>
             <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
             <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• Ouijagi :</b> Plateforme de soutien solidaire en ligne.</p>
+            <p><b>• Tookets :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
         </div>
         """, unsafe_allow_html=True)
 
@@ -502,9 +477,11 @@ with tab3:
         </div>
         """, unsafe_allow_html=True)
 
+# --- LA SECTION QUE TU VOULAIS RÉCUPÉRER ---
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
+    # ZONE DE TÉLÉCHARGEMENT DU PDF
     try:
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
@@ -520,8 +497,11 @@ with tab3:
     except FileNotFoundError:
         st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
 
-    st.info("Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !")
-
+    # TON TEXTE D'INFORMATION RÉINSÉRÉ ICI
+    st.info(
+        "Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !"
+    )
+            
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>INFORMATIONS & ACCÈS</h2>", unsafe_allow_html=True)
     c_info, c_map = st.columns([1, 1.2])
@@ -540,46 +520,33 @@ with tab4:
 <h4>📞 NOUS CONTACTER</h4>
 <p>05 58 73 68 82<br>animauxdugranddax@gmail.com</p>
 <br>
-<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook</a>
+<a href="https://www.facebook.com/refuge.mederic?locale=fr_FR" class="btn-action" style="width:100%; text-align:center; display:block;">Notre page Facebook 🔵</a>
 <a href="mailto:animauxdugranddax@gmail.com" class="btn-mail" style="width:100%; text-align:center; display:block;">✉️ Nous envoyer un e-mail</a>
 </div>
 """, unsafe_allow_html=True)
                 
-    with c_map:
-        st.markdown('<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>', unsafe_allow_html=True)
-        map_coords = pd.DataFrame({'lat': [43.75791549682617], 'lon': [-1.0595743656158447]})
-        st.map(map_coords, zoom=14, use_container_width=True)
-        st.markdown("""
-            <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
-                <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
-                    🚀 Lancer l'itinéraire sur HERE WeGo
-                </div>
-            </a>
+with c_map:
+    st.markdown(
+        '<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>',
+        unsafe_allow_html=True)
+    
+    # --- LES COORDONNÉES EXACTES DU REFUGE ---
+    # Ici, on met les vraies coordonnées du 182 Chemin Lucien Viau
+    map_coords = pd.DataFrame({'lat': [43.7431], 'lon': [-1.0664]})
+    
+    # On utilise la carte native (elle est incassable)
+    st.map(map_coords, zoom=14, use_container_width=True)
+    
+    # --- LE PETIT BOUTON "GPS" POUR ÊTRE SÛR ---
+    st.markdown("""
+        <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
+            <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
+                🚀 Lancer l'itinéraire sur HERE WeGo
             </div>
-        """, unsafe_allow_html=True)
-
-with tab_urgence:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>", unsafe_allow_html=True)
-    col_btn_1, col_btn_2 = st.columns(2)
-    with col_btn_1:
-        if st.button("🔍 Que faire si vous avez perdu votre animal ?", use_container_width=True, type="primary"): modal_perdu()
-    with col_btn_2:
-        if st.button("🐾 Que faire si vous avez trouvé un animal errant ?", use_container_width=True): modal_trouve()
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    col_u1, col_u2 = st.columns([1.5, 1])
-    with col_u1:
-        st.markdown("""
-        <div class="help-card-white">
-            <h4>🐕 Fonctionnement de la Fourrière</h4>
-            <p>La fourrière permet d’accueillir les chiens et les chats trouvés errants sur les communes du Grand Dax.</p>
-            <p style="background:#fff3f3; padding:15px; border-radius:10px; border:1px solid #ffcccc;">
-                ⚠️ <b>Avertissement :</b> Nous ne nous déplaçons pas pour venir chercher un animal. L’animal doit nous être déposé par la <b>police ou les autorités compétentes</b>.
-            </p>
-            <p>Si vous trouvez un animal : vous devez impérativement contacter la police ou la mairie avant de nous le déposer.</p>
-            <p><i>Si votre animal a disparu, il est peut-être chez nous ! N’hésitez pas à nous contacter au 05 58 73 68 82.</i></p>
+        </a>
         </div>
-        """, unsafe_allow_html=True)
+    """, unsafe_allow_html=True)
+            
     with col_u2:
         st.markdown("""
         <div class="help-card-white">
@@ -592,6 +559,7 @@ with tab_urgence:
             <p style="font-size:0.85em;"><i>Note : L’identification est obligatoire et sera réalisée par un vétérinaire avant que l’animal ne soit rendu.</i></p>
         </div>
         """, unsafe_allow_html=True)
+
 
 # --- 5. PIED DE PAGE ---
 st.markdown("---")
@@ -608,18 +576,24 @@ with col_f2:
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     entree_texte = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="newsletter_secret")
+    
     if st.button("S'inscrire 🐾", use_container_width=True, key="btn_news_final"):
+        # --- VÉRIFICATION VIA LES SECRETS ---
+        # On vérifie si ce qui est tapé correspond au secret "password_admin"
         if "password_admin" in st.secrets and entree_texte == st.secrets["password_admin"]:
             st.session_state.access_admin = True
             st.success("Accès Admin déverrouillé !")
         elif "@" in entree_texte:
-            with open("liste_newsletter.txt", "a") as f: f.write(entree_texte + "\n")
+            with open("liste_newsletter.txt", "a") as f:
+                f.write(entree_texte + "\n")
             st.success("Enregistré !")
 
+# --- LA ZONE ADMIN APPARAÎT SEULEMENT SI LE CODE A ÉTÉ TAPÉ ---
 if st.session_state.get("access_admin", False):
     st.warning("🔓 Mode Administration activé")
     if os.path.exists("liste_newsletter.txt"):
-        with open("liste_newsletter.txt", "r") as f: contenu = f.read()
+        with open("liste_newsletter.txt", "r") as f:
+            contenu = f.read()
         st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
         st.code(contenu)
     if st.button("Quitter l'admin"):
@@ -630,6 +604,8 @@ with col_f4:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
     st.write("📞 05 58 73 68 82")
     st.write("📍 Saint-Paul-lès-Dax")
+    
+    # --- RÉSEAUX SOCIAUX AVEC TEXTE À CÔTÉ ---
     st.markdown("""
         <div style="margin-top: 10px;">
             <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:12px;">
@@ -644,6 +620,9 @@ with col_f4:
         </div>
     """, unsafe_allow_html=True)
 
+st.markdown("<br>", unsafe_allow_html=True)
+
+# --- COPYRIGHT SIMPLE ---
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
