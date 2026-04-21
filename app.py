@@ -524,13 +524,25 @@ with tab4:
 <a href="mailto:animauxdugranddax@gmail.com" class="btn-mail" style="width:100%; text-align:center; display:block;">✉️ Nous envoyer un e-mail</a>
 </div>
 """, unsafe_allow_html=True)
-    with c_map:
-        st.markdown(
-            '<div style="background-color: white; padding: 15px; border-radius: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4>',
-            unsafe_allow_html=True)
-        map_coords = pd.DataFrame({'lat': [43.72594], 'lon': [-1.05030]})
-        st.map(map_coords, zoom=14, use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+with c_map:
+    # Le titre dans sa boîte blanche
+    st.markdown(
+        '<div style="background-color: white; padding: 15px; border-radius: 20px 20px 0 0; box-shadow: 0 4px 15px rgba(0,0,0,0.1); color: black;"><h4>🗺️ Plan d\'accès</h4></div>',
+        unsafe_allow_html=True)
+    
+    # Coordonnées exactes du Refuge Médéric
+    lat, lon = 43.7431, -1.0664
+    
+    # Intégration de la carte HERE WeGo (interactive et précise)
+    # On utilise l'URL de partage HERE pour l'adresse exacte
+    here_map_url = f"https://widgets.here.com/map/checkout.html?mclp=43.7431%2C-1.0664&z=15&tn=normal&n=Refuge%20Mederic"
+    
+    map_html = f"""
+        <iframe src="{here_map_url}" 
+        width="100%" height="400" style="border:0; border-radius: 0 0 20px 20px;" allowfullscreen="" loading="lazy"></iframe>
+    """
+    
+    st.markdown(map_html, unsafe_allow_html=True)
 
 with tab_urgence:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>🚨 SERVICE DE FOURRIÈRE & URGENCE</h2>",
