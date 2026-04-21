@@ -319,13 +319,24 @@ with tab1:
     col_refuge_1, col_refuge_2 = st.columns([1.2, 1])
 
     with col_refuge_1:
-        st.markdown("<h3 style='color:#FF0000;'>📍 Notre Mission</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='color:#FF0000;'>📍 Notre Mission & Identité</h3>", unsafe_allow_html=True)
         st.write("""
-        L'association **'Les Animaux du Grand Dax'** gère le refuge Médéric depuis 1980.
-        Nous oeuvrons chaque jour pour le sauvetage, les soins et le replacement des animaux abandonnés. 
-        Le refuge est un lieu de transition où chaque animal reçoit amour et attention en attendant sa famille pour la vie.
+        L'association **LES ANIMAUX DU GRAND DAX** (SIREN : 993 900 000) est une structure 
+        reconnue qui gère le refuge Médéric. 
+        
+        Notre mission principale est la protection, les soins et le placement des animaux 
+        en détresse. En tant qu'acteur central de la protection animale dans le Grand Dax, 
+        nous assurons la transition entre l'abandon et une nouvelle vie dans une famille aimante.
         """)
-
+        
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d;">
+            <p style="margin:0; font-size: 0.9em; color: #555;">
+                ℹ️ <b>Informations Légales :</b> Association déclarée sous le numéro SIREN 993900000. 
+                Retrouvez nos informations officielles sur l'Annuaire des Entreprises de l'État.
+            </p>
+        </div>
+        
         st.markdown("<br><h3 style='color:#FF0000;'>🚀 Nos Projets & Événements</h3>", unsafe_allow_html=True)
 
         # PROJET 1 : Portes Ouvertes
