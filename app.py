@@ -397,13 +397,6 @@ with col_refuge_2:
         """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
-        st.markdown("""
-        <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
-            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
-        </div>
-        """, unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
-
 with tab_event:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ACTUALITÉS EN IMAGES</h2>", unsafe_allow_html=True)
     df_ev = charger_evenements_sheet()
