@@ -477,9 +477,11 @@ with tab3:
         </div>
         """, unsafe_allow_html=True)
 
+# --- LA SECTION QUE TU VOULAIS RÉCUPÉRER ---
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
+    # ZONE DE TÉLÉCHARGEMENT DU PDF
     try:
         with open("info_benevole.pdf", "rb") as f:
             pdf_bytes = f.read()
@@ -495,6 +497,11 @@ with tab3:
     except FileNotFoundError:
         st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
 
+    # TON TEXTE D'INFORMATION RÉINSÉRÉ ICI
+    st.info(
+        "Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !"
+    )
+            
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>INFORMATIONS & ACCÈS</h2>", unsafe_allow_html=True)
     c_info, c_map = st.columns([1, 1.2])
