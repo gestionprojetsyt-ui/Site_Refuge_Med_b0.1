@@ -384,7 +384,7 @@ with col_refuge_2:
             
             <a href="https://www.ouijagi.org/associations/animaux-du-grand-dax" class="btn-don-bleu" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
                 <img src="https://ca-ouijagi.fr/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
-                Soutenir via OuiJ'agis
+                Soutenir via OUIJAGI!
             </a>
             
             <p style='text-align:center; font-size:0.85em; color:#666; margin-top:10px;'>
@@ -475,7 +475,7 @@ with tab3:
             <h4>💰 Don financier</h4>
             <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
             <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• Tookets :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
+            <p><b>• OUIJAGI! :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
         </div>
         """, unsafe_allow_html=True)
 
