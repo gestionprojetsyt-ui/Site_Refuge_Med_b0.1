@@ -628,6 +628,9 @@ with col_f4:
             <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="20" style="margin-right:8px;"> Instagram
             </a>
+            <a href="mailto:refuge.mederic@gmail.com" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" width="20" style="margin-right:10px;"> Gmail
+            </a>
         </div>
     """, unsafe_allow_html=True)
 
