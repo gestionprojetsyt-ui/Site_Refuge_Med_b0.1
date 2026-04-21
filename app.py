@@ -588,14 +588,19 @@ with col_f2:
     [Nous Aider](#tab3)
     """)
 
+# Dans la section Pied de Page (col_f3)
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
     email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="mail_clean")
+    
     if st.button("S'inscrire 🐾", use_container_width=True):
-        if "@" in email_user:
-            st.success("Merci pour votre inscription !")
+        if "@" in email_user and "." in email_user:
+            # Sauvegarde locale dans un fichier texte
+            with open("liste_newsletter.txt", "a") as f:
+                f.write(email_user + "\n")
+            st.success("Merci ! Votre e-mail a été enregistré.")
         else:
-            st.error("Email invalide")
+            st.error("Veuillez entrer un e-mail valide.")
 
 with col_f4:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
