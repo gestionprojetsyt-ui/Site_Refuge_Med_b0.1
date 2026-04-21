@@ -281,11 +281,17 @@ color: #666;
 font-size: 0.85em;
 }
 
-/* Style spécifique pour le champ newsletter dans le footer */
+/* Style adaptatif pour le champ newsletter */
 div[data-testid="stTextInput"] input {
-    background-color: #262626 !important;
-    color: white !important;
-    border: 1px solid #444 !important;
+    background-color: rgba(128, 128, 128, 0.1) !important; /* Fond légèrement teinté transparent */
+    color: inherit !important; /* Prend la couleur du texte du thème (blanc ou noir) */
+    border: 1px solid rgba(128, 128, 128, 0.2) !important;
+    border-radius: 8px !important;
+}
+
+/* Force la lisibilité du texte saisi */
+div[data-testid="stTextInput"] input:focus {
+    border-color: #FF0000 !important; /* Bordure rouge quand on clique dedans */
 }
 </style>
 """, unsafe_allow_html=True)
