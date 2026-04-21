@@ -369,26 +369,22 @@ with col_refuge_2:
         st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
         st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
 
-        # --- BLOC BOUTONS DE DON ---
+with col_refuge_2:
+        st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
+        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
+
+        # --- LES BOUTONS (Vérifie bien qu'ils sont alignés ici) ---
         st.markdown("""
             <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank">
                 <i class="fas fa-heart"></i> Faire un don (HelloAsso)
             </a>
-            
-            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/adhesions/adhesion-2026" class="btn-don-bleu" target="_blank">
-                <i class="fas fa-users"></i> Devenir Adhérent / Mécène
+            <a href="Lien_Vers_Ton_Autre_Bouton" class="btn-don-bleu" target="_blank">
+                <i class="fas fa-hand-holding-heart"></i> Autre Soutien
             </a>
-            
             <p style='text-align:center; font-size:0.9em; color:#666; margin-top:10px;'>
                 Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.
             </p>
-        """, unsafe_allow_html=True)
-
-         st.markdown("""
-            <a href="https://ca-ouijagi.fr/" class="btn-don-vert">
-                <i class="fas fa-heart"></i> Faire un don (OuiJagi)
-            </a>
-            <p style='text-align:center; font-size:0.9em; color:#666;'>Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.</p>
         """, unsafe_allow_html=True)
 
         st.markdown("""
