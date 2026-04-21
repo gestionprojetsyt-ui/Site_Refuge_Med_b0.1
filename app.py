@@ -607,7 +607,12 @@ st.markdown("<br>", unsafe_allow_html=True)
 col_copy, col_secret = st.columns([10, 1]) # On crée une mini colonne à la fin
 
 with col_copy:
-    st.markdown("<p style='text-align: center; color: #888; font-size: 0.8em; margin-bottom:0;'>Refuge Médéric - Association Animaux du Grand Dax</p>", unsafe_allow_html=True)
+    st.markdown("""
+    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
+        Refuge Médéric - Association Animaux du Grand Dax<br>
+        © 2026 Tous droits réservés. Version Alpha_1
+    </p>
+""", unsafe_allow_html=True)
 
 with col_secret:
     # On crée une case à cocher presque invisible (juste un point ou rien du tout)
@@ -620,11 +625,3 @@ with col_secret:
                     contenu = f.read()
                 st.download_button("📥 Liste", data=contenu, file_name="liste_newsletter.txt")
                 st.code(contenu)
-
-st.markdown("<br><br>", unsafe_allow_html=True)
-st.markdown("""
-    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
-        Refuge Médéric - Association Animaux du Grand Dax<br>
-        © 2026 Tous droits réservés. Version Alpha_1
-    </p>
-""", unsafe_allow_html=True)
