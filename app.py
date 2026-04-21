@@ -369,11 +369,6 @@ with col_refuge_2:
         st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
         st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
 
-with col_refuge_2:
-        st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
-        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
-
         # --- LES BOUTONS (Vérifie bien qu'ils sont alignés ici) ---
         st.markdown("""
             <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank">
