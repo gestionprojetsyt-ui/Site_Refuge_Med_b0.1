@@ -459,7 +459,7 @@ with tab3:
             <h4>💰 Don financier</h4>
             <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
             <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• Tookets :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
+            <p><b>• ouijagi :</b> Bientôt intégré ici.</p>
         </div>
         """, unsafe_allow_html=True)
 
