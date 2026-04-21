@@ -159,7 +159,7 @@ display: inline-block;
 }
 .btn-don-vert:hover { opacity: 0.9; transform: scale(1.02); }
 
-/* --- Style des cartes Aide --- */
+/* --- Style des cartes Aide (Version Restaurée) --- */
 .help-card-white {
     background-color: white !important; 
     padding: 25px; 
@@ -171,6 +171,7 @@ display: inline-block;
     height: 100%;
 }
 .help-card-white h4 { color: #FF0000 !important; margin-top:0; font-weight: bold; }
+.help-card-white p, .help-card-white li { color: #1a1a1a !important; font-size: 0.95em; line-height: 1.4; }
 
 .project-card-full {
     background-color: white !important; 
@@ -286,13 +287,33 @@ with tab_pension:
 
 with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align:center;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>", unsafe_allow_html=True)
+
     col_a, col_b, col_c = st.columns(3)
     with col_a:
-        st.markdown('<div class="help-card-white"><h4>🕒 Donner du temps</h4><p>Aidez au nourrissage, au nettoyage et aux balades.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>🕒 Donner du temps</h4>
+            <p>Ce dont nos pensionnaires ont le plus besoin, c'est de présence humaine.</p>
+            <p>En devenant bénévole, vous aidez au nourrissage, au nettoyage, mais aussi aux promenades et aux câlins.</p>
+        </div>
+        """, unsafe_allow_html=True)
     with col_b:
-        st.markdown('<div class="help-card-white"><h4>💰 Don financier</h4><p>Soutenez-nous via HelloAsso, chèque ou Tookets.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>💰 Don financier</h4>
+            <p>Soutenez-nous via HelloAsso, par chèque ou via Tookets (Crédit Agricole).</p>
+            <p>Vos dons servent à financer les soins vétérinaires et l'entretien des locaux.</p>
+        </div>
+        """, unsafe_allow_html=True)
     with col_c:
-        st.markdown('<div class="help-card-white"><h4>📦 Don en nature</h4><p>Croquettes, litières, paniers et couvertures sont bienvenus.</p></div>', unsafe_allow_html=True)
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>📦 Don en nature</h4>
+            <p>Croquettes, litières, paniers et couvertures sont toujours bienvenus.</p>
+            <p>Si cela prend de la place chez vous, nos pensionnaires en seront ravis !</p>
+        </div>
+        """, unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
