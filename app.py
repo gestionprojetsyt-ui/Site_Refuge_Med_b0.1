@@ -598,9 +598,20 @@ with col_f3:
 
 with col_f4:
     st.write("**CONTACT**")
-    st.write("Saint-Paul-lès-Dax")
+    st.write("📍Saint-Paul-lès-Dax")
     st.write("📞 05 58 73 68 82")
-    st.write("Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
+
+# --- RÉSEAUX SOCIAUX AVEC ICÔNES ---
+    st.markdown("""
+        <div style="margin-top: 15px;">
+            <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; margin-right:20px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="30">
+            </a>
+            <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="30">
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
