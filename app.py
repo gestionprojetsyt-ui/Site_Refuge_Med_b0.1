@@ -370,7 +370,7 @@ with tab1:
         </div>
         """, unsafe_allow_html=True)
 
-            with col_refuge_2:
+with col_refuge_2:
         # --- BLOC "NOUS SOUTENIR" STYLE PROJET ---
         st.markdown("""
         <div style="
