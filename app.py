@@ -600,6 +600,7 @@ with col_f4:
     st.write("**CONTACT**")
     st.write("Saint-Paul-lès-Dax")
     st.write("📞 05 58 73 68 82")
+    st.write("Facebook](https://www.facebook.com/refuge.mederic) | [Instagram](https://www.instagram.com/refuge_mederic/)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
