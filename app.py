@@ -383,7 +383,7 @@ with col_refuge_2:
             </a>
             
             <a href="https://www.ouijagi.org/associations/animaux-du-grand-dax" class="btn-don-bleu" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
-                <img src="https://www.ouijagi.org/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
+                <img src="https://ca-ouijagi.fr/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
                 Soutenir via OuiJ'agis
             </a>
             
