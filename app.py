@@ -612,8 +612,6 @@ with st.expander("🔐 Administration (Accès réservé)"):
     # Vérification sécurisée
     try:
         mdp_correct = st.secrets["password_admin"]
-    except:
-        mdp_correct = "mederic40" # Secours si secret non trouvé
 
     if code_secret == mdp_correct:
         try:
