@@ -306,7 +306,7 @@ with tab3: # --- SECTION NOUS AIDER / BÉNÉVOLAT ---
         st.download_button(
             label="📄 Télécharger le dossier d'intégration (PDF)",
             data=pdf_bytes,
-            file_name="integration des benevole.pdf",
+            file_name="info_benevole.pdf",
             mime="application/pdf",
             use_container_width=True
         )
