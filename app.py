@@ -375,24 +375,26 @@ with col_refuge_2:
         st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
         st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
 
-        # --- BLOC BOUTONS DE DON ---
+        # --- BLOC BOUTONS AVEC LOGOS OFFICIELS ---
         st.markdown("""
-            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank">
-                <i class="fas fa-heart"></i> Faire un don (HelloAsso)
+            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none; margin-bottom: 12px;">
+                <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/64/04/8e/64048e9d-3f04-899f-0740-424683076891/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg" width="22" style="border-radius: 4px; margin-right: 12px;">
+                Soutenir via HelloAsso
             </a>
             
-            <a href="A venir" class="btn-don-bleu" target="_blank">
-                <i class="fas fa-users"></i> Faire un don
+            <a href="https://www.ouijagi.org/associations/animaux-du-grand-dax" class="btn-don-bleu" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <img src="https://www.ouijagi.org/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
+                Soutenir via OuiJ'agis
             </a>
             
-            <p style='text-align:center; font-size:0.9em; color:#666; margin-top:10px;'>
-                Pour d'autres formes d'aide (temps, nature), consultez l'onglet <b>Nous Aider</b>.
+            <p style='text-align:center; font-size:0.85em; color:#666; margin-top:10px;'>
+                Dons sécurisés. Reçu fiscal disponible sur les plateformes.
             </p>
         """, unsafe_allow_html=True)
 
         st.markdown("""
         <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
-            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux ou des bras volontaires !
+            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux !
         </div>
         """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
