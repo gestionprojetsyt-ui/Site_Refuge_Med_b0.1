@@ -581,7 +581,7 @@ col_f1, col_f2, col_f3, col_f4 = st.columns([1.5, 1, 1.2, 1])
 
 with col_f1:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>🐾 REFUGE MÉDÉRIC</h4>", unsafe_allow_html=True)
-    st.write("Association Les Animaux du Grand Dax. Un refuge engagé pour offrir un avenir à ceux qui n'ont plus de foyer.")
+    st.write("Association Les Animaux du Grand Dax.")
 
 with col_f2:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>PLAN DU SITE</h4>", unsafe_allow_html=True)
@@ -589,8 +589,8 @@ with col_f2:
 
 with col_f3:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>📧 NEWSLETTER</h4>", unsafe_allow_html=True)
-    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="newsletter_footer")
-    if st.button("S'inscrire 🐾", use_container_width=True):
+    email_user = st.text_input("Votre e-mail", placeholder="votre@email.com", label_visibility="collapsed", key="footer_news_input")
+    if st.button("S'inscrire 🐾", use_container_width=True, key="btn_footer_final"):
         if "@" in email_user:
             with open("liste_newsletter.txt", "a") as f:
                 f.write(email_user + "\n")
@@ -599,52 +599,42 @@ with col_f3:
 with col_f4:
     st.markdown("<h4 style='color: #FF0000; margin-bottom:10px;'>CONTACT</h4>", unsafe_allow_html=True)
     st.write("📞 05 58 73 68 82")
-    st.write("📍 Saint-Paul-lès-Dax")
     
-    # --- RÉSEAUX SOCIAUX CÔTE À CÔTE ---
+    # --- RÉSEAUX SOCIAUX AVEC TEXTE À CÔTÉ ---
     st.markdown("""
-        <div style="display: flex; align-items: center; gap: 20px; margin-top: 10px;">
-            <a href="https://www.facebook.com/refuge.mederic" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="30">
+        <div style="margin-top: 10px;">
+            <a href="https://www.facebook.com/refuge.mederic" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center; margin-bottom:8px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="20" style="margin-right:8px;"> Facebook
             </a>
-            <a href="https://www.instagram.com/refuge_mederic/" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="30">
+            <a href="https://www.instagram.com/refuge_mederic/" target="_blank" style="text-decoration:none; color:inherit; display:flex; align-items:center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" width="20" style="margin-right:8px;"> Instagram
             </a>
         </div>
     """, unsafe_allow_html=True)
 
-    # --- L'ACCÈS SECRET (Caché derrière un simple point) ---
-    with st.expander(".", expanded=False):
-        pwd = st.text_input("Accès", type="password", label_visibility="collapsed", placeholder="Code...", key="admin_key_final")
-        
-        # Vérification avec le secret configuré ou le mot de passe par défaut
-        secret_stored = st.secrets.get("password_admin", "mederic40")
-        if pwd == secret_stored:
-            if os.path.exists("liste_newsletter.txt"):
-                with open("liste_newsletter.txt", "r") as f:
-                    contenu = f.read()
-                st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
-                st.code(contenu)
+st.markdown("<br>", unsafe_allow_html=True)
 
-# --- LA ZONE DE COPYRIGHT AVEC L'ACCÈS ULTRA-CACHÉ ---
-col_copy, col_secret = st.columns([10, 1]) # On crée une mini colonne à la fin
+# --- LIGNE DE COPYRIGHT AVEC POINT SECRET ---
+col_copy_text, col_point_secret = st.columns([15, 1])
 
-with col_copy:
+with col_copy_text:
     st.markdown("""
-    <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
-        Refuge Médéric - Association Animaux du Grand Dax<br>
-        © 2026 Tous droits réservés. Version Alpha_1
-    </p>
-""", unsafe_allow_html=True)
+        <p style='text-align: center; color: #888; font-size: 0.8em; border-top: 1px solid #eee; padding-top: 20px; margin-right: -50px;'>
+        Refuge Médéric - Association Animaux du Grand Dax © 2026 Tous droits réservés. Version Alpha_1
+        </p>
+    """, unsafe_allow_html=True)
 
-with col_secret:
-    # On crée une case à cocher presque invisible (juste un point ou rien du tout)
-    if st.checkbox(".", key="hidden_portal", help=None):
-        # Cette zone n'apparaît QUE si tu coches le petit point à droite du copyright
-        pwd = st.text_input("Code", type="password", key="final_admin_key")
-        if pwd == st.secrets.get("password_admin", "mederic40"):
-            if os.path.exists("liste_newsletter.txt"):
-                with open("liste_newsletter.txt", "r") as f:
-                    contenu = f.read()
-                st.download_button("📥 Liste", data=contenu, file_name="liste_newsletter.txt")
-                st.code(contenu)
+with col_point_secret:
+    # Le point est ici, juste après "Version Alpha_1"
+    st.markdown("<div style='padding-top: 20px;'></div>", unsafe_allow_html=True) # Pour l'aligner
+    with st.expander(".", expanded=False):
+        pwd = st.text_input("Code", type="password", label_visibility="collapsed", key="super_secret_key")
+        
+        # Vérification avec ton secret "password_admin"
+        if "password_admin" in st.secrets:
+            if pwd == st.secrets["password_admin"]:
+                if os.path.exists("liste_newsletter.txt"):
+                    with open("liste_newsletter.txt", "r") as f:
+                        contenu = f.read()
+                    st.download_button("📥 Télécharger la liste", data=contenu, file_name="liste_newsletter.txt")
+                    st.code(contenu)
