@@ -347,6 +347,18 @@ with tab1:
         </div>
         """, unsafe_allow_html=True)
 
+# --- BLOC RÈGLEMENT INTÉRIEUR (STYLE INFOS LÉGALES) ---
+        st.markdown("""
+        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d; margin-top: 20px;">
+            <p style="margin:0; font-size: 0.9em; color: #555;">
+                📜 <b>Règlement Intérieur :</b> Pour une transparence totale, vous pouvez consulter le cadre légal de notre association. 
+                <a href="https://drive.google.com/file/d/1wDSqxya8IgqCYmpL1c3Obku2Q9Vt5UNY/view?usp=sharing" target="_blank" style="color: #FF0000; font-weight: bold; text-decoration: none;">
+                    Cliquez ici pour lire le PDF
+                </a>
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+
         st.markdown("<br><h3 style='color:#FF0000;'>📢 Nos Projets & Événements</h3>", unsafe_allow_html=True)
 
         # PROJET 1 : Portes Ouvertes
@@ -367,18 +379,6 @@ with tab1:
             Des travaux sont prévus très prochainement pour améliorer la situation de nos amis félins. 
             <b>Mais pour cela, nous allons avoir besoin de votre aide !</b><br>
             Dons de matériaux, de temps ou d’argent, tout nous sera utile pour atteindre notre objectif.</p>
-        </div>
-        """, unsafe_allow_html=True)
-                
-# --- BLOC RÈGLEMENT INTÉRIEUR (STYLE INFOS LÉGALES) ---
-        st.markdown("""
-        <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d; margin-top: 20px;">
-            <p style="margin:0; font-size: 0.9em; color: #555;">
-                📜 <b>Règlement Intérieur :</b> Pour une transparence totale, vous pouvez consulter le cadre légal de notre association. 
-                <a href="https://drive.google.com/file/d/1wDSqxya8IgqCYmpL1c3Obku2Q9Vt5UNY/view?usp=sharing" target="_blank" style="color: #FF0000; font-weight: bold; text-decoration: none;">
-                    Cliquez ici pour lire le PDF
-                </a>
-            </p>
         </div>
         """, unsafe_allow_html=True)
 
