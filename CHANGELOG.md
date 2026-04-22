@@ -18,7 +18,7 @@
 - **Erreurs d'indentation** : Correction des bugs Python qui bloquaient l'affichage de l'onglet Urgence.
 - **Design Responsive** : Alignement des icônes dans les boutons d'action.
 
-## [v1.1.0] - Avril 2026
+## [v0.02] - Avril 2026
 - Mise en place du catalogue d'adoption via Iframe.
 - Ajout de la carte interactive du refuge.
 - Création du système de newsletter avec accès Admin.
