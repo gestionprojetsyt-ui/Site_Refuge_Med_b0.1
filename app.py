@@ -555,7 +555,7 @@ with c_map:
     
     # Bouton GPS pour mobile
     st.markdown("""
-        <a href="https://wego.here.com/directions/drive/mylocation/43.7431,-1.0664" target="_blank" style="text-decoration:none;">
+        <a href="https://wego.here.com/directions/drive/mylocation/43.75791549682617,-1.0595743656158447" target="_blank" style="text-decoration:none;">
             <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
                 🚀 Lancer l'itinéraire sur HERE WeGo
             </div>
