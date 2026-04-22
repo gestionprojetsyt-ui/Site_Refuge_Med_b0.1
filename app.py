@@ -352,7 +352,7 @@ with tab1:
         <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d; margin-top: 20px;">
             <p style="margin:0; font-size: 0.9em; color: #555;">
                 📜 <b>Règlement Intérieur :</b> Pour une transparence totale, vous pouvez consulter le cadre légal de notre association. 
-                <a href="https://drive.google.com/file/d/1wDSqxya8IgqCYmpL1c3Obku2Q9Vt5UNY/view?usp=sharing" target="_blank" style="color: #FF0000; font-weight: bold; text-decoration: none;">
+                <a href="https://github.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/blob/main/Reglement_Interieur_Animaux_Grand_Dax.pdf" target="_blank" style="color: #FF0000; font-weight: bold; text-decoration: none;">
                     Cliquez ici pour lire le PDF
                 </a>
             </p>
