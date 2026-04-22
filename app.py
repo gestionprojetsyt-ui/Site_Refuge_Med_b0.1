@@ -369,6 +369,18 @@ with tab1:
             Dons de matériaux, de temps ou d’argent, tout nous sera utile pour atteindre notre objectif.</p>
         </div>
         """, unsafe_allow_html=True)
+                
+            # --- BLOC RÈGLEMENT INTÉRIEUR (AJOUT) ---
+        st.markdown("<br><hr>", unsafe_allow_html=True)
+        st.markdown("""
+            <div style='text-align: center; padding: 20px; border-radius: 15px; background-color: #fdfdfd; border: 1px solid #eee; box-shadow: 0 4px 10px rgba(0,0,0,0.05);'>
+                <h4 style='margin-top: 0; color: #FF0000; font-family: sans-serif;'>📜 CADRE LÉGAL</h4>
+                <p style='font-size: 0.95em; color: #333;'>Pour une transparence totale, vous pouvez consulter le règlement intérieur officiel de notre association.</p>
+                <a href='https://drive.google.com/file/d/1wDSqxya8IgqCYmpL1c3Obku2Q9Vt5UNY/view?usp=sharing' target='_blank' style='text-decoration: none; background-color: #333; color: white; padding: 12px 25px; border-radius: 30px; font-weight: bold; display: inline-block; transition: 0.3s;'>
+                    📂 Lire le Règlement Intérieur (PDF)
+                </a>
+            </div>
+        """, unsafe_allow_html=True)
 
 with col_refuge_2:
         st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
