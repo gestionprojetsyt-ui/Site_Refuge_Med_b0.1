@@ -33,7 +33,7 @@ def get_image_data(url):
     return None
 
 
-# Fonction pour charger les événements depuis ton lien spécifique
+# Fonction pour charger les événements depuis le lien spécifique
 @st.cache_data(ttl=300)
 def charger_evenements_sheet():
     URL_EV = "https://docs.google.com/spreadsheets/d/1XZXKwCfJ_922HAkAANzpXyyZL97uJzcu84viFWdtgpA/export?format=csv&gid=1825198513"
@@ -493,7 +493,7 @@ with tab3:
         </div>
         """, unsafe_allow_html=True)
 
-# --- LA SECTION QUE TU VOULAIS RÉCUPÉRER ---
+# --- SECTION RÉCUPÉRER ---
     st.markdown("---")
     st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
     
@@ -513,7 +513,7 @@ with tab3:
     except FileNotFoundError:
         st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
 
-    # TON TEXTE D'INFORMATION RÉINSÉRÉ ICI
+    # TEXTE D'INFORMATION INSÉRÉ ICI
     st.info(
         "Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !"
     )
@@ -550,7 +550,7 @@ with c_map:
     # Coordonnées réelles du 182 Chemin Lucien Viau
     map_coords = pd.DataFrame({'lat': [43.75791549682617], 'lon': [-1.0595743656158447]})
     
-    # On utilise la carte native (stable et robuste)
+    #  carte native (stable et robuste)
     st.map(map_coords, zoom=14, use_container_width=True)
     
     # Bouton GPS pour mobile
