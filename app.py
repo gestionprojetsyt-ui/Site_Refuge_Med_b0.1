@@ -548,14 +548,14 @@ with c_map:
         unsafe_allow_html=True)
     
     # Coordonnées réelles du 182 Chemin Lucien Viau
-    map_coords = pd.DataFrame({'lat': [43.75791549682617], 'lon': [-1.0595743656158447]})
+    map_coords = pd.DataFrame({'lat': [43.75835], 'lon': [-1.05776]})
     
     #  carte native (stable et robuste)
     st.map(map_coords, zoom=14, use_container_width=True)
     
     # Bouton GPS pour mobile
     st.markdown("""
-        <a href="https://wego.here.com/directions/drive/mylocation/43.75791549682617,-1.0595743656158447" target="_blank" style="text-decoration:none;">
+        <a href="https://wego.here.com/directions/drive/mylocation/43.75835,-1.05776" target="_blank" style="text-decoration:none;">
             <div style="background-color: #FF0000; color: white; padding: 10px; border-radius: 10px; text-align: center; margin-top: 10px; font-weight: bold;">
                 🚀 Lancer l'itinéraire sur HERE WeGo
             </div>
