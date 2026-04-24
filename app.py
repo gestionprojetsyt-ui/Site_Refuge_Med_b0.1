@@ -343,7 +343,7 @@ st.markdown(f"""
         }}
 
         .banner-logo {{
-            height: 110px;
+            height: 97px;
             margin-right: 20px;
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
         }}
