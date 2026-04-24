@@ -786,7 +786,7 @@ with col_f4:
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
     <p style='text-align: center; color: #888; font-size: 0.85em; border-top: 1px solid #eee; padding-top: 20px;'>
-        Fait avec ❤️ pour les animaux du <b>Refuge Médéric</b> - Association Animaux du Grand Dax<br>
+        Développé avec passion ❤️ pour nos amis à quatre pattes, du <b>Refuge Médéric</b> - Association Animaux du Grand Dax<br>
         © 2026 Tous droits réservés. | Version Alpha_5
     </p>
 """, unsafe_allow_html=True)
