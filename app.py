@@ -399,7 +399,7 @@ st.markdown(f"""
             </div>
             <p class="banner-subtitle">"Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir."</p>
             <a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">
-                🐾 Voir nos animaux à l'adoption
+                🐾 Rencontrez votre nouveau meilleur ami
             </a>
         </div>
     </div>
