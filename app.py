@@ -4,8 +4,10 @@ import requests
 import base64
 import re
 import os
+import streamlit as st
 from PIL import Image
 from io import BytesIO
+
 
 # --- 1. CONFIGURATION & STYLE ---
 st.set_page_config(page_title="Refuge Médéric - Officiel", layout="wide", page_icon="🐾")
@@ -298,31 +300,66 @@ div[data-testid="stTextInput"] input:focus {
 
 # --- HEADER COMPLET (LOGO + NOM + BANNIÈRE) ---
 
-# 1. Barre d'identité (Logo à gauche, Nom à droite)
-col_logo, col_titre = st.columns([1, 4])
-
-with col_logo:
-    # On utilise ton logo officiel sur GitHub
-    logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
-    st.image(logo_url, width=120)
-
-with col_titre:
-    # On affiche le nom du site en gros et stylé
-    st.markdown("""
-        <div style="padding-top: 10px;">
-            <h1 style="margin-bottom: 0px; font-size: 2.5em; color: #1E1E1E;">Refuge Médéric</h1>
-            <p style="font-size: 1.2em; color: #666; margin-top: 0px;">
-                Association de Protection Animale - Saint-Paul-lès-Dax
-            </p>
-        </div>
-    """, unsafe_allow_html=True)
-
-# 2. Image de bannière (Celle que j'avais trouvée pour toi)
-# Elle crée un bel impact visuel juste avant les onglets
+# --- CONFIGURATION (À mettre au début du script si ce n'est pas déjà fait) ---
+# logo_url : utilise le lien Raw GitHub de ton logo
+logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
+# banner_url : l'image de fond que j'avais trouvée (ou la tienne)
 banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
-st.image(banner_url, use_container_width=True)
 
-# 3. Ligne de séparation pour marquer le début du contenu
+# --- CRÉATION DE LA BANNIÈRE COMPOSITE (HTML/CSS) ---
+st.markdown(f"""
+    <style>
+        /* Conteneur principal de la bannière */
+        .header-banner {{
+            background-image: url('{banner_url}');
+            background-size: cover;
+            background-position: center;
+            height: 250px; /* Ajuste la hauteur de la bannière ici */
+            border-radius: 10px; /* Coins arrondis pour le style */
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Ombre pour le relief */
+            margin-bottom: 20px;
+        }}
+
+        /* Superposition sombre pour le contraste du texte */
+        .banner-overlay {{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Voile noir à 40% */
+            border-radius: 10px;
+            display: flex;
+            align-items: center; /* Centrage vertical */
+            padding-left: 30px; /* Espacement à gauche */
+        }}
+
+        /* Style du Logo dans la bannière */
+        .banner-logo {{
+            height: 100px; /* Ajuste la taille du logo ici */
+            margin-right: 20px;
+        }}
+
+        /* Style du Titre dans la bannière */
+        .banner-title {{
+            color: #FF4B4B; /* LE ROUGE STREAMLIT */
+            font-size: 3.5em; /* Taille du titre */
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre portée pour lisibilité */
+        }}
+    </style>
+
+    <div class="header-banner">
+        <div class="banner-overlay">
+            <img src="{logo_url}" class="banner-logo">
+            <h1 class="banner-title">Refuge Médéric</h1>
+        </div>
+    </div>
+""", unsafe_allow_html=True)
+
+# --- Séparation avant les onglets ---
 st.write("---")
 
 # --- 3. PRÉSENTATION RAPIDE ---
