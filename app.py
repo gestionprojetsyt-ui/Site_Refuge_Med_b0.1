@@ -305,18 +305,17 @@ div[data-testid="stTextInput"] input:focus {
 """, unsafe_allow_html=True)
 
 # --- HEADER COMPLET (LOGO + NOM + BANNIÈRE) ---
-# --- BANNIÈRE ROYALE (LOGO + NOM ROUGE + BOUTON) ---
+# --- BLOC BANNIÈRE TOUT-EN-UN (FIXÉ) ---
 
-# 1. Tes liens de ressources (Vérifiés)
-logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-2.png"
-banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
+# On définit les liens ici pour être sûr qu'ils fonctionnent
+L_LOGO = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
+L_FOND = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
 
-# 2. Le bloc complet HTML + CSS
 st.markdown(f"""
     <style>
-        /* 1. CONTENEUR PRINCIPAL DE LA BANNIÈRE */
+        /* Conteneur principal */
         .header-banner {{
-            background-image: url('{banner_url}');
+            background-image: url('{L_FOND}');
             background-size: cover;
             background-position: center;
             height: 400px;
@@ -324,23 +323,23 @@ st.markdown(f"""
             position: relative;
             margin-bottom: 30px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-            overflow: hidden;
         }}
 
-        /* 2. VOILE SOMBRE (POUR LA LISIBILITÉ) */
+        /* Voile sombre */
         .banner-overlay {{
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-end; /* Aligné à droite par défaut */
+            align-items: flex-end; 
             padding-right: 60px;
             text-align: right;
         }}
 
-        /* 3. LIGNE LOGO + TITRE */
+        /* Ligne Logo + Titre */
         .identity-row {{
             display: flex;
             align-items: center;
@@ -354,7 +353,6 @@ st.markdown(f"""
             background: white;
             padding: 6px;
             border-radius: 12px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
         }}
 
         .banner-title {{
@@ -363,21 +361,16 @@ st.markdown(f"""
             font-weight: 800 !important;
             margin: 0 !important;
             text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-            line-height: 1;
         }}
 
-        /* 4. SOUS-TITRE */
         .banner-subtitle {{
             color: white !important;
             font-size: 1.4em !important;
             font-style: italic;
-            margin-top: 10px !important;
             margin-bottom: 30px !important;
-            max-width: 500px;
             text-shadow: 2px 2px 5px rgba(0,0,0,1);
         }}
 
-        /* 5. LE BOUTON CHALEUREUX */
         .btn-action {{
             background-color: #FF4B4B !important;
             color: white !important;
@@ -385,54 +378,35 @@ st.markdown(f"""
             border-radius: 50px !important;
             text-decoration: none !important;
             font-weight: bold !important;
-            font-size: 1.2em !important;
-            transition: all 0.3s ease !important;
+            transition: 0.3s;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
             border: 2px solid #FF4B4B !important;
         }}
 
-        .btn-action:hover {{
-            background-color: white !important;
-            color: #FF4B4B !important;
-            transform: scale(1.05);
-            border: 2px solid white !important;
-        }}
-
-        /* 6. ADAPTATION MOBILE (RESPONSIVE) */
-        @media (max-width: 600px) {
-            .banner-overlay {
+        /* Version Mobile */
+        @media (max-width: 600px) {{
+            .banner-overlay {{
                 padding-right: 0px !important;
-                align-items: center !important; /* On centre tout sur mobile */
+                align-items: center !important;
                 text-align: center !important;
-                justify-content: center;
-            }
-            .identity-row {
-                flex-direction: column !important; /* Logo au-dessus du texte */
-                margin-bottom: 15px;
-            }
-            .banner-logo {
+            }}
+            .identity-row {{
+                flex-direction: column !important;
+            }}
+            .banner-logo {{
                 margin-right: 0 !important;
-                height: 80px !important; /* Logo un peu plus petit */
-            }
-            .banner-title {
-                font-size: 2.2em !important; /* Évite que le texte dépasse */
-            }
-            .banner-subtitle {
-                font-size: 1.1em !important;
-                padding: 0 20px;
-            }
-            .btn-action {
-                font-size: 1em !important;
-                padding: 12px 20px !important;
-            }
-        }
+                margin-bottom: 10px;
+            }}
+            .banner-title {{
+                font-size: 2.2em !important;
+            }}
+        }}
     </style>
 
     <div class="header-banner">
         <div class="banner-overlay">
             <div class="identity-row">
-                <img src="{logo_url}" class="banner-logo">
+                <img src="{L_LOGO}" class="banner-logo">
                 <h1 class="banner-title">Refuge Médéric</h1>
             </div>
             <p class="banner-subtitle">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
