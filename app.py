@@ -699,46 +699,35 @@ with tab_urgence:
 with tab_urgence:
     # ... garde tes boutons Perdu/Trouvé en haut ...
 
-    st.markdown("---") # Une petite ligne de séparation
+st.markdown("---")
     st.markdown("<h4 style='text-align:center; color:#FF0000;'>💻 SIGNALER SUR LES PLATEFORMES NATIONALES</h4>", unsafe_allow_html=True)
-    
-    # On crée 3 colonnes pour les 3 sites
-    col_site1, col_site2, col_site3 = st.columns(3)
 
-    with col_site1:
-        st.markdown("""
-            <a href="https://www.chat-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
-                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <img src="https://www.chat-perdu.org/favicon.ico" width="20" style="margin-bottom:8px;"><br>
-                    <b style="color: #333;">Chat-Perdu.org</b>
+    st.markdown("""
+        <div style="display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+            <a href="https://www.chat-perdu.org/fr-fr/" target="_blank" style="flex: 1; min-width: 150px; text-decoration:none;">
+                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="https://www.chat-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
+                    <b style="color: #333; font-size: 0.9em;">Chat-Perdu.org</b>
                 </div>
             </a>
-        """, unsafe_allow_html=True)
-
-    with col_site2:
-        st.markdown("""
-            <a href="https://www.chien-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
-                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <img src="https://www.chien-perdu.org/favicon.ico" width="20" style="margin-bottom:8px;"><br>
-                    <b style="color: #333;">Chien-Perdu.org</b>
+            <a href="https://www.chien-perdu.org/fr-fr/" target="_blank" style="flex: 1; min-width: 150px; text-decoration:none;">
+                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    <img src="https://www.chien-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
+                    <b style="color: #333; font-size: 0.9em;">Chien-Perdu.org</b>
                 </div>
             </a>
-        """, unsafe_allow_html=True)
-
-with col_site3:
-        st.markdown("""
-            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
-                <b style="color: #333; font-size: 0.85em; margin-bottom: 2px;">PET ALERT 40</b>
-                
-                <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
-                    <img src="https://www.petalert.fr/theme/front/images/logo-petalert.png" width="18" style="margin-right:8px;"> Site Officiel
+            <div style="flex: 1; min-width: 150px; background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+                <b style="color: #333; font-size: 0.85em;">PET ALERT 40</b>
+                <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 4px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    <img src="https://www.petalert.fr/theme/front/images/logo-petalert.png" width="18" style="margin-right:8px;"> Site Web
                 </a>
-                
-                <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 5px; border-radius: 5px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 4px; border-radius: 5px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="14" style="margin-right:8px;"> Facebook
                 </a>
             </div>
-        """, unsafe_allow_html=True) # <--- La virgule et le True sont CRITIQUES
+        </div>
+    """, unsafe_allow_html=True)
+    
 with tab3:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
