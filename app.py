@@ -308,9 +308,11 @@ div[data-testid="stTextInput"] input:focus {
 # --- BLOC BANNIÈRE TOUT-EN-UN (FIXÉ) ---
 
 # On définit les liens ici pour être sûr qu'ils fonctionnent
+# --- 2. RESSOURCES ---
 L_LOGO = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
 L_FOND = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
 
+# --- 3. BANNIÈRE IDENTITY-PUSH (PC & MOBILE) ---
 st.markdown(f"""
     <style>
         /* Conteneur principal */
@@ -325,7 +327,7 @@ st.markdown(f"""
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }}
 
-        /* Voile sombre */
+        /* Voile de contraste */
         .banner-overlay {{
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -353,6 +355,7 @@ st.markdown(f"""
             background: white;
             padding: 6px;
             border-radius: 12px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
         }}
 
         .banner-title {{
@@ -361,44 +364,65 @@ st.markdown(f"""
             font-weight: 800 !important;
             margin: 0 !important;
             text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            line-height: 1;
         }}
 
+        /* Sous-titre chaleureux */
         .banner-subtitle {{
             color: white !important;
             font-size: 1.4em !important;
             font-style: italic;
+            margin-top: 10px !important;
             margin-bottom: 30px !important;
+            max-width: 500px;
             text-shadow: 2px 2px 5px rgba(0,0,0,1);
         }}
 
+        /* Le Bouton Interactif */
         .btn-action {{
             background-color: #FF4B4B !important;
             color: white !important;
-            padding: 15px 30px !important;
+            padding: 15px 35px !important;
             border-radius: 50px !important;
             text-decoration: none !important;
             font-weight: bold !important;
-            transition: 0.3s;
-            display: inline-block;
+            font-size: 1.2em !important;
+            display: inline-block !important;
             border: 2px solid #FF4B4B !important;
+            transition: all 0.3s ease-in-out !important;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
         }}
 
-        /* Version Mobile */
+        /* Effet au survol (PC) */
+        .btn-action:hover {{
+            background-color: white !important;
+            color: #FF4B4B !important;
+            border: 2px solid white !important;
+            transform: scale(1.05);
+        }}
+
+        /* CONFIGURATION MOBILE (SMARTPHONE) */
         @media (max-width: 600px) {{
             .banner-overlay {{
                 padding-right: 0px !important;
                 align-items: center !important;
                 text-align: center !important;
+                justify-content: center !important;
             }}
             .identity-row {{
                 flex-direction: column !important;
+                margin-bottom: 15px;
             }}
             .banner-logo {{
                 margin-right: 0 !important;
-                margin-bottom: 10px;
+                height: 80px !important;
             }}
             .banner-title {{
                 font-size: 2.2em !important;
+            }}
+            .banner-subtitle {{
+                font-size: 1.1em !important;
+                padding: 0 20px;
             }}
         }}
     </style>
@@ -416,6 +440,9 @@ st.markdown(f"""
         </div>
     </div>
 """, unsafe_allow_html=True)
+
+# Séparation visuelle
+st.write("---")
 
 # --- Séparation avant les onglets ---
 st.write("---")
