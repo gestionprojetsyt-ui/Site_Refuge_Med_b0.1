@@ -296,25 +296,28 @@ div[data-testid="stTextInput"] input:focus {
 </style>
 """, unsafe_allow_html=True)
 
-# --- HEADER AVEC LOGO ET TITRE ---
+# --- 1. LOGO ET TITRE (Ligne du haut) ---
 col_logo, col_titre = st.columns([1, 4])
 
 with col_logo:
-    # Lien direct vers ton logo sur GitHub
     logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
     st.image(logo_url, width=120)
 
 with col_titre:
     st.markdown("""
-        <div style="padding-top: 5px;">
+        <div style="padding-top: 10px;">
             <h1 style="margin-bottom: 0px; font-size: 2.2em;">Refuge Médéric</h1>
             <p style="font-size: 1.1em; color: #A0A0A0; margin-top: 0px;">
-                Association de Protection Animale - Saint-Paul-lès-Dax
+                Protection Animale & Fourrière - Saint-Paul-lès-Dax
             </p>
         </div>
     """, unsafe_allow_html=True)
 
-st.write("---")
+# --- 2. LA BANNIÈRE (L'image que tu aimais avant) ---
+# On l'affiche en pleine largeur juste en dessous
+st.image("TON_IMAGE_DE_HEADER_PRECEDENTE.jpg", use_container_width=True)
+
+st.write("---") # Ligne de séparation avant les onglets
 
 # --- 3. PRÉSENTATION RAPIDE ---
 col1, col2, col3 = st.columns(3)
