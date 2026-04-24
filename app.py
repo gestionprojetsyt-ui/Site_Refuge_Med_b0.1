@@ -296,28 +296,33 @@ div[data-testid="stTextInput"] input:focus {
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. LOGO ET TITRE ---
+# --- HEADER COMPLET (LOGO + NOM + BANNIÈRE) ---
+
+# 1. Barre d'identité (Logo à gauche, Nom à droite)
 col_logo, col_titre = st.columns([1, 4])
 
 with col_logo:
+    # On utilise ton logo officiel sur GitHub
     logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
     st.image(logo_url, width=120)
 
 with col_titre:
+    # On affiche le nom du site en gros et stylé
     st.markdown("""
         <div style="padding-top: 10px;">
-            <h1 style="margin-bottom: 0px; font-size: 2.2em;">Refuge Médéric</h1>
-            <p style="font-size: 1.1em; color: #A0A0A0; margin-top: 0px;">
-                Protection Animale & Fourrière - Saint-Paul-lès-Dax
+            <h1 style="margin-bottom: 0px; font-size: 2.5em; color: #1E1E1E;">Refuge Médéric</h1>
+            <p style="font-size: 1.2em; color: #666; margin-top: 0px;">
+                Association de Protection Animale - Saint-Paul-lès-Dax
             </p>
         </div>
     """, unsafe_allow_html=True)
 
-# --- 2. LA BANNIÈRE (Image de stock chaleureuse) ---
-# C'est probablement cette image de Unsplash qu'on avait utilisée
+# 2. Image de bannière (Celle que j'avais trouvée pour toi)
+# Elle crée un bel impact visuel juste avant les onglets
 banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
-st.image(banner_url, use_container_width=True, caption="Un foyer pour chaque regard.")
+st.image(banner_url, use_container_width=True)
 
+# 3. Ligne de séparation pour marquer le début du contenu
 st.write("---")
 
 # --- 3. PRÉSENTATION RAPIDE ---
