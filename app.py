@@ -9,8 +9,14 @@ from PIL import Image
 from io import BytesIO
 
 
-# --- 1. CONFIGURATION & STYLE ---
-st.set_page_config(page_title="Refuge Médéric - Officiel", layout="wide", page_icon="🐾")
+import streamlit as st
+
+# CETTE COMMANDE DOIT ÊTRE LA PREMIÈRE
+st.set_page_config(
+    page_title="Refuge Médéric",
+    page_icon="https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-2.png",
+    layout="wide" # Optionnel : pour que le site prenne toute la largeur
+)
 
 # Importation des icônes pour le pied de page
 st.markdown('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">',
