@@ -297,19 +297,24 @@ div[data-testid="stTextInput"] input:focus {
 """, unsafe_allow_html=True)
 
 # --- HEADER AVEC LOGO ET TITRE ---
-col_logo, col_titre = st.columns([1, 4]) # Ajuste le ratio [1, 4] selon la forme de ton logo
+col_logo, col_titre = st.columns([1, 4])
 
 with col_logo:
-    # Utilise le lien direct vers ton logo sur GitHub pour que ça charge partout
-    logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png", width=120)
+    # Lien direct vers ton logo sur GitHub
+    logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
+    st.image(logo_url, width=120)
 
 with col_titre:
-    st.markdown(f"""
-        <h1 style='margin-bottom: 0;'>Refuge Médéric</h1>
-        <p style='font-size: 1.2em; color: #666; margin-top: 0;'>Association de Protection Animale - Saint-Paul-lès-Dax</p>
+    st.markdown("""
+        <div style="padding-top: 5px;">
+            <h1 style="margin-bottom: 0px; font-size: 2.2em;">Refuge Médéric</h1>
+            <p style="font-size: 1.1em; color: #A0A0A0; margin-top: 0px;">
+                Association de Protection Animale - Saint-Paul-lès-Dax
+            </p>
+        </div>
     """, unsafe_allow_html=True)
 
-st.write("---") # Une petite ligne de séparation pour faire propre
+st.write("---")
 
 # --- 3. PRÉSENTATION RAPIDE ---
 col1, col2, col3 = st.columns(3)
