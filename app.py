@@ -302,7 +302,7 @@ div[data-testid="stTextInput"] input:focus {
 # --- BANNIÈRE ROYALE (LOGO + NOM ROUGE + BOUTON) ---
 
 # 1. Tes liens de ressources (Vérifiés)
-logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
+logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-2.png"
 banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
 
 # 2. Le bloc complet HTML + CSS
