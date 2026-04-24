@@ -319,10 +319,10 @@ with col3:
 
 st.markdown("---")
 
-# --- 4. SECTIONS D'INFORMATION (ONGLETS) ---
-tab1, tab_event, tab2, tab_pension, tab3, tab4, tab_urgence = st.tabs(
-    ["Le Refuge", "Nos Actualités", "Nos Animaux", "Pension", "Nous Aider ❤️", "Contact & Accès",
-     "🚨 Urgence/Fourrière"])
+# --- NOUVEL ORDRE DES ONGLETS ---
+tab1, tab2, tab_event, tab_pension, tab4, tab_urgence, tab3 = st.tabs(
+    ["Le Refuge", "Nos Animaux", "Nos Actualités", "Pension", "Contact & Accès", "🚨 Urgence/Fourrière", "Nous Aider ❤️"]
+)
 
 with tab1:
     col_refuge_1, col_refuge_2 = st.columns([1.2, 1])
@@ -412,6 +412,11 @@ with col_refuge_2:
         """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
 
+with tab2:
+    st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
+    url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
+    st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
+
 with tab_event:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ACTUALITÉS EN IMAGES</h2>", unsafe_allow_html=True)
     df_ev = charger_evenements_sheet()
@@ -431,11 +436,6 @@ with tab_event:
                         st.markdown(f"<h3>{row['Cle']}</h3></div>", unsafe_allow_html=True)
     else:
         st.info("Aucun événement n'est programmé pour le moment.")
-
-with tab2:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
-    url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
-    st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
 with tab_pension:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>SERVICE DE PENSION</h2>", unsafe_allow_html=True)
@@ -463,73 +463,6 @@ with tab_pension:
     }
     st.table(pd.DataFrame(tarifs_data))
     st.info("📞 Pour toute réservation ou renseignement, contactez-nous au 05 58 73 68 82.")
-
-with tab3:
-    st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
-    st.markdown(
-        "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
-        unsafe_allow_html=True)
-
-    col_a, col_b, col_c = st.columns(3)
-
-    with col_a:
-        st.markdown("""
-        <div class="help-card-white">
-            <h4>🕒 Donner de son temps</h4>
-            <p>Ce dont nos pensionnaires ont le plus besoin, c’est de présence humaine.</p>
-            <p>En devenant bénévole, vous aidez au nourrissage, au nettoyage, mais aussi aux promenades et aux câlins pour préparer nos protégés à leur adoption.</p>
-            <p><b>Participez aussi à nos collectes</b> pour faire connaître le refuge !</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col_b:
-        st.markdown("""
-        <div class="help-card-white">
-            <h4>💰 Don financier</h4>
-            <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
-            <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
-            <p><b>• OUIJAGI! :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col_c:
-        st.markdown("""
-        <div class="help-card-white">
-            <h4>📦 Don en nature</h4>
-            <p>Dans un refuge, on a toujours besoin de tout !</p>
-            <ul>
-                <li>Croquettes & Pâtées</li>
-                <li>Couvertures & Paniers</li>
-                <li>Litières & Jouets</li>
-            </ul>
-            <p>Si cela prend de la place chez vous, nos pensionnaires seront heureux de vous en débarrasser ! ;)</p>
-        </div>
-        """, unsafe_allow_html=True)
-
-# --- SECTION RÉCUPÉRER ---
-    st.markdown("---")
-    st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
-    
-    # ZONE DE TÉLÉCHARGEMENT DU PDF
-    try:
-        with open("info_benevole.pdf", "rb") as f:
-            pdf_bytes = f.read()
-        
-        st.write("Pour nous rejoindre, veuillez télécharger et lire attentivement notre dossier d'intégration :")
-        st.download_button(
-            label="📄 Télécharger le dossier d'intégration (PDF)",
-            data=pdf_bytes,
-            file_name="info_benevole.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
-    except FileNotFoundError:
-        st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
-
-    # TEXTE D'INFORMATION INSÉRÉ ICI
-    st.info(
-        "Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !"
-    )
             
 with tab4:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>INFORMATIONS & ACCÈS</h2>", unsafe_allow_html=True)
@@ -617,6 +550,73 @@ with tab_urgence:
             <p style="font-size:0.85em;"><i>Note : L’identification est obligatoire et sera réalisée par un vétérinaire avant que l’animal ne soit rendu.</i></p>
         </div>
         """, unsafe_allow_html=True)
+
+with tab3:
+    st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
+    st.markdown(
+        "<p style='text-align:center; font-size:1.1em;'>Il existe de nombreuses manières de nous aider, adaptées à chaque individu.</p><br>",
+        unsafe_allow_html=True)
+
+    col_a, col_b, col_c = st.columns(3)
+
+    with col_a:
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>🕒 Donner de son temps</h4>
+            <p>Ce dont nos pensionnaires ont le plus besoin, c’est de présence humaine.</p>
+            <p>En devenant bénévole, vous aidez au nourrissage, au nettoyage, mais aussi aux promenades et aux câlins pour préparer nos protégés à leur adoption.</p>
+            <p><b>Participez aussi à nos collectes</b> pour faire connaître le refuge !</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_b:
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>💰 Don financier</h4>
+            <p><b>• HelloAsso :</b> Simple, rapide et sécurisé. Reçu fiscal automatique. Dons uniques ou mensuels.</p>
+            <p><b>• Par chèque :</b> À l’ordre de <i>Animaux du Grand Dax</i>, déposé ou envoyé au refuge (182 chemin Lucien Viau).</p>
+            <p><b>• OUIJAGI! :</b> Sociétaires du Crédit Agricole, offrez-nous vos points ! C’est gratuit pour vous et précieux pour nous.</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col_c:
+        st.markdown("""
+        <div class="help-card-white">
+            <h4>📦 Don en nature</h4>
+            <p>Dans un refuge, on a toujours besoin de tout !</p>
+            <ul>
+                <li>Croquettes & Pâtées</li>
+                <li>Couvertures & Paniers</li>
+                <li>Litières & Jouets</li>
+            </ul>
+            <p>Si cela prend de la place chez vous, nos pensionnaires seront heureux de vous en débarrasser ! ;)</p>
+        </div>
+        """, unsafe_allow_html=True)
+
+# --- SECTION RÉCUPÉRER ---
+    st.markdown("---")
+    st.markdown("<h3 style='color:#FF0000; text-align:center;'>📝 Devenir Bénévole</h3>", unsafe_allow_html=True)
+    
+    # ZONE DE TÉLÉCHARGEMENT DU PDF
+    try:
+        with open("info_benevole.pdf", "rb") as f:
+            pdf_bytes = f.read()
+        
+        st.write("Pour nous rejoindre, veuillez télécharger et lire attentivement notre dossier d'intégration :")
+        st.download_button(
+            label="📄 Télécharger le dossier d'intégration (PDF)",
+            data=pdf_bytes,
+            file_name="info_benevole.pdf",
+            mime="application/pdf",
+            use_container_width=True
+        )
+    except FileNotFoundError:
+        st.warning("Le fichier 'info_benevole.pdf' n'est pas encore disponible sur le serveur.")
+
+    # TEXTE D'INFORMATION INSÉRÉ ICI
+    st.info(
+        "Le formulaire d'inscription en ligne sera bientôt intégré ici. Pour le moment, n'hésitez pas à venir nous rencontrer directement au refuge !"
+    )
 
 
 # --- 5. PIED DE PAGE ---
