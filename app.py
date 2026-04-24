@@ -296,7 +296,7 @@ div[data-testid="stTextInput"] input:focus {
 </style>
 """, unsafe_allow_html=True)
 
-# --- 1. LOGO ET TITRE (Ligne du haut) ---
+# --- 1. LOGO ET TITRE ---
 col_logo, col_titre = st.columns([1, 4])
 
 with col_logo:
@@ -313,11 +313,12 @@ with col_titre:
         </div>
     """, unsafe_allow_html=True)
 
-# --- 2. LA BANNIÈRE (L'image que tu aimais avant) ---
-# On l'affiche en pleine largeur juste en dessous
-st.image("TON_IMAGE_DE_HEADER_PRECEDENTE.jpg", use_container_width=True)
+# --- 2. LA BANNIÈRE (Image de stock chaleureuse) ---
+# C'est probablement cette image de Unsplash qu'on avait utilisée
+banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
+st.image(banner_url, use_container_width=True, caption="Un foyer pour chaque regard.")
 
-st.write("---") # Ligne de séparation avant les onglets
+st.write("---")
 
 # --- 3. PRÉSENTATION RAPIDE ---
 col1, col2, col3 = st.columns(3)
