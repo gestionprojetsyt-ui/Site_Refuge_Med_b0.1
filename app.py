@@ -729,7 +729,7 @@ with tab_urgence:
             <div style="background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
                 <b style="color: #333; font-size: 0.85em;">PET ALERT 40</b>
                 <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 4px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
-                    <img src="https://www.petalert.fr/theme/front/images/logo-petalert.png" width="18" style="margin-right:8px;"> Site Web
+                    <img src="https://cdn.prod.website-files.com/63fa7acd7ca2c4dee752e5fb/6500b9f65a3fe05ee57f9311_favicon-32x32.png" width="18" style="margin-right:8px;"> Site Web
                 </a>
                 <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 4px; border-radius: 5px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="14" style="margin-right:8px;"> Facebook
