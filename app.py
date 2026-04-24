@@ -299,46 +299,46 @@ div[data-testid="stTextInput"] input:focus {
 """, unsafe_allow_html=True)
 
 # --- HEADER COMPLET (LOGO + NOM + BANNIÈRE) ---
-
-# --- CONFIGURATION (À mettre au début du script si ce n'est pas déjà fait) ---
-# logo_url : utilise le lien Raw GitHub de ton logo
+# Liens des ressources
 logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
-# banner_url : l'image de fond que j'avais trouvée (ou la tienne)
 banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
 
-# --- CRÉATION DE LA BANNIÈRE COMPOSITE (HTML/CSS) ---
 st.markdown(f"""
     <style>
         .header-banner {{
             background-image: url('{banner_url}');
             background-size: cover;
             background-position: center;
-            height: 250px;
-            border-radius: 10px;
+            height: 350px; /* On augmente un peu la hauteur pour le bouton */
+            border-radius: 15px;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             margin-bottom: 20px;
         }}
 
         .banner-overlay {{
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column; /* On empile les éléments verticalement */
+            justify-content: center;
+            align-items: flex-end; /* On pousse tout à droite */
+            padding-right: 50px;
+            text-align: right;
+        }}
+
+        .identity-row {{
             display: flex;
             align-items: center;
-            /* --- MODIFICATION ICI : ON POUSSE À DROITE --- */
-            justify-content: flex-end; 
-            padding-right: 50px; /* Espace par rapport au bord droit */
+            justify-content: flex-end;
+            margin-bottom: 15px;
         }}
 
         .banner-logo {{
-            height: 90px;
-            margin-right: 15px; /* Espace entre le logo et le texte */
-            order: 1; /* Le logo s'affiche en premier */
+            height: 80px;
+            margin-right: 15px;
         }}
 
         .banner-title {{
@@ -347,14 +347,47 @@ st.markdown(f"""
             font-weight: bold;
             margin: 0;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-            order: 2; /* Le titre s'affiche après le logo */
+        }}
+
+        .banner-subtitle {{
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            max-width: 400px; /* Pour éviter que le texte soit trop long */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }}
+
+        .btn-action {{
+            background-color: #FF4B4B;
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: 0.3s;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }}
+
+        .btn-action:hover {{
+            background-color: white;
+            color: #FF4B4B !important;
+            transform: scale(1.05);
         }}
     </style>
 
     <div class="header-banner">
         <div class="banner-overlay">
-            <img src="{logo_url}" class="banner-logo">
-            <h1 class="banner-title">Refuge Médéric</h1>
+            <div class="identity-row">
+                <img src="{logo_url}" class="banner-logo">
+                <h1 class="banner-title">Refuge Médéric</h1>
+            </div>
+            
+            <p class="banner-subtitle">Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir.</p>
+            
+            <a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">
+                🐾 Voir nos animaux à l'adoption
+            </a>
         </div>
     </div>
 """, unsafe_allow_html=True)
