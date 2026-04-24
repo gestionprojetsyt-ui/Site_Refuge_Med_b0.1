@@ -309,46 +309,45 @@ banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=
 # --- CRÉATION DE LA BANNIÈRE COMPOSITE (HTML/CSS) ---
 st.markdown(f"""
     <style>
-        /* Conteneur principal de la bannière */
         .header-banner {{
             background-image: url('{banner_url}');
             background-size: cover;
             background-position: center;
-            height: 250px; /* Ajuste la hauteur de la bannière ici */
-            border-radius: 10px; /* Coins arrondis pour le style */
+            height: 250px;
+            border-radius: 10px;
             position: relative;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Ombre pour le relief */
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             margin-bottom: 20px;
         }}
 
-        /* Superposition sombre pour le contraste du texte */
         .banner-overlay {{
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.4); /* Voile noir à 40% */
+            background-color: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
             display: flex;
-            align-items: center; /* Centrage vertical */
-/* --- MODIFICATION ICI : ON POUSSE À DROITE --- */
+            align-items: center;
+            /* --- MODIFICATION ICI : ON POUSSE À DROITE --- */
             justify-content: flex-end; 
             padding-right: 50px; /* Espace par rapport au bord droit */
         }}
-        /* Style du Logo dans la bannière */
+
         .banner-logo {{
-            height: 100px; /* Ajuste la taille du logo ici */
-            margin-right: 20px;
+            height: 90px;
+            margin-right: 15px; /* Espace entre le logo et le texte */
+            order: 1; /* Le logo s'affiche en premier */
         }}
 
-        /* Style du Titre dans la bannière */
         .banner-title {{
-            color: #FF4B4B; /* LE ROUGE STREAMLIT */
-            font-size: 3.5em; /* Taille du titre */
+            color: #FF4B4B; 
+            font-size: 3em;
             font-weight: bold;
             margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre portée pour lisibilité */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            order: 2; /* Le titre s'affiche après le logo */
         }}
     </style>
 
