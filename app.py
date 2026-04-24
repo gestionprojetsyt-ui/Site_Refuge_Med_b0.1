@@ -332,9 +332,10 @@ st.markdown(f"""
             border-radius: 10px;
             display: flex;
             align-items: center; /* Centrage vertical */
-            padding-left: 30px; /* Espacement à gauche */
+/* --- MODIFICATION ICI : ON POUSSE À DROITE --- */
+            justify-content: flex-end; 
+            padding-right: 50px; /* Espace par rapport au bord droit */
         }}
-
         /* Style du Logo dans la bannière */
         .banner-logo {{
             height: 100px; /* Ajuste la taille du logo ici */
