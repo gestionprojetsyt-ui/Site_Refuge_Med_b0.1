@@ -314,7 +314,7 @@ banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=
 # 2. Le bloc complet HTML + CSS
 st.markdown(f"""
     <style>
-        /* Conteneur de la bannière */
+        /* 1. CONTENEUR PRINCIPAL DE LA BANNIÈRE */
         .header-banner {{
             background-image: url('{banner_url}');
             background-size: cover;
@@ -324,23 +324,23 @@ st.markdown(f"""
             position: relative;
             margin-bottom: 30px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            overflow: hidden;
         }}
 
-        /* Superposition pour le contraste */
+        /* 2. VOILE SOMBRE (POUR LA LISIBILITÉ) */
         .banner-overlay {{
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-end; /* Tout à droite */
+            align-items: flex-end; /* Aligné à droite par défaut */
             padding-right: 60px;
             text-align: right;
         }}
 
-        /* Ligne du Logo et du Titre */
+        /* 3. LIGNE LOGO + TITRE */
         .identity-row {{
             display: flex;
             align-items: center;
@@ -351,54 +351,22 @@ st.markdown(f"""
         .banner-logo {{
             height: 97px;
             margin-right: 20px;
-            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+            background: white;
+            padding: 6px;
+            border-radius: 12px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
         }}
 
-        /* ... garde le reste de ton CSS et remplace/ajoute ceci ... */
-
-        .banner-title {
+        .banner-title {{
             color: #FF4B4B !important; 
             font-size: 3.5em !important;
             font-weight: 800 !important;
             margin: 0 !important;
             text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-            line-height: 1.1;
-        }
+            line-height: 1;
+        }}
 
-        /* --- AJUSTEMENTS SPÉCIAUX POUR MOBILE --- */
-        @media (max-width: 600px) {
-            .header-banner {
-                height: 350px; /* Un peu moins haut sur mobile */
-            }
-            .banner-overlay {
-                padding-right: 20px; /* Moins de marge à droite sur mobile */
-                align-items: center; /* On centre tout sur mobile pour que ce soit plus joli */
-                text-align: center;
-            }
-            .identity-row {
-                flex-direction: column; /* Logo au dessus du titre sur mobile */
-                align-items: center;
-                justify-content: center;
-            }
-            .banner-logo {
-                margin-right: 0;
-                margin-bottom: 10px;
-                height: 80px; /* Logo légèrement plus petit sur mobile */
-            }
-            .banner-title {
-                font-size: 2.2em !important; /* Titre plus petit pour tenir sur une ligne */
-            }
-            .banner-subtitle {
-                font-size: 1.1em !important;
-                max-width: 100%;
-            }
-            .btn-action {
-                padding: 12px 20px !important;
-                font-size: 1em !important;
-            }
-        }
-
-        /* Texte d'accroche */
+        /* 4. SOUS-TITRE */
         .banner-subtitle {{
             color: white !important;
             font-size: 1.4em !important;
@@ -409,27 +377,56 @@ st.markdown(f"""
             text-shadow: 2px 2px 5px rgba(0,0,0,1);
         }}
 
-        /* Le Bouton stylisé */
+        /* 5. LE BOUTON CHALEUREUX */
         .btn-action {{
             background-color: #FF4B4B !important;
             color: white !important;
-            padding: 15px 35px !important;
+            padding: 15px 30px !important;
             border-radius: 50px !important;
             text-decoration: none !important;
             font-weight: bold !important;
             font-size: 1.2em !important;
             transition: all 0.3s ease !important;
-            border: 2px solid #FF4B4B !important;
-            display: inline-block !important;
+            display: inline-block;
             box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
+            border: 2px solid #FF4B4B !important;
         }}
 
         .btn-action:hover {{
             background-color: white !important;
             color: #FF4B4B !important;
-            border: 2px solid white !important;
             transform: scale(1.05);
+            border: 2px solid white !important;
         }}
+
+        /* 6. ADAPTATION MOBILE (RESPONSIVE) */
+        @media (max-width: 600px) {
+            .banner-overlay {
+                padding-right: 0px !important;
+                align-items: center !important; /* On centre tout sur mobile */
+                text-align: center !important;
+                justify-content: center;
+            }
+            .identity-row {
+                flex-direction: column !important; /* Logo au-dessus du texte */
+                margin-bottom: 15px;
+            }
+            .banner-logo {
+                margin-right: 0 !important;
+                height: 80px !important; /* Logo un peu plus petit */
+            }
+            .banner-title {
+                font-size: 2.2em !important; /* Évite que le texte dépasse */
+            }
+            .banner-subtitle {
+                font-size: 1.1em !important;
+                padding: 0 20px;
+            }
+            .btn-action {
+                font-size: 1em !important;
+                padding: 12px 20px !important;
+            }
+        }
     </style>
 
     <div class="header-banner">
@@ -438,7 +435,7 @@ st.markdown(f"""
                 <img src="{logo_url}" class="banner-logo">
                 <h1 class="banner-title">Refuge Médéric</h1>
             </div>
-            <p class="banner-subtitle">"Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir."</p>
+            <p class="banner-subtitle">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
             <a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">
                 🐾 Rencontrez votre nouveau meilleur ami
             </a>
