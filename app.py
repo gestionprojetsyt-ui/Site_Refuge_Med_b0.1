@@ -727,13 +727,15 @@ with tab_urgence:
 
 with col_site3:
         st.markdown("""
-            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
-                <b style="color: #333; font-size: 0.85em; margin-bottom: 2px;">PET ALERT 40</b>
-                <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold;">
-                    🌐 Site Officiel
+            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 6px;">
+                <b style="color: #333; font-size: 0.85em;">PET ALERT 40</b>
+                
+                <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 4px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    <img src="https://www.petalert.fr/favicon.ico" width="16" style="margin-right:8px;"> 🌐 Site Officiel
                 </a>
-                <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 5px; border-radius: 5px; font-size: 0.8em; font-weight: bold;">
-                    <i class="fab fa-facebook"></i> Facebook
+                
+                <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 4px; border-radius: 5px; font-size: 0.8em; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+                    <i class="fab fa-facebook" style="margin-right:8px;"></i> Facebook
                 </a>
             </div>
         """, unsafe_allow_html=True)
