@@ -7,12 +7,12 @@
   - Protection Visuelle du Logo : Ajout d'un cadre protecteur blanc (border-radius) et d'une ombre portée pour garantir la visibilité du logo sur fonds complexes.
 - **Effets CSS Dynamiques** : Mise en place d'animations au survol (hover scale) sur les boutons pour une interface plus vivante.
   
-⚡ Optimisé
+### ⚡ Optimisé
 - **Lisibilité Textuelle** : Application d'un voile de contraste (overlay) de 40% et de text-shadow sur l'ensemble de la bannière pour une lecture parfaite.
 - **Harmonie des Couleurs** : Alignement du titre sur le rouge officiel Streamlit (#FF4B4B) pour une intégration native.
 - **Équilibre Visuel** : Redimensionnement du logo à 97px pour un ratio titre/image optimal.
   
-🔧 Corrigé
+### 🔧 Corrigé
 - **Bug d'affichage HTML** : Correction de l'interprétation des balises via l'activation de unsafe_allow_html=True.
 - **Alignement Responsive** : Fixation de la disposition flex-column pour éviter le chevauchement du texte sur les petits écrans.
 
