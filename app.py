@@ -301,7 +301,7 @@ col_logo, col_titre = st.columns([1, 4]) # Ajuste le ratio [1, 4] selon la forme
 
 with col_logo:
     # Utilise le lien direct vers ton logo sur GitHub pour que ça charge partout
-    st.image("TON_LIEN_DIRECT_GITHUB_LOGO.png", width=120)
+    st.image("https://github.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/blob/main/logo_officiel-1_Blank.png", width=120)
 
 with col_titre:
     st.markdown(f"""
