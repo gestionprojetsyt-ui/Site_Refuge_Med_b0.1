@@ -725,14 +725,17 @@ with tab_urgence:
             </a>
         """, unsafe_allow_html=True)
 
-    with col_site3:
+with col_site3:
         st.markdown("""
-            <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none;">
-                <div style="background-color: #3b5998; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <i class="fab fa-facebook" style="color: white; font-size: 20px; margin-bottom:8px;"></i><br>
-                    <b style="color: white;">Pet Alert 40</b>
-                </div>
-            </a>
+            <div style="background-color: #f8f9fa; padding: 10px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; gap: 8px;">
+                <b style="color: #333; font-size: 0.85em; margin-bottom: 2px;">PET ALERT 40</b>
+                <a href="https://www.petalert.fr/" target="_blank" style="text-decoration:none; background-color: white; color: #333; padding: 5px; border-radius: 5px; border: 1px solid #ccc; font-size: 0.8em; font-weight: bold;">
+                    🌐 Site Officiel
+                </a>
+                <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none; background-color: #1877F2; color: white; padding: 5px; border-radius: 5px; font-size: 0.8em; font-weight: bold;">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+            </div>
         """, unsafe_allow_html=True)
 
 with tab3:
