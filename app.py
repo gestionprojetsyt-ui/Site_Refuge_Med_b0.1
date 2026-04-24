@@ -696,6 +696,45 @@ with tab_urgence:
         </div>
         """, unsafe_allow_html=True)
 
+with tab_urgence:
+    # ... garde tes boutons Perdu/Trouvé en haut ...
+
+    st.markdown("---") # Une petite ligne de séparation
+    st.markdown("<h4 style='text-align:center; color:#FF0000;'>💻 SIGNALER SUR LES PLATEFORMES NATIONALES</h4>", unsafe_allow_html=True)
+    
+    # On crée 3 colonnes pour les 3 sites
+    col_site1, col_site2, col_site3 = st.columns(3)
+
+    with col_site1:
+        st.markdown("""
+            <a href="https://www.chat-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
+                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <img src="https://www.chat-perdu.org/favicon.ico" width="20" style="margin-bottom:8px;"><br>
+                    <b style="color: #333;">Chat-Perdu.org</b>
+                </div>
+            </a>
+        """, unsafe_allow_html=True)
+
+    with col_site2:
+        st.markdown("""
+            <a href="https://www.chien-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
+                <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <img src="https://www.chien-perdu.org/favicon.ico" width="20" style="margin-bottom:8px;"><br>
+                    <b style="color: #333;">Chien-Perdu.org</b>
+                </div>
+            </a>
+        """, unsafe_allow_html=True)
+
+    with col_site3:
+        st.markdown("""
+            <a href="https://www.facebook.com/PetAlertFrance40/" target="_blank" style="text-decoration:none;">
+                <div style="background-color: #3b5998; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <i class="fab fa-facebook" style="color: white; font-size: 20px; margin-bottom:8px;"></i><br>
+                    <b style="color: white;">Pet Alert 40</b>
+                </div>
+            </a>
+        """, unsafe_allow_html=True)
+
 with tab3:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
