@@ -738,7 +738,7 @@ with col_site3:
                     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" width="14" style="margin-right:8px;"> Facebook
                 </a>
             </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # <--- La virgule et le True sont CRITIQUES
 with tab3:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOUS AIDER</h2>", unsafe_allow_html=True)
     st.markdown(
