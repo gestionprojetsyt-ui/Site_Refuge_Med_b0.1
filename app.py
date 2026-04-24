@@ -354,14 +354,49 @@ st.markdown(f"""
             filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
         }}
 
-        .banner-title {{
-            color: #FF4B4B !important; /* ROUGE STREAMLIT */
-            font-size: 3.8em !important;
+        /* ... garde le reste de ton CSS et remplace/ajoute ceci ... */
+
+        .banner-title {
+            color: #FF4B4B !important; 
+            font-size: 3.5em !important;
             font-weight: 800 !important;
             margin: 0 !important;
             text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-            line-height: 1;
-        }}
+            line-height: 1.1;
+        }
+
+        /* --- AJUSTEMENTS SPÉCIAUX POUR MOBILE --- */
+        @media (max-width: 600px) {
+            .header-banner {
+                height: 350px; /* Un peu moins haut sur mobile */
+            }
+            .banner-overlay {
+                padding-right: 20px; /* Moins de marge à droite sur mobile */
+                align-items: center; /* On centre tout sur mobile pour que ce soit plus joli */
+                text-align: center;
+            }
+            .identity-row {
+                flex-direction: column; /* Logo au dessus du titre sur mobile */
+                align-items: center;
+                justify-content: center;
+            }
+            .banner-logo {
+                margin-right: 0;
+                margin-bottom: 10px;
+                height: 80px; /* Logo légèrement plus petit sur mobile */
+            }
+            .banner-title {
+                font-size: 2.2em !important; /* Titre plus petit pour tenir sur une ligne */
+            }
+            .banner-subtitle {
+                font-size: 1.1em !important;
+                max-width: 100%;
+            }
+            .btn-action {
+                padding: 12px 20px !important;
+                font-size: 1em !important;
+            }
+        }
 
         /* Texte d'accroche */
         .banner-subtitle {{
