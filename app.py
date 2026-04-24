@@ -299,79 +299,94 @@ div[data-testid="stTextInput"] input:focus {
 """, unsafe_allow_html=True)
 
 # --- HEADER COMPLET (LOGO + NOM + BANNIÈRE) ---
-# Liens des ressources
+# --- BANNIÈRE ROYALE (LOGO + NOM ROUGE + BOUTON) ---
+
+# 1. Tes liens de ressources (Vérifiés)
 logo_url = "https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-1_Blank.png"
 banner_url = "https://images.unsplash.com/photo-1450778869180-41d0601e046e?auto=format&fit=crop&q=80&w=1200"
 
+# 2. Le bloc complet HTML + CSS
 st.markdown(f"""
     <style>
+        /* Conteneur de la bannière */
         .header-banner {{
             background-image: url('{banner_url}');
             background-size: cover;
             background-position: center;
-            height: 350px; /* On augmente un peu la hauteur pour le bouton */
+            height: 400px;
             border-radius: 15px;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }}
 
+        /* Superposition pour le contraste */
         .banner-overlay {{
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.4);
             border-radius: 15px;
             display: flex;
-            flex-direction: column; /* On empile les éléments verticalement */
+            flex-direction: column;
             justify-content: center;
-            align-items: flex-end; /* On pousse tout à droite */
-            padding-right: 50px;
+            align-items: flex-end; /* Tout à droite */
+            padding-right: 60px;
             text-align: right;
         }}
 
+        /* Ligne du Logo et du Titre */
         .identity-row {{
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
         }}
 
         .banner-logo {{
-            height: 80px;
-            margin-right: 15px;
+            height: 90px;
+            margin-right: 20px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
         }}
 
         .banner-title {{
-            color: #FF4B4B; 
-            font-size: 3em;
-            font-weight: bold;
-            margin: 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            color: #FF4B4B !important; /* ROUGE STREAMLIT */
+            font-size: 3.8em !important;
+            font-weight: 800 !important;
+            margin: 0 !important;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            line-height: 1;
         }}
 
+        /* Texte d'accroche */
         .banner-subtitle {{
-            color: white;
-            font-size: 1.2em;
-            margin-bottom: 25px;
-            max-width: 400px; /* Pour éviter que le texte soit trop long */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            color: white !important;
+            font-size: 1.4em !important;
+            font-style: italic;
+            margin-top: 10px !important;
+            margin-bottom: 30px !important;
+            max-width: 500px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,1);
         }}
 
+        /* Le Bouton stylisé */
         .btn-action {{
-            background-color: #FF4B4B;
+            background-color: #FF4B4B !important;
             color: white !important;
-            padding: 12px 24px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1em;
-            transition: 0.3s;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            padding: 15px 35px !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            font-weight: bold !important;
+            font-size: 1.2em !important;
+            transition: all 0.3s ease !important;
+            border: 2px solid #FF4B4B !important;
+            display: inline-block !important;
+            box-shadow: 0 4px 15px rgba(255, 75, 75, 0.4);
         }}
 
         .btn-action:hover {{
-            background-color: white;
+            background-color: white !important;
             color: #FF4B4B !important;
+            border: 2px solid white !important;
             transform: scale(1.05);
         }}
     </style>
@@ -382,9 +397,7 @@ st.markdown(f"""
                 <img src="{logo_url}" class="banner-logo">
                 <h1 class="banner-title">Refuge Médéric</h1>
             </div>
-            
-            <p class="banner-subtitle">Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir.</p>
-            
+            <p class="banner-subtitle">"Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir."</p>
             <a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">
                 🐾 Voir nos animaux à l'adoption
             </a>
