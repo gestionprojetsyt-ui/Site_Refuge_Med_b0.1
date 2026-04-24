@@ -706,20 +706,20 @@ with tab_urgence:
     
     with col_s1:
         st.markdown("""
-            <a href="https://www.chat-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
+            <a href="https://www.chien-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
                 <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <img src="https://www.chat-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
-                    <b style="color: #333; font-size: 0.9em;">Chat-Perdu.org</b>
+                    <img src="https://www.chien-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
+                    <b style="color: #333; font-size: 0.9em;">Chien-Perdu.org</b>
                 </div>
             </a>
         """, unsafe_allow_html=True)
 
     with col_s2:
         st.markdown("""
-            <a href="https://www.chien-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
+            <a href="https://www.chat-perdu.org/fr-fr/" target="_blank" style="text-decoration:none;">
                 <div style="background-color: white; padding: 15px; border-radius: 10px; border: 1px solid #ddd; text-align: center; height: 110px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                    <img src="https://www.chien-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
-                    <b style="color: #333; font-size: 0.9em;">Chien-Perdu.org</b>
+                    <img src="https://www.chat-perdu.org/favicon.ico" width="25" style="margin-bottom:8px;">
+                    <b style="color: #333; font-size: 0.9em;">Chat-Perdu.org</b>
                 </div>
             </a>
         """, unsafe_allow_html=True)
