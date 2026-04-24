@@ -296,14 +296,20 @@ div[data-testid="stTextInput"] input:focus {
 </style>
 """, unsafe_allow_html=True)
 
-# --- 2. BANNIÈRE D'ACCUEIL ---
-st.markdown("""
-<div class="hero">
-<h1 style="font-size: 4em; margin-bottom: 10px; color: white;">REFUGE MÉDÉRIC</h1>
-<p style="font-size: 1.5em; margin-bottom: 30px; color: white;">Donnez une seconde chance à ceux qui n'ont que de l'amour à offrir.</p>
-<a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">🐾 Voir nos animaux à l'adoption</a>
-</div>
-""", unsafe_allow_html=True)
+# --- HEADER AVEC LOGO ET TITRE ---
+col_logo, col_titre = st.columns([1, 4]) # Ajuste le ratio [1, 4] selon la forme de ton logo
+
+with col_logo:
+    # Utilise le lien direct vers ton logo sur GitHub pour que ça charge partout
+    st.image("TON_LIEN_DIRECT_GITHUB_LOGO.png", width=120)
+
+with col_titre:
+    st.markdown(f"""
+        <h1 style='margin-bottom: 0;'>Refuge Médéric</h1>
+        <p style='font-size: 1.2em; color: #666; margin-top: 0;'>Association de Protection Animale - Saint-Paul-lès-Dax</p>
+    """, unsafe_allow_html=True)
+
+st.write("---") # Une petite ligne de séparation pour faire propre
 
 # --- 3. PRÉSENTATION RAPIDE ---
 col1, col2, col3 = st.columns(3)
