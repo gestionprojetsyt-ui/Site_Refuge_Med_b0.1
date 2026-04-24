@@ -529,7 +529,7 @@ with col_refuge_2:
     # On utilise 'event-card' pour avoir exactement le même look que les actualités
     st.markdown("<div class='event-card' style='margin-top:0;'>", unsafe_allow_html=True)
     
-    st.markdown("<h3 style='text-align:center; margin-top:0; color:#1a1a1a;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align:center; margin-top:0; color:#FF0000;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
     
     st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
 
