@@ -526,46 +526,33 @@ with tab1:
         """, unsafe_allow_html=True)
 
 with col_refuge_2:
-        # Conteneur avec la barre rouge en bas (Style Actualités)
+        st.markdown("<div class='contact-card' style='margin-top:0;'>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align:center; margin-top:0;'>🙏 NOUS SOUTENIR</h3>", unsafe_allow_html=True)
+        st.write("Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.")
+
+        # --- BLOC BOUTONS AVEC LOGOS OFFICIELS ---
         st.markdown("""
-            <div style="
-                background-color: white; 
-                padding: 30px; 
-                border-radius: 20px; 
-                box-shadow: 0 5px 20px rgba(0,0,0,0.1); 
-                border: 1px solid #eee;
-                border-bottom: 6px solid #FF0000 !important; 
-                color: #1a1a1a;
-                margin-top: 0;
-            ">
-                <h3 style='text-align:center; margin-top:0; font-weight: 800; color: #1a1a1a;'>🙏 NOUS SOUTENIR</h3>
-                <p style='text-align:center; font-size: 1.1em; line-height: 1.6; color: #1a1a1a;'>
-                    Votre aide est essentielle pour la survie du refuge et le bien-être de nos protégés.
-                </p>
-
-                <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" 
-                   target="_blank" 
-                   style="display: flex; align-items: center; justify-content: center; text-decoration: none; margin-bottom: 12px; background-color: #62af05; color: white !important; padding: 15px; border-radius: 15px; font-weight: bold; font-size: 1.1em;">
-                    <img src="https://cdn.prod.website-files.com/67164cc9484c7fb65c26915e/67867c1ba9f693d5f2d43eb5_webclip.png" width="22" style="border-radius: 4px; margin-right: 12px;">
-                    Soutenir via HelloAsso
-                </a>
-                
-                <a href="https://www.ouijagi.org/" 
-                   target="_blank" 
-                   style="display: flex; align-items: center; justify-content: center; text-decoration: none; background-color: #000091; color: white !important; padding: 15px; border-radius: 15px; font-weight: bold; font-size: 1.1em;">
-                    <img src="https://ca-ouijagi.fr/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
-                    Soutenir via OUIJAGI!
-                </a>
-                
-                <p style='text-align:center; font-size:0.85em; color:#666; margin-top:15px;'>
-                    Dons sécurisés. Reçu fiscal disponible sur les plateformes.
-                </p>
-
-                <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333; margin-top:15px;'>
-                    <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux !
-                </div>
-            </div>
+            <a href="https://www.helloasso.com/associations/animaux-du-grand-dax/formulaires/2" class="btn-don-vert" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none; margin-bottom: 12px;">
+                <img src="https://cdn.prod.website-files.com/67164cc9484c7fb65c26915e/67867c1ba9f693d5f2d43eb5_webclip.png" width="22" style="border-radius: 4px; margin-right: 12px;">
+                Soutenir via HelloAsso
+            </a>
+            
+            <a href="https://www.ouijagi.org/" class="btn-don-bleu" target="_blank" style="display: flex; align-items: center; justify-content: center; text-decoration: none;">
+                <img src="https://ca-ouijagi.fr/favicon.ico" width="22" style="background: white; border-radius: 4px; padding: 2px; margin-right: 12px;">
+                Soutenir via OUIJAGI!
+            </a>
+            
+            <p style='text-align:center; font-size:0.85em; color:#666; margin-top:10px;'>
+                Dons sécurisés. Reçu fiscal disponible sur les plateformes.
+            </p>
         """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div style='background:#f0f2f5; padding:15px; border-radius:10px; font-size:0.9em; color:#333;'>
+            <b>Appel particulier :</b> Pour les travaux de la fourrière chats, nous recherchons activement des dons de matériaux !
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
     url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
