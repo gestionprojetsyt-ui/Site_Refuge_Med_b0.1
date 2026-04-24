@@ -321,7 +321,7 @@ st.markdown("---")
 
 # --- NOUVEL ORDRE DES ONGLETS ---
 tab1, tab2, tab_event, tab_pension, tab4, tab_urgence, tab3 = st.tabs(
-    ["Le Refuge", "Nos Animaux", "Nos Actualités", "Pension", "Contact & Accès", "🚨 Urgence/Fourrière", "Nous Aider ❤️"]
+    ["Le Refuge", "Nos Protégés", "Nos Actualités", "Pension", "Contact & Accès", "🚨 Urgence/Fourrière", "Nous Aider ❤️"]
 )
 
 with tab1:
