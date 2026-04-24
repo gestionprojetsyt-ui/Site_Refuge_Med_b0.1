@@ -1,6 +1,22 @@
 # 📝 Notes de Version (Changelog)
 
-## [v0.05] - 22-04-2026
+## [vAlpha_5] - 24 Avril 2026
+### ✨ Ajouté
+- **Nouvelle Bannière Identity-Push** : Fusion complète du logo, du titre et de l'appel à l'action dans une bannière visuelle unifiée à droite.
+  - Bouton CTA "Coup de Cœur" : Intégration d'un bouton d'action chaleureux ("Rencontrez votre nouveau meilleur ami") avec redirection vers le catalogue.
+  - Protection Visuelle du Logo : Ajout d'un cadre protecteur blanc (border-radius) et d'une ombre portée pour garantir la visibilité du logo sur fonds complexes.
+- **Effets CSS Dynamiques** : Mise en place d'animations au survol (hover scale) sur les boutons pour une interface plus vivante.
+
+⚡ Optimisé
+- **Lisibilité Textuelle** : Application d'un voile de contraste (overlay) de 40% et de text-shadow sur l'ensemble de la bannière pour une lecture parfaite.
+- **Harmonie des Couleurs** : Alignement du titre sur le rouge officiel Streamlit (#FF4B4B) pour une intégration native.
+- **Équilibre Visuel** : Redimensionnement du logo à 97px pour un ratio titre/image optimal.
+
+🔧 Corrigé
+- **Bug d'affichage HTML** : Correction de l'interprétation des balises via l'activation de unsafe_allow_html=True.
+- **Alignement Responsive** : Fixation de la disposition flex-column pour éviter le chevauchement du texte sur les petits écrans.
+
+## [v0.05] - Avril 2026
 ### ✨ Ajouté
 - **Sécurité des Documents** : Mise en place d'une double sauvegarde (Redondance) pour le Règlement Intérieur.
   - Lien  Google Drive : Utilisé pour la rapidité et la stabilité sur le site.
