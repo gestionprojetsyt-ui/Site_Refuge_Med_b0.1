@@ -14,7 +14,7 @@ import streamlit as st
 # CETTE COMMANDE DOIT ÊTRE LA PREMIÈRE
 st.set_page_config(
     page_title="Refuge Médéric",
-    page_icon="https://raw.githubusercontent.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/main/logo_officiel-2.png",
+    page_icon="https://raw.githubusercontent.com/Firnaeth/Site_Refuge_Med_b0.1/main/logo_officiel-2.png",
     layout="wide" # Optionnel : pour que le site prenne toute la largeur
 )
 
