@@ -430,24 +430,26 @@ st.markdown(f"""
 st.markdown(f"""
     <div class="header-banner">
         <div class="banner-overlay">
-            <div style="text-align: center; margin-bottom: 10px;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
-                    <img src="{L_LOGO}" style="width: 80px; border-radius: 10px;">
-                    <h1 style="color: #FF4B4B; font-size: 3rem; margin: 0 !important; padding: 0 !important; line-height: 1;">Refuge Médéric</h1>
-                </div>
-                <div style="margin-top: -5px !important;">
-                    <span style="color: white; font-size: 1.8rem; font-weight: 300; font-family: sans-serif;">Médéric Connect</span>
-                </div>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 0px;">
+                <img src="{L_LOGO}" style="width: 80px; border-radius: 10px;">
+                <h1 style="color: #FF4B4B; font-size: 3rem; margin: 0 !important; padding: 0 !important; line-height: 0.8;">Refuge Médéric</h1>
             </div>
             
-            <p class="banner-subtitle" style="margin-top: 10px !important;">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
+            <div style="text-align: center; margin-top: -10px !important; margin-bottom: 15px;">
+                <span style="color: white; font-size: 1.8rem; font-weight: 300; font-family: sans-serif; display: block;">
+                    Médéric Connect
+                </span>
+            </div>
+
+            <p class="banner-subtitle" style="margin-top: 5px !important;">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
             
-            <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action">
-                🐾 Rencontrez votre nouveau meilleur ami
+            <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action" style="display: inline-block; margin-top: 15px;">
+                Rencontrez votre nouveau meilleur ami
             </a>
         </div>
     </div>
 """, unsafe_allow_html=True)
+
 # Séparation visuelle
 st.write("---")
 
