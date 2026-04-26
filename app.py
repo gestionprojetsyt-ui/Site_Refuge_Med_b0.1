@@ -427,14 +427,11 @@ st.markdown(f"""
         }}
     </style>
 
-<div class="header-banner">
+    <div class="header-banner">
         <div class="banner-overlay">
             <div class="identity-row">
                 <img src="{L_LOGO}" class="banner-logo">
-                <h1 class="banner-title">Refuge Médéric</h1>
-            </div>
-            <div style="color: white; font-size: 1.5rem; font-weight: bold; margin-bottom: 10px;">
-                Médéric Connect
+                <h1 class="banner-title">Médéric Connect</h1>
             </div>
             <p class="banner-subtitle">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
             <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action">
@@ -443,6 +440,7 @@ st.markdown(f"""
         </div>
     </div>
 """, unsafe_allow_html=True)
+
 
 # Séparation visuelle
 st.write("---")
