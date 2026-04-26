@@ -434,7 +434,7 @@ st.markdown(f"""
                 <h1 class="banner-title">Refuge Médéric</h1>
             </div>
             <p class="banner-subtitle">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
-            <a href="https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/" target="_blank" class="btn-action">
+            <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action">
                 🐾 Rencontrez votre nouveau meilleur ami
             </a>
         </div>
