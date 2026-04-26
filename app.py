@@ -427,12 +427,15 @@ st.markdown(f"""
         }}
     </style>
 
-    <div class="header-banner">
+<div class="header-banner">
         <div class="banner-overlay">
             <div class="identity-row">
                 <img src="{L_LOGO}" class="banner-logo">
                 <h1 class="banner-title">Refuge Médéric</h1>
             </div>
+            <h2 style="color: white; font-size: 1.8rem; font-weight: 300; margin-top: -10px; margin-bottom: 15px; font-family: sans-serif;">
+                Médéric Connect
+            </h2>
             <p class="banner-subtitle">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
             <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action">
                 🐾 Rencontrez votre nouveau meilleur ami
