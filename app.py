@@ -427,19 +427,19 @@ st.markdown(f"""
         }}
     </style>
 
-<div class="header-banner">
+st.markdown(f"""
+    <div class="header-banner">
         <div class="banner-overlay">
-            <div class="identity-row" style="margin-bottom: 0px !important; padding-bottom: 0px !important; display: flex; align-items: center; justify-content: center;">
-                <img src="{L_LOGO}" class="banner-logo">
-                <h1 class="banner-title" style="margin-bottom: 0px !important;">Refuge Médéric</h1>
+            <div style="text-align: center; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                    <img src="{L_LOGO}" style="width: 80px; border-radius: 10px;">
+                    <h1 style="color: #FF4B4B; font-size: 3rem; margin: 0 !important; padding: 0 !important; line-height: 1;">Refuge Médéric</h1>
+                </div>
+                <div style="margin-top: -5px !important;">
+                    <span style="color: white; font-size: 1.8rem; font-weight: 300; font-family: sans-serif;">Médéric Connect</span>
+                </div>
             </div>
             
-            <div style="width: 100%; text-align: center; margin-top: -30px !important;">
-                <span style="color: white; font-size: 1.8rem; font-weight: 300; font-family: sans-serif; display: block;">
-                    Médéric Connect
-                </span>
-            </div>
-
             <p class="banner-subtitle" style="margin-top: 10px !important;">"Offrez une seconde chance à ceux qui n'attendent que votre amour."</p>
             
             <a href="https://s8befjprptpdkcqvddw7ke.streamlit.app/" target="_blank" class="btn-action">
@@ -448,7 +448,6 @@ st.markdown(f"""
         </div>
     </div>
 """, unsafe_allow_html=True)
-
 # Séparation visuelle
 st.write("---")
 
