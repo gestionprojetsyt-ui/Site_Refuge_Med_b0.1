@@ -431,7 +431,7 @@ st.markdown(f"""
         <div class="banner-overlay">
             <div class="identity-row">
                 <img src="{L_LOGO}" class="banner-logo">
-                <h1 class="banner-title" style="margin-bottom: 0px !important; padding-bottom: 0px !important;">Refuge Médéric</h1>
+                <h1 class="banner-title" style="margin-bottom: -20px !important; padding-bottom: 0px !important;">Refuge Médéric</h1>
             </div>
             <h2 style="color: white; font-size: 1.5rem; font-weight: 300; margin-top: -20px !important; margin-bottom: 15px !important; font-family: sans-serif; text-align: center;">
                 Médéric Connect
