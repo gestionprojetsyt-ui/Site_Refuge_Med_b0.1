@@ -490,7 +490,7 @@ with tab1:
         """, unsafe_allow_html=True)
 
 # --- BLOC RÈGLEMENT INTÉRIEUR (STYLE INFOS LÉGALES) ---
-# --- LIEN DE SECOURS (GITHUB) : https://github.com/gestionprojetsyt-ui/Site_Refuge_Med_b0.1/blob/main/Reglement_Interieur_Animaux_Grand_Dax.pdf
+# --- LIEN DE SECOURS (GITHUB) : https://github.com/Firnaeth/Site_Refuge_Med_b0.1/blob/main/Reglement_Interieur_Animaux_Grand_Dax.pdf
         st.markdown("""
         <div style="background-color: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #6c757d; margin-top: 20px;">
             <p style="margin:0; font-size: 0.9em; color: #555;">
