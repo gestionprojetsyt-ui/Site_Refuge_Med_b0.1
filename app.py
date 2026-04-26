@@ -559,7 +559,7 @@ with col_refuge_2:
     st.markdown("</div>", unsafe_allow_html=True)
 with tab2:
     st.markdown("<h2 style='text-align:center; color:#FF0000;'>NOS ANIMAUX À L'ADOPTION</h2>", unsafe_allow_html=True)
-    url_catalogue = "https://refugemedb12-fuhsesxanqbpnqkdkxkaug.streamlit.app/?embed=true"
+    url_catalogue = "https://s8befjprptpdkcqvddw7ke.streamlit.app/?embed=true"
     st.components.v1.iframe(url_catalogue, height=900, scrolling=True)
 
 with tab_event:
