@@ -426,7 +426,7 @@ st.markdown(f"""
             }}
         }}
     </style>
-    
+
     <div class="header-banner">
         <div class="banner-overlay">
             <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 0px;">
